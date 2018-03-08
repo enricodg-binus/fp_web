@@ -1,5 +1,5 @@
 <!-- Header Section -->
-<nav class="navbar navbar-default" style="margin-bottom: 10%;">
+<nav class="navbar navbar-default">
 <div class="container-fluid" id="navbar" style="padding-bottom: 0; margin-bottom: 0">
   <div class="row top-row">
 
@@ -26,34 +26,14 @@
     </div>
   </div>
   <div class="row logo-row">
-    <div class="mid col-md-6">
+    <div class="mid col-md-9">
       <form name ="userinput" action="https://www.enterkomputer.com/search/result" method="post">
         <div id="custom-search-input">
-          <div class="input-group col-md-12">
-            <!--<div class="input-group-btn">-->
-              <!--<button type="button" onchange="location.href=form.select.options[selectedIndex].value" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Semua Kategori <span class="caret"></span></button>-->
-              <!--<select style="width:10em;border-radius:0px;border: 0;outline: 1px solid #CCC;background-color: white;" id="kategori-produk" class="input-md selectpicker form-control select11" data-live-search="true" title="Pilih Kategori" >-->
-                <!--<option selected>Semua Kategori</option>-->
-                <!--<option>processor</option>-->
-                <!--<option>vga</option>-->
-                <!--<option>motherboard</option>-->
-                <!--<option>notebook</option>-->
-              <!--</select>-->
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-            <!--</div>-->
+          <div class="col-md-4"></div>
+          <div class="input-group col-md-8">
+            <span class="input-group-btn">
+                <app-category-dd></app-category-dd>
+            </span>
             <input id="keyword-search" type="text" class="form-control input-md" name="keyword" placeholder="Cari.." />
             <span class="input-group-btn">
                 <button class="btn btn-success btn-md" type="submit">
@@ -64,9 +44,8 @@
         </div>
       </form>
     </div>
-    <div class="col-md-3 text-right"></div>
     <div class="col-md-3 text-center">
-        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
+        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart" (click)="cart"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
         <button class="btn btn-outline-success" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i> Login</button>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Register"><i class="fa fa-pencil"></i> Daftar</button>
     </div>
@@ -78,24 +57,6 @@
       <button type="button" class="btn btn-success btn-block btn-cp"><h1>Mangga Dua Mall Lt.5 Blok C No. 101-106 Jakarta Pusat 10730 (Senin-Sabtu, 10.00-19.00) | <i class="fa fa-envelope"></i> sales@enterkomputer.com | <i class="fa fa-phone"></i> (021) 3043 0333 | Warranty : RMA.enterkomputer@gmail.com / 021-3000 5529</h1></button>
     </div>
   </div>
-
-  <div class="row katagori-row">
-    <div class="col-md-12">
-
-
-    </div>
-  </div>
 </div>
 </nav>
 <!-- Header Section -->
-<div class="container">
-  <div class="row">
-
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <br>asdf<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a
-      <br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a
-    </div>
-  </div>
-</div>
