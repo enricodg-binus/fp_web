@@ -10,6 +10,7 @@ import { CategoryDdComponent } from './category-dd/category-dd.component';
 import { BannerSliderComponent } from './banner-slider/banner-slider.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
+import { SignAuthComponent } from './sign-auth/sign-auth.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CartComponent } from './cart/cart.component';
     CategoryDdComponent,
     BannerSliderComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    SignAuthComponent
   ],
   imports: [
     BrowserModule,

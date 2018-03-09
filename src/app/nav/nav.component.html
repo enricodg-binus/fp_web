@@ -16,18 +16,18 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="list-unstyled list-inline ongkir ">
           <!--<li><i class="fa fa-whatsapp"></i> WA : <a href="https://api.whatsapp.com/send?phone=6281290969086"><b>CS-1(0812-9096-9086)</b></a></li>-->
-          <li><a href="https://www.enterkomputer.com/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
-          <li><a href="https://www.enterkomputer.com/about.php"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;About Us</a></li>
-          <li><a href="https://www.enterkomputer.com/howto.php"><i class="fa fa-question" aria-hidden="true"></i>&nbsp;How To</a></li>
-          <li><a href="https://www.enterkomputer.com/simulasi.php"><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;Simulasi</a></li>
-          <li><a href="https://www.enterkomputer.com/tracking.php"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Tracking Order</a></li>
+          <li><a href=""><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+          <li><a href=""><i class="fa fa-users" aria-hidden="true"></i>&nbsp;About Us</a></li>
+          <li><a href=""><i class="fa fa-question" aria-hidden="true"></i>&nbsp;How To</a></li>
+          <li><a href=""><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;Simulasi</a></li>
+          <li><a href=""><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Tracking Order</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="row logo-row">
     <div class="mid col-md-9">
-      <form name ="userinput" action="https://www.enterkomputer.com/search/result" method="post">
+      <form name ="userinput" action="" method="post">
         <div id="custom-search-input">
           <div class="col-md-4"></div>
           <div class="input-group col-md-8">
@@ -45,8 +45,8 @@
       </form>
     </div>
     <div class="col-md-3 text-center">
-        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart" (click)="cart"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
-        <button class="btn btn-outline-success" data-toggle="modal" data-target="#Login"><i class="fa fa-sign-in"></i> Login</button>
+        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
+        <button class="btn btn-outline-success" data-toggle="modal" data-target="#Login" routerLink="/login"><i class="fa fa-sign-in"></i> Login</button>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Register"><i class="fa fa-pencil"></i> Daftar</button>
     </div>
   </div>
@@ -60,3 +60,7 @@
 </div>
 </nav>
 <!-- Header Section -->
+
+<div id="myCart" class="modal fade in" role="dialog" tabindex="-1">
+  <app-cart></app-cart>
+</div>
