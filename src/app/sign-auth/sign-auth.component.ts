@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthServiceProviderService} from '../services/auth-service-provider.service';
 
 @Component({
   selector: 'app-sign-auth',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignAuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthServiceProviderService) { }
 
   ngOnInit() {
   }
+
+
 
 }

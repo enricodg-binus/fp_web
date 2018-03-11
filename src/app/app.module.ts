@@ -11,6 +11,10 @@ import { BannerSliderComponent } from './banner-slider/banner-slider.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { SignAuthComponent } from './sign-auth/sign-auth.component';
+import { BackendApiService } from './services/backend-api.service.service';
+import { AuthServiceProviderService } from './services/auth-service-provider.service';
+import { DashboardSidebarComponent } from './dashboard-sidebar/dashboard-sidebar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,13 +26,15 @@ import { SignAuthComponent } from './sign-auth/sign-auth.component';
     BannerSliderComponent,
     HomeComponent,
     CartComponent,
-    SignAuthComponent
+    SignAuthComponent,
+    DashboardSidebarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BackendApiService, AuthServiceProviderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
