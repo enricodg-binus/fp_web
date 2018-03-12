@@ -18,6 +18,8 @@ import { LoginComponent } from './sign-auth/login/login.component';
 import { StatusorderComponent } from './dashboard-user/statusorder/statusorder.component';
 import {CommonModule} from '@angular/common';
 import { RequestorderComponent } from './dashboard-user/requestorder/requestorder.component';
+import { EditProfileComponent } from './dashboard-user/edit-profile/edit-profile.component';
+import { PaymentComponent } from './dashboard-user/payment/payment.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { RequestorderComponent } from './dashboard-user/requestorder/requestorde
     DashboardComponent,
     LoginComponent,
     StatusorderComponent,
-    RequestorderComponent
+    RequestorderComponent,
+    EditProfileComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ import {DashboardSidebarComponent} from './dashboard-user/dashboard-sidebar.comp
 import {DashboardComponent} from './dashboard-user/dashboard/dashboard.component';
 import {StatusorderComponent} from './dashboard-user/statusorder/statusorder.component';
 import {RequestorderComponent} from './dashboard-user/requestorder/requestorder.component';
+import {EditProfileComponent} from './dashboard-user/edit-profile/edit-profile.component';
+import {PaymentComponent} from './dashboard-user/payment/payment.component';
 
 const routes: Routes = [
     {
@@ -45,7 +47,15 @@ const routes: Routes = [
           {
             path: 'request_order',
             component: RequestorderComponent
-          }
+          },
+            {
+                path: 'edit_profile',
+                component: EditProfileComponent
+            },
+            {
+                path: 'payment',
+                component: PaymentComponent
+            }
         ]
     }
 ];

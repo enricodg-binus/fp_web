@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-requestorder',
-  templateUrl: './requestorder.component.html',
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
   styleUrls: ['../dashboard-sidebar.component.css']
 })
-export class RequestorderComponent implements OnInit {
+export class PaymentComponent implements OnInit {
 
   constructor() { }
 
