@@ -1,0 +1,114 @@
+.footer-menu {
+  display: inline-block;
+}
+
+.footer-menu:first-child {
+  margin-right: 50px;
+}
+
+.footer-menu li {
+  font-size: 12px;
+  /*font-weight: bolder;*/
+}
+
+.footer-menu li a {
+  color: #000;
+}
+
+.footer-menu li:first-child {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #86c441;
+}
+
+.footer-row {
+  border-top: 5px solid #86c441;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-image: url(https://www.enterkomputer.com/assets/img/footerbg.jpg);
+}
+
+.bottom {
+  background-color: #000;
+  padding: 5px;
+  background-image: url(https://www.enterkomputer.com/assets/img/bgbottom.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.social-media-row {
+  background-color: #ccc;
+}
+
+.social-media #services {
+  text-align: center;
+  transform: translatez(0);
+  margin: 0 auto;
+  display: block;
+  padding: 5px 0px;
+}
+.social-media #services h2 {
+  color: #212121;
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+}
+.social-media #services li {
+  display: inline-block;
+  margin: 6px;
+  list-style: none;
+  vertical-align: middle;
+}
+.social-media #services li div {
+  width: 35px;
+  height: 35px;
+  color: #000;
+  font-size: 14px;
+  text-align: center;
+  line-height: 37px;
+  background-color: #5cb85c;
+  transition: all 0.5s ease;
+  border-radius: 100% !important;
+  border: 1px solid #2c4e2c;
+}
+.social-media #services li a {
+  text-decoration: none;
+}
+.social-media #services li div:hover {
+  transform: rotate(375deg);
+  border-radius: 100px;
+  border: 2px solid #2c4e2c;
+  color: #fb353c;
+  background-color: rgba(255,255,255,0);
+}
+
+.social-media #services li div.separator-sm {
+  width: 2px;
+  height: 50px;
+  background-color: #000;
+}
+
+.bottom-sosmed {
+  text-align: left !important;
+}
+
+.fa-social {
+  color: #2c4e2c;
+}
+
+.footer-info {
+  font-size: 12px;
+  /*font-weight: bolder;*/
+  line-height: 14px;
+}
+
+.slogan {
+  /*font-weight: bolder;*/
+  color: #fff;
+  letter-spacing: 4px;
+  font-size: 14px;
+}
+
+.slogan span {
+  color: #86c441;
+}

@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {CartComponent} from './cart/cart.component';
 import {SignAuthComponent} from './sign-auth/sign-auth.component';
-import {DashboardSidebarComponent} from './dashboard-sidebar/dashboard-sidebar.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardSidebarComponent} from './dashboard-user/dashboard-sidebar.component';
+import {DashboardComponent} from './dashboard-user/dashboard/dashboard.component';
+import {StatusorderComponent} from './dashboard-user/statusorder/statusorder.component';
+import {RequestorderComponent} from './dashboard-user/requestorder/requestorder.component';
 
 const routes: Routes = [
     {
@@ -30,7 +32,21 @@ const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardSidebarComponent
+        component: DashboardSidebarComponent,
+        children: [
+          // {
+          //   path: '',
+          //   component: DashboardComponent
+          // },
+          {
+            path: 'status_order',
+            component: StatusorderComponent
+          },
+          {
+            path: 'request_order',
+            component: RequestorderComponent
+          }
+        ]
     }
 ];
 

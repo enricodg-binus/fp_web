@@ -11,20 +11,20 @@
       <ul class="nav">
 
         <li class="">
-          <a href="">
+          <a routerLink="">
             <i class="fa fa-life-ring"></i>
             <p>PUSAT BANTUAN</p>
           </a>
         </li>
 
-        <li class="active">
-          <a href="">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/dashboard">
             <i class="fa fa-dashboard"></i>
             <p>Dashboard</p>
           </a>
         </li>
-        <li class="">
-          <a href="">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/request_order">
             <i class="fa fa-bars"></i>
             <p>Request Order</p>
           </a>
@@ -35,8 +35,8 @@
             <p>Pembayaran</p>
           </a>
         </li>
-        <li class="">
-          <a href="">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard/status_order">
             <i class="fa fa-bullhorn"></i>
             <p>Status Order</p>
           </a>
@@ -131,7 +131,7 @@
         </div>
       </div>
     </nav>
-    <app-dashboard></app-dashboard>
+    <router-outlet></router-outlet>
 
   </div>
 
