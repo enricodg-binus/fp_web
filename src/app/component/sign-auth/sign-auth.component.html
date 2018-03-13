@@ -1,0 +1,115 @@
+<nav class="homepage-nav text-center">
+  <div class="top">&nbsp;</div>
+  <div style="max-width:450px; margin: 0 auto;">
+    <a routerLink="/">
+      <svg class="block-center margin-large" width="200" height="60">
+        <image xlink:href="https://www.enterkomputer.com/assets/img/logoenterkom.png" src="https://hrcdn.net/hackerrank/assets/brand/typemark_60x200-ed86f8b727c9033a0b2c8993b79d81c2.png" width="200" height="60"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="container" style="padding-top: 100px;">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-login">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <a routerLink="/login" routerLinkActive="active" id="login-form-link" (click)="toggle()">Login</a>
+            </div>
+            <div class="col-xs-6">
+              <a routerLink="/register" routerLinkActive="active" id="register-form-link">Register</a>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <form id="login-form" action="" method="post" role="form" [hidden]="hideLogin" (ngSubmit)="f1.form.valid && login()" #f1="ngForm" novalidate>
+                <div class="form-group" [ngClass]="{ 'has-error': f1.submitted && !username.valid }">
+                  <input type="text" name="username_login" id="username" required="required" tabindex="1" class="form-control" placeholder="Username" [(ngModel)]="model.username" #username="ngModel">
+                  <div *ngIf="f1.submitted && !username.valid" class="help-block">Username is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f1.submitted && !password.valid }">
+                  <input type="password" name="password" id="password" required="required" tabindex="2" class="form-control" placeholder="Password" [(ngModel)]="model.password" #password="ngModel">
+                  <div *ngIf="f1.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+                <div class="form-group text-center">
+                  <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                  <label for="remember"> Remember Me</label>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="text-center">
+                        <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form id="register-form" action="" method="post" role="form" [hidden]="!hideLogin" (ngSubmit)="f.form.valid && register()" #f="ngForm">
+
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                  <input type="text" name="name" id="name" required="required" tabindex="1" class="form-control" placeholder="Full Name" [(ngModel)]="model.name" #name="ngModel">
+                  <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                  <input type="text" name="username" id="username_signup" required="required" tabindex="1" class="form-control" placeholder="Username" [(ngModel)]="model.username" #username="ngModel">
+                  <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                  <input type="email" name="email" id="email_singup" required="required" tabindex="2" class="form-control" placeholder="Email Address" [(ngModel)]="model.email" #email="ngModel">
+                  <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                  <input type="password" name="password" id="password_singup" required="required" tabindex="2" class="form-control" placeholder="Password" [(ngModel)]="model.password" #password="ngModel">
+                  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                      <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(function() {
+
+        $('#login-form-link').click(function(e) {
+            $("#login-form").delay(100).fadeIn(100);
+            $("#register-form").fadeOut(100);
+            $('#register-form-link').removeClass('active');
+            $(this).addClass('active');
+            event.preventDefault();
+        });
+        $('#register-form-link').click(function(e) {
+            $("#register-form").delay(100).fadeIn(100);
+            $("#login-form").fadeOut(100);
+            $('#login-form-link').removeClass('active');
+            $(this).addClass('active');
+            event.preventDefault();
+        });
+
+    });
+</script>

@@ -3,6 +3,8 @@ import { ApiProvider } from './api';
 import {NavServiceProviderService} from '../services/nav-service-provider.service';
 import {AuthServiceProviderService} from '../services/auth-service-provider.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AlertProviderService} from '../services/alert-provider.service';
+import {UserService} from '../services/user.service';
 
 @NgModule()
 export class ProviderModule {
@@ -13,7 +15,9 @@ export class ProviderModule {
         ApiProvider,
         NavServiceProviderService,
         AuthServiceProviderService,
-        HttpClientModule
+        HttpClientModule,
+          AlertProviderService,
+          UserService
       ]
     };
   }
