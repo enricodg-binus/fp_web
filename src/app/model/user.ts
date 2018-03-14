@@ -1,14 +1,9 @@
 export class User {
     id;
     name;
-    username;
     email;
     password;
-    gender;
-    country;
-    province;
-    town;
     phone;
-    position;
+    role;
     succes_trans;
 }

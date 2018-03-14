@@ -35,8 +35,12 @@ export class AuthServiceProviderService {
   }
 
   validateToken() {
-    return this.http.get<any>('http://localhost:8000/api/validatetoken', this.httpOptions)
+    const current_user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(current_user.email);
+
+    return this.http.post<any>('http://localhost:8000/api/validatetoken', { email: current_user.email }, this.httpOptions)
         .map(user => {
+            console.log(user);
             return user;
         });
   }

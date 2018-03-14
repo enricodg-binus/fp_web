@@ -6,6 +6,7 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {NgForm} from '@angular/forms';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-nav',
@@ -18,6 +19,7 @@ export class NavComponent implements OnInit {
   loggedIn = false;
   results: any;
   searchTerm: string;
+  user_data: User;
 
   constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService) { }
 
@@ -27,6 +29,8 @@ export class NavComponent implements OnInit {
     this.authService.validateToken().subscribe(
       res => {
         this.loggedIn = true;
+        this.user_data = res;
+        console.log(this.user_data);
       },
       error => {
         this.loggedIn = false;

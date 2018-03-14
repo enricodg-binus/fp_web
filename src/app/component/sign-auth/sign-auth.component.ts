@@ -39,11 +39,10 @@ export class SignAuthComponent implements OnInit {
   }
 
     login() {
-        this.authService.login(this.model.username, this.model.password)
+        this.authService.login(this.model.email, this.model.password)
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-
                 },
                 error => {
                     this.alertService.error(error);

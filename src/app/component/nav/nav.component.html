@@ -70,7 +70,7 @@
         <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart" *ngIf="loggedIn"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
         <button class="btn btn-outline-success" data-toggle="modal" data-target="#Login" routerLink="/login" *ngIf="!loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Register" routerLink="/register" *ngIf="!loggedIn"><i class="fa fa-pencil"></i> Daftar</button>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Register" routerLink="/register" *ngIf="loggedIn"><i class="fa fa-pencil"></i> test</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Register" routerLink="/register" *ngIf="loggedIn"><i class="fa fa-pencil"></i>&nbsp;Hi, {{ user_data[0].name }}</button>
 
     </div>
   </div>

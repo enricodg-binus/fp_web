@@ -23,6 +23,7 @@ import { RequestdetailComponent } from './dashboard-user/requestorder/requestdet
 import {UserGuard} from './guards/auth.guard';
 import {FormsModule} from '@angular/forms';
 import {JwtInterceptor} from './JwtInterceptor';
+import {AlertComponent} from './component/alert/alert.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {JwtInterceptor} from './JwtInterceptor';
     RequestorderComponent,
     EditProfileComponent,
     PaymentComponent,
-    RequestdetailComponent
+    RequestdetailComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import {JwtInterceptor} from './JwtInterceptor';
     CommonModule,
     ProviderModule.forRoot(),
     HttpClientModule,
-      FormsModule
+    FormsModule
   ],
   providers: [UserGuard,
       {
