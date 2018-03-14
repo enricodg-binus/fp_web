@@ -5,6 +5,7 @@ import {AuthServiceProviderService} from '../services/auth-service-provider.serv
 import {HttpClientModule} from '@angular/common/http';
 import {AlertProviderService} from '../services/alert-provider.service';
 import {UserService} from '../services/user.service';
+import {DashboardProviderService} from '../services/dashboard-provider.service';
 
 @NgModule()
 export class ProviderModule {
@@ -16,8 +17,9 @@ export class ProviderModule {
         NavServiceProviderService,
         AuthServiceProviderService,
         HttpClientModule,
-          AlertProviderService,
-          UserService
+        AlertProviderService,
+        UserService,
+        DashboardProviderService
       ]
     };
   }

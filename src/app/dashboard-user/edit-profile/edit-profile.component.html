@@ -7,19 +7,19 @@
             <h4 class="title">Edit Profil</h4>
           </div>
           <div class="content">
-            <form action="https://www.enterkomputer.com/C769c2bd/edit_profile" method="POST">
+            <form (submit)="updateProfile()">
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
-                    <label>Perusahaan</label>
-                    <input type="text" class="form-control" name="perusahaan"  placeholder="Company" value="">
-                    <input type="hidden" class="form-control" name="id"  value="d7af32d3df02c896964bd688666ad74d">
+                    <label>Email</label>
+                    <input disabled type="text" class="form-control" name="email"  placeholder="Email" value="">
+                    <input type="hidden" class="form-control" name="id"  value="{{ user_data.id }}">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" disabled placeholder="Username" value="enrico.daniswaragiovanni@gmail.com">
+                    <input type="text" class="form-control" disabled placeholder="Username" value="{{ user_data.username }}">
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -34,13 +34,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="Enrico Giovanni">
+                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="{{ user_data.name }}">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Handphone</label>
-                    <input disabled type="text" name="hp" class="form-control" placeholder="Hp" value="085353178111">
+                    <input type="text" name="hp" class="form-control" placeholder="Hp" value="{{ user_data.phone }}">
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>About Me</label>
-                    <textarea rows="5" class="form-control" name="about" placeholder="Here can be your description"></textarea>
+                    <textarea rows="5" class="form-control" name="about" placeholder="{{ user_data.succes_trans }}"></textarea>
                   </div>
                 </div>
               </div>

@@ -10,6 +10,7 @@ import {RequestorderComponent} from './dashboard-user/requestorder/requestorder.
 import {EditProfileComponent} from './dashboard-user/edit-profile/edit-profile.component';
 import {PaymentComponent} from './dashboard-user/payment/payment.component';
 import {RequestdetailComponent} from './dashboard-user/requestorder/requestdetail/requestdetail.component';
+import {UserGuard} from './guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -36,6 +37,7 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardSidebarComponent,
+        // canActivate: [UserGuard],
         children: [
           {
               path: 'request_detail',

@@ -16,27 +16,27 @@ export class NavComponent implements OnInit {
 
   categories_data: Categories[];
   loggedIn = false;
-  results: Object;
+  results: any;
   searchTerm: string;
 
   constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService) { }
 
   checkAuth() {
-      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    this.authService.validateToken(currentUser.token).subscribe(
+    this.authService.validateToken().subscribe(
       res => {
         this.loggedIn = true;
       },
-        error => {
-            this.loggedIn = false;
-        }
+      error => {
+        this.loggedIn = false;
+      }
     );
   }
 
   ngOnInit() {
-    this.loggedIn = false;
     this.getCategories();
+    this.checkAuth();
   }
 
   getCategories() {
@@ -48,7 +48,7 @@ export class NavComponent implements OnInit {
     this.searchTerm = form.value.searchTerm;
       this.navService.searchEntries(this.searchTerm)
           .subscribe(results => {
-              this.results = results.results;
+              this.results = results;
               console.log(this.searchTerm);
           });
   }

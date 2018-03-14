@@ -6,8 +6,8 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class NavServiceProviderService {
 
-  baseUrl: string = 'https://localhost:8000/api/';
-  queryUrl: string = '?search=';
+  baseUrl = 'https://localhost:8000/api/';
+  queryUrl = '?search=';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,9 @@ export class NavServiceProviderService {
   searchEntries(term) {
       return this.http
           .get(this.baseUrl + this.queryUrl + term)
-          .map(res => res.json());
+          .map(res => {
+            return res;
+          });
   }
 
 
