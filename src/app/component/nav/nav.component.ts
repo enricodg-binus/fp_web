@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   loggedIn = false;
   results: any;
   searchTerm: string;
-  user_data: User;
+  user_data: any;
 
   constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService) { }
 
@@ -28,9 +28,10 @@ export class NavComponent implements OnInit {
 
     this.authService.validateToken().subscribe(
       res => {
+        console.log(res);
         this.loggedIn = true;
         this.user_data = res;
-        console.log(this.user_data);
+        // console.log(this.user_data);
       },
       error => {
         this.loggedIn = false;
@@ -39,6 +40,7 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('jajjajaja');
     this.getCategories();
     this.checkAuth();
   }

@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AlertProviderService} from '../services/alert-provider.service';
 import {UserService} from '../services/user.service';
 import {DashboardProviderService} from '../services/dashboard-provider.service';
+import {ProductService} from '../services/product.service';
 
 @NgModule()
 export class ProviderModule {
@@ -19,7 +20,8 @@ export class ProviderModule {
         HttpClientModule,
         AlertProviderService,
         UserService,
-        DashboardProviderService
+        DashboardProviderService,
+        ProductService
       ]
     };
   }

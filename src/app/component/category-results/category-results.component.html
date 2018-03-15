@@ -1,0 +1,11 @@
+<app-nav></app-nav>
+
+<div class="container" *ngIf="product_data">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="band text-center">
+        <app-item *ngFor="let product of product_data" [data]="product"></app-item>
+      </div>
+    </div>
+  </div>
+</div>

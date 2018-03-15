@@ -3,6 +3,7 @@ import {DashboardProviderService} from '../../services/dashboard-provider.servic
 import {User} from '../../model/user';
 import {UserService} from '../../services/user.service';
 import {AlertProviderService} from '../../services/alert-provider.service';
+import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,10 +12,9 @@ import {AlertProviderService} from '../../services/alert-provider.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  user_data: User;
-  model: any = {};
+  model: any;
 
-  constructor(private dashboardService: DashboardProviderService, private userService: UserService,
+  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private userService: UserService,
               private alertService: AlertProviderService) { }
 
   ngOnInit() {
@@ -22,8 +22,17 @@ export class EditProfileComponent implements OnInit {
   }
 
   getUser() {
-    this.dashboardService.getUser()
-      .subscribe(user_data => this.user_data = user_data);
+    // this.dashboardService.getUser()
+    //   .subscribe(user_data => user_data = user_data);
+    this.authService.validateToken().subscribe(
+      res => {
+        console.log(res);
+        this.model = res;
+        // console.log(this.user_data);
+      },
+      error => {
+      }
+    );
   }
 
   updateProfile() {

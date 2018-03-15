@@ -11,7 +11,7 @@ import {AuthServiceProviderService} from '../services/auth-service-provider.serv
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  user_data: User;
+  user_data: any;
 
   constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService) { }
 
@@ -20,8 +20,18 @@ export class DashboardSidebarComponent implements OnInit {
   }
 
   getUser() {
-    this.dashboardService.getUser()
-      .subscribe(user_data => this.user_data = user_data);
+    // this.dashboardService.getUser()
+    //   .subscribe(user_data => this.user_data = user_data);
+
+    this.authService.validateToken().subscribe(
+      res => {
+        console.log(res);
+        this.user_data = res;
+        // console.log(this.user_data);
+      },
+      error => {
+      }
+    );
   }
 
   logout() {

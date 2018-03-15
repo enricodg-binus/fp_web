@@ -6,13 +6,13 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class NavServiceProviderService {
 
-  baseUrl = 'https://localhost:8000/api/';
+  baseUrl = 'http://localhost:8000/api/';
   queryUrl = '?search=';
 
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/viewcat');
+    return this.http.get(this.baseUrl + 'viewcat');
   }
 
   searchEntries(term) {

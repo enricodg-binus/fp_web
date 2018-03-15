@@ -11,6 +11,8 @@ import {EditProfileComponent} from './dashboard-user/edit-profile/edit-profile.c
 import {PaymentComponent} from './dashboard-user/payment/payment.component';
 import {RequestdetailComponent} from './dashboard-user/requestorder/requestdetail/requestdetail.component';
 import {UserGuard} from './guards/auth.guard';
+import {ItemComponent} from './component/product/product.component';
+import {CategoryResultsComponent} from './component/category-results/category-results.component';
 
 const routes: Routes = [
     {
@@ -37,7 +39,7 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardSidebarComponent,
-        // canActivate: [UserGuard],
+        canActivate: [UserGuard],
         children: [
           {
               path: 'request_detail',
@@ -66,6 +68,19 @@ const routes: Routes = [
                 component: PaymentComponent
             }
         ]
+    },
+    {
+      path: 'category',
+      children: [
+        {
+          path: ':category_name',
+          component: CategoryResultsComponent
+        }
+      ]
+    },
+    {
+      path: '**',
+      component: CategoryResultsComponent
     }
 ];
 

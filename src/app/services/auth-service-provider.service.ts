@@ -6,13 +6,8 @@ import {NgForm} from '@angular/forms';
 @Injectable()
 export class AuthServiceProviderService {
 
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'Bearer ${currentUser.token}'
-    })
-  };
+  token = localStorage.token;
+  httpOptions;
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +17,8 @@ export class AuthServiceProviderService {
               // login successful if there's a jwt token in the response
               if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify(user));
+                  localStorage.setItem('token', user.token);
+                  // { status: 'haha', token: 'token' }
               }
 
               return user;
@@ -31,14 +27,27 @@ export class AuthServiceProviderService {
 
   logout() {
       // remove user from local storage to log user out
-      localStorage.removeItem('currentUser');
+      localStorage.removeItem('token');
   }
 
   validateToken() {
-    const current_user = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(current_user.email);
+    if (localStorage.token) {
+      console.log('haha');
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': `Bearer ${localStorage.token}`
+        })
+      };
+      console.log(this.httpOptions);
+    }
 
-    return this.http.post<any>('http://localhost:8000/api/validatetoken', { email: current_user.email }, this.httpOptions)
+    // const headers = {
+    //   'Authorization': `Bearer ${this.currentUser.token}`
+    // }
+
+
+    return this.http.get<any>('http://localhost:8000/api/me', this.httpOptions)
         .map(user => {
             console.log(user);
             return user;

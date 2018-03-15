@@ -10,14 +10,14 @@ export class DashboardProviderService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Authorization': 'Bearer ${currentUser.token}'
+      'Authorization': `Bearer ${localStorage.token}`
     })
   };
 
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<any> {
-    return this.http.get(this.baseUrl + 'api/getuserinfo', this.httpOptions);
+    return this.http.get(this.baseUrl + 'me', this.httpOptions);
   }
 
 }

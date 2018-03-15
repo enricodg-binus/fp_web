@@ -12,14 +12,13 @@
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Email</label>
-                    <input disabled type="text" class="form-control" name="email"  placeholder="Email" value="">
-                    <input type="hidden" class="form-control" name="id"  value="{{ user_data.id }}">
+                    <input disabled type="text" class="form-control" name="email"  placeholder="Email" value="{{ model.email }}">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" disabled placeholder="Username" value="{{ user_data.username }}">
+                    <input type="text" class="form-control" disabled placeholder="Success Transaction" value="{{ model.success_trans }}">
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -34,22 +33,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="{{ user_data.name }}">
+                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="{{ model.name }}">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Handphone</label>
-                    <input type="text" name="hp" class="form-control" placeholder="Hp" value="{{ user_data.phone }}">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>About Me</label>
-                    <textarea rows="5" class="form-control" name="about" placeholder="{{ user_data.succes_trans }}"></textarea>
+                    <input type="text" name="hp" class="form-control" placeholder="Hp" value="{{ model.phone }}">
                   </div>
                 </div>
               </div>

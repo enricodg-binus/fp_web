@@ -22,8 +22,9 @@ import { PaymentComponent } from './dashboard-user/payment/payment.component';
 import { RequestdetailComponent } from './dashboard-user/requestorder/requestdetail/requestdetail.component';
 import {UserGuard} from './guards/auth.guard';
 import {FormsModule} from '@angular/forms';
-import {JwtInterceptor} from './JwtInterceptor';
 import {AlertComponent} from './component/alert/alert.component';
+import { ItemComponent } from './component/product/product.component';
+import { CategoryResultsComponent } from './component/category-results/category-results.component';
 
 
 @NgModule({
@@ -43,7 +44,9 @@ import {AlertComponent} from './component/alert/alert.component';
     EditProfileComponent,
     PaymentComponent,
     RequestdetailComponent,
-    AlertComponent
+    AlertComponent,
+    ItemComponent,
+    CategoryResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,12 +56,7 @@ import {AlertComponent} from './component/alert/alert.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [UserGuard,
-      {
-          provide: HTTP_INTERCEPTORS,
-          useClass: JwtInterceptor,
-          multi: true
-      }],
+  providers: [UserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
