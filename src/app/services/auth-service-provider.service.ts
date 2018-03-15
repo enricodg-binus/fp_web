@@ -19,9 +19,11 @@ export class AuthServiceProviderService {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('token', user.token);
                   // { status: 'haha', token: 'token' }
+                  return user;
               }
-
-              return user;
+          })
+          .catch(err => {
+              return err;
           });
   }
 

@@ -40,7 +40,6 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('jajjajaja');
     this.getCategories();
     this.checkAuth();
   }

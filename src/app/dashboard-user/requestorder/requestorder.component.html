@@ -15,14 +15,17 @@
             <th>Status</th>
             <th>Action</th>
             </thead>
-            <tbody>
-            <tr>
-              <td>asdfs</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
+            <tbody *ngIf="request_order_data">
+            <tr *ngFor="let reqdata of request_order_data">
+              <td>reqdata.id</td>
+              <td>reqdata.order_date</td>
+              <td></td>
+              <td>reqdata.total_price</td>
+              <td>reqdata.order_status</td>
+              <td>
+                <button class="btn btn-success" routerLink="request_detail">Details</button>
+                <button class="btn btn-danger">Cancel</button>
+              </td>
             </tr>
             </tbody>
           </table>

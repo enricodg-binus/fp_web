@@ -43,6 +43,7 @@ export class SignAuthComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                    console.log('haha');
                 },
                 error => {
                     this.alertService.error(error);

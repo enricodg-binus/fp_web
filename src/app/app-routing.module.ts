@@ -41,10 +41,10 @@ const routes: Routes = [
         component: DashboardSidebarComponent,
         canActivate: [UserGuard],
         children: [
-          {
-              path: 'request_detail',
-              component: RequestdetailComponent
-          },
+            {
+                path: 'request_detail',
+                component: RequestdetailComponent
+            },
             {
                 path: 'status_order',
                 component: StatusorderComponent

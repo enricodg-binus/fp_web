@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardProviderService} from '../../services/dashboard-provider.service';
 
 @Component({
   selector: 'app-requestorder',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestorderComponent implements OnInit {
 
-  constructor() { }
+  request_order_data: any;
+
+  constructor(private dashboardService: DashboardProviderService) { }
 
   ngOnInit() {
+    this.displayRequestOrder();
+  }
+
+  displayRequestOrder() {
+    this.dashboardService.getRequestOrder().subscribe(res => this.request_order_data = res);
   }
 
 }
