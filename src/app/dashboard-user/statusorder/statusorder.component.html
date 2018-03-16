@@ -7,7 +7,7 @@
         </div>
         <div class="content table-responsive table-full-width">
           <table class="table table-hover table-striped">
-            <thead>
+            <thead style="font-size: 12px; ">
             <th>NO</th>
             <th>ID Order</th>
             <th>Total</th>
@@ -15,17 +15,20 @@
             <th>Status</th>
             <th>Dikirim/Pickup</th>
             <th>Resi/Kode Pickup</th>
-            <th>Komplain</th>
             </thead>
-            <tbody>
-            <tr>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td><td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdfsaf</td>
-              <td>asdf</td>
+            <tbody *ngIf="status_order">
+            <tr *ngFor="let status of status_order">
+              <td>1</td>
+              <td>{{ status.id }}</td>
+              <td>{{ status.total_price }}</td>
+              <td>{{ status.order_date }}</td>
+              <td>{{ status.order_status }}</td>
+              <td>{{ status.shipment_status }}</td>
+              <td>{{ status.shipment_number }}</td>
+              <td>
+                <button class="btn btn-success" routerLink="request_detail">Details</button>
+                <button class="btn btn-danger">Cancel</button>
+              </td>
             </tr>
             </tbody>
           </table>

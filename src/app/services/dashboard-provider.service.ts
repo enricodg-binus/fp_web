@@ -6,7 +6,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class DashboardProviderService {
 
   baseUrl = 'https://localhost:8000/api/';
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -22,6 +21,14 @@ export class DashboardProviderService {
 
   getRequestOrder(): Observable<any> {
     return this.http.get(this.baseUrl + 'viewio', this.httpOptions);
+  }
+
+  getStatusOrder(): Observable<any> {
+    return this.http.get(this.baseUrl + 'viewso', this.httpOptions);
+  }
+
+  getPaymentInfo(): Observable<any> {
+    return this.http.get(this.baseUrl + 'viewpi', this.httpOptions);
   }
 
 }

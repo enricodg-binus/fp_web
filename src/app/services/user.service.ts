@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
+
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      })
+    };
 
     constructor(private http: HttpClient) { }
 
@@ -15,12 +23,18 @@ export class UserService {
         return this.http.get('/api/users/' + id);
     }
 
-    create(user: User) {
-        return this.http.post('http://localhost:8000/api/register', user);
+    create(user: User): Observable<any> {
+        return this.http.post('http://localhost:8000/api/register', user)
+          .map( res => {
+            return res;
+          })
+          .catch( err => {
+            return Observable.throw(err);
+          });
     }
 
     update(user: User) {
-        return this.http.put('http://localhost:8000/api/update_user/' + user.id, user);
+        return this.http.put('http://localhost:8000/api/update_user/', user, this.httpOptions);
     }
 
     delete(id: number) {

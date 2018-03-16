@@ -11,7 +11,6 @@ import {UserService} from '../../services/user.service';
 })
 export class SignAuthComponent implements OnInit {
 
-  visible = true;
   hideLogin = false;
   model: any = {};
   returnUrl: string;

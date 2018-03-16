@@ -1,3 +1,5 @@
 <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
-  {{message.text.error.error}}
+  {{message.text.error.email}}<br *ngIf="message.text.error.email">
+  {{message.text.error.password}}<br *ngIf="message.text.error.password">
+  {{message.text.error.phone}}<br *ngIf="message.text.error.phone">
 </div>

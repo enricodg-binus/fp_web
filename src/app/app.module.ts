@@ -25,6 +25,9 @@ import {FormsModule} from '@angular/forms';
 import {AlertComponent} from './component/alert/alert.component';
 import { ItemComponent } from './component/product/product.component';
 import { CategoryResultsComponent } from './component/category-results/category-results.component';
+import { AddressComponent } from './dashboard-user/address/address.component';
+import { ProductdetailComponent } from './component/product/productdetail/productdetail.component';
+import { AddAddressComponent } from './dashboard-user/add-address/add-address.component';
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { CategoryResultsComponent } from './component/category-results/category-
     RequestdetailComponent,
     AlertComponent,
     ItemComponent,
-    CategoryResultsComponent
+    CategoryResultsComponent,
+    AddressComponent,
+    ProductdetailComponent,
+    AddAddressComponent
   ],
   imports: [
     BrowserModule,

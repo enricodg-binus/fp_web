@@ -13,6 +13,9 @@ import {RequestdetailComponent} from './dashboard-user/requestorder/requestdetai
 import {UserGuard} from './guards/auth.guard';
 import {ItemComponent} from './component/product/product.component';
 import {CategoryResultsComponent} from './component/category-results/category-results.component';
+import {AddressComponent} from './dashboard-user/address/address.component';
+import {ProductdetailComponent} from './component/product/productdetail/productdetail.component';
+import {AddAddressComponent} from './dashboard-user/add-address/add-address.component';
 
 const routes: Routes = [
     {
@@ -46,6 +49,14 @@ const routes: Routes = [
                 component: RequestdetailComponent
             },
             {
+                path: 'list_alamat',
+                component: AddressComponent
+            },
+            {
+                path: 'add_address',
+                component: AddAddressComponent
+            },
+            {
                 path: 'status_order',
                 component: StatusorderComponent
             },
@@ -54,7 +65,7 @@ const routes: Routes = [
                 component: RequestorderComponent,
                 children: [
                   {
-                      path: 'request_detail',
+                      path: ':request_detail',
                       component: RequestdetailComponent
                   }
                 ]
@@ -75,6 +86,15 @@ const routes: Routes = [
         {
           path: ':category_name',
           component: CategoryResultsComponent
+        }
+      ]
+    },
+    {
+      path: 'browse-product',
+      children: [
+        {
+          path: ':product_name',
+          component: ProductdetailComponent
         }
       ]
     },

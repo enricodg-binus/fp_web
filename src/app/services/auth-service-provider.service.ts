@@ -30,6 +30,7 @@ export class AuthServiceProviderService {
   logout() {
       // remove user from local storage to log user out
       localStorage.removeItem('token');
+      return this.http.get('http://localhost:8000/api/logout', this.httpOptions);
   }
 
   validateToken() {

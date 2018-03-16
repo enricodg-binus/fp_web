@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardProviderService} from '../../services/dashboard-provider.service';
 
 @Component({
   selector: 'app-statusorder',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatusorderComponent implements OnInit {
 
-  constructor() { }
+  status_order: any
+
+  constructor(private dashboardService: DashboardProviderService) { }
 
   ngOnInit() {
+    this.displayStatusOrder();
+  }
+
+  displayStatusOrder(){
+    this.dashboardService.getStatusOrder().subscribe(res => this.status_order = res)
   }
 
 }

@@ -35,7 +35,9 @@ export class DashboardSidebarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout().subscribe(res => {
+      return res;
+    });
   }
 
 }
