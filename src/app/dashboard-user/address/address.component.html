@@ -13,13 +13,17 @@
               <th>Nama Penerima</th>
               <th>Hp Penerima</th>
               <th>Alamat Lengkap</th>
+              <th>Action</th>
               </thead>
-              <tbody>
+              <tbody *ngFor="let data of address_data">
               <tr>
                 <td>1.</td>
-                <td>Enrico</td>
-                <td>085353178111</td>
-                <td>Jl. Terusan Hang Lekir V No 24</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.phone }}</td>
+                <td>{{ data.address }}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="deleteAddress(data.id)">Delete</button>
+                </td>
               </tr>
               </tbody>
             </table>

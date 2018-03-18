@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardProviderService} from '../../services/dashboard-provider.service';
+import {Observable} from 'rxjs/Observable';
+import {AlertProviderService} from '../../services/alert-provider.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-address',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressComponent implements OnInit {
 
-  constructor() { }
+    address_data: any;
 
-  ngOnInit() {
-  }
+    constructor(private dashboardService: DashboardProviderService, private alertService: AlertProviderService, private router: Router) {
+    }
+
+    ngOnInit() {
+        this.getUserAddress();
+    }
+
+    getUserAddress() {
+        this.dashboardService.getUserAddress()
+            .subscribe(res => {
+              this.address_data = res;
+            });
+    }
+
+    deleteAddress(id: any) {
+        this.dashboardService.deleteAddress(id)
+            .subscribe( res => {
+                window.alert(res.msg);
+                window.location.reload(true);
+            }, err => {
+                this.alertService.error(err, false);
+            });
+    }
 
 }

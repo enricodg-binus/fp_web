@@ -3,6 +3,7 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertProviderService} from '../../services/alert-provider.service';
 import {UserService} from '../../services/user.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-sign-auth',
@@ -42,10 +43,10 @@ export class SignAuthComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                    console.log('haha');
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error, false);
+                    console.log(error);
                 });
     }
 
@@ -57,7 +58,7 @@ export class SignAuthComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error, false);
                 });
     }
 }

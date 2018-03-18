@@ -10,6 +10,7 @@ import {ProductService} from '../../services/product.service';
 export class ItemComponent implements OnInit {
 
   @Input() data: any;
+  @Input() data_detail: any;
 
   constructor(private productService: ProductService) { }
 

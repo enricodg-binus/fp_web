@@ -14,7 +14,8 @@ export class EditProfileComponent implements OnInit {
 
   model: any;
 
-  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private userService: UserService,
+  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService,
+              private userService: UserService,
               private alertService: AlertProviderService) { }
 
   ngOnInit() {
@@ -26,11 +27,10 @@ export class EditProfileComponent implements OnInit {
     //   .subscribe(user_data => user_data = user_data);
     this.authService.validateToken().subscribe(
       res => {
-        console.log(res);
         this.model = res;
-        // console.log(this.user_data);
       },
       error => {
+          return error;
       }
     );
   }
@@ -38,10 +38,11 @@ export class EditProfileComponent implements OnInit {
   updateProfile() {
     this.userService.update(this.model)
       .subscribe(data => {
-          this.alertService.success('Profile updated!', true);
+          window.alert(data.msg);
+          window.location.reload(true);
         },
         error => {
-          this.alertService.error(error);
+          this.alertService.error(error, false);
         });
   }
 

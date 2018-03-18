@@ -17,10 +17,14 @@ export class ProductService {
 
   getAllProducts(link: string): Observable<any> {
     // http://localhost:8000/api/viewproduct?category=baju
-    return this.http.get<any>('http://localhost:8000/api/viewp/' +link);
+    return this.http.get<any>('http://localhost:8000/api/viewp/' + link);
   // {params: { category: link } }
     // http://localhost:8000/api/viewproduct/baju
     // return this.http.get<any>('http://localhost:8000/api/viewproduct/' + link);
+  }
+
+  getProductDetail(link: string): Observable<any> {
+    return this.http.get('http://localhost:8000/api/viewpd/' + link);
   }
 
   addToCart() {
@@ -28,11 +32,11 @@ export class ProductService {
   }
 
   addToCartDetail() {
-    //return this.http.post('http://localhost:8000/api/insertcartitem', );
+    // return this.http.post('http://localhost:8000/api/insertcartitem', );
   }
 
   getCart() {
-    return this.http.get('http://localhost:8000/api/viewcart', this.httpOptions);
+    return this.http.get('http://localhost:8000/api/viewc', this.httpOptions);
   }
 
   checkout() {
@@ -40,7 +44,7 @@ export class ProductService {
   }
 
   deleteCart() {
-    return this.http.delete('http://localhost:8000/api/deletecart', this.httpOptions);
+    return this.http.delete('http://localhost:8000/api/deletec', this.httpOptions);
   }
 
 }

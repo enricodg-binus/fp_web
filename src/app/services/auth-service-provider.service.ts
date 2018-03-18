@@ -23,7 +23,7 @@ export class AuthServiceProviderService {
               }
           })
           .catch(err => {
-              return err;
+              return Observable.throw(err);
           });
   }
 

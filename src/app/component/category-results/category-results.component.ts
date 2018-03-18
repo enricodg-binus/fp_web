@@ -11,6 +11,7 @@ import {Product} from '../../model/product';
 export class CategoryResultsComponent implements OnInit {
 
   product_data: Product[] = [];
+  product_detail: any;
 
   link: any;
 
@@ -27,6 +28,10 @@ export class CategoryResultsComponent implements OnInit {
 
   getAllProducts(link: string) {
     this.productService.getAllProducts(link).subscribe(product_data => this.product_data = product_data);
+  }
+
+  getProductDetail(link: string) {
+    this.productService.getProductDetail(link).subscribe(product_detail => this.product_detail = product_detail);
   }
 
 }

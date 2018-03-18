@@ -27,7 +27,8 @@ import { ItemComponent } from './component/product/product.component';
 import { CategoryResultsComponent } from './component/category-results/category-results.component';
 import { AddressComponent } from './dashboard-user/address/address.component';
 import { ProductdetailComponent } from './component/product/productdetail/productdetail.component';
-import { AddAddressComponent } from './dashboard-user/add-address/add-address.component';
+import { AddAddressComponent } from './dashboard-user/address/add-address/add-address.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { AddAddressComponent } from './dashboard-user/add-address/add-address.co
     CategoryResultsComponent,
     AddressComponent,
     ProductdetailComponent,
-    AddAddressComponent
+    AddAddressComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

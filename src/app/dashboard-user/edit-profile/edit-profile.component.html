@@ -7,25 +7,18 @@
             <h4 class="title">Edit Profil</h4>
           </div>
           <div class="content">
-            <app-alert></app-alert>
             <form (submit)="updateProfile()">
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Email</label>
-                    <input disabled type="text" class="form-control" name="email"  placeholder="Email" value="{{ model.email }}">
+                    <input disabled type="text" class="form-control" name="email"  placeholder="Email" value="{{ model.email }}" [(ngModel)]="model.email" #email="ngModel">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Credit</label>
-                    <input type="text" class="form-control" disabled placeholder="Credit" value="{{ model.success_trans }}">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label >Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" value="">
+                    <input type="text" class="form-control" disabled placeholder="Credit" value="{{ model.credit }}">
                   </div>
                 </div>
               </div>
@@ -34,13 +27,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="{{ model.name }}">
+                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" value="{{ model.name }}" [(ngModel)]="model.name" #name="ngModel">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Handphone</label>
-                    <input type="text" name="hp" class="form-control" placeholder="Hp" value="{{ model.phone }}">
+                    <input type="text" name="phone" class="form-control" placeholder="Hp" value="{{ model.phone }}" [(ngModel)]="model.phone" #phone="ngModel">
                   </div>
                 </div>
               </div>

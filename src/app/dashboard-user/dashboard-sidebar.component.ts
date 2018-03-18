@@ -3,6 +3,7 @@ import {User} from '../model/user';
 import {DashboardProviderService} from '../services/dashboard-provider.service';
 import {UserService} from '../services/user.service';
 import {AuthServiceProviderService} from '../services/auth-service-provider.service';
+import {AlertProviderService} from '../services/alert-provider.service';
 
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -13,7 +14,7 @@ export class DashboardSidebarComponent implements OnInit {
 
   user_data: any;
 
-  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService) { }
+  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private alertService: AlertProviderService) { }
 
   ngOnInit() {
     this.getUser();

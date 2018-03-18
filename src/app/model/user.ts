@@ -4,6 +4,6 @@ export class User {
     email;
     password;
     phone;
-    role;
-    succes_trans;
+    position;
+    credit;
 }

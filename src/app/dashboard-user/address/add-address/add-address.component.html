@@ -7,12 +7,18 @@
             <h4 class="title">Add Alamat</h4>
           </div>
           <div class="content">
-            <form action="" method="POST">
+            <form action="" method="POST" (submit)="addAddress()">
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group">
                     <label>Nama Penerima</label>
-                    <input type="text" class="form-control" name="nama_penerima"  placeholder="Nama Penerima">
+                    <input type="text" class="form-control" name="nama_penerima"  placeholder="Nama Penerima" [(ngModel)]="model.name" #email="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <label>No HP</label>
+                    <input type="text" class="form-control" name="no_hp"  placeholder="No HP" [(ngModel)]="model.phone" #email="ngModel">
                   </div>
                 </div>
               </div>
@@ -21,7 +27,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Alamat Lengkap</label>
-                    <textarea rows="5" class="form-control" name="alamat_lengkap" placeholder="Alamat Lengkap"></textarea>
+                    <textarea rows="5" class="form-control" name="alamat_lengkap" placeholder="Alamat Lengkap" [(ngModel)]="model.address" #email="ngModel"></textarea>
                   </div>
                 </div>
               </div>

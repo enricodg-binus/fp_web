@@ -15,7 +15,8 @@ import {ItemComponent} from './component/product/product.component';
 import {CategoryResultsComponent} from './component/category-results/category-results.component';
 import {AddressComponent} from './dashboard-user/address/address.component';
 import {ProductdetailComponent} from './component/product/productdetail/productdetail.component';
-import {AddAddressComponent} from './dashboard-user/add-address/add-address.component';
+import {AddAddressComponent} from './dashboard-user/address/add-address/add-address.component';
+import {PageNotFoundComponent} from './component/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     {
@@ -90,17 +91,8 @@ const routes: Routes = [
       ]
     },
     {
-      path: 'browse-product',
-      children: [
-        {
-          path: ':product_name',
-          component: ProductdetailComponent
-        }
-      ]
-    },
-    {
       path: '**',
-      component: CategoryResultsComponent
+      component: PageNotFoundComponent
     }
 ];
 

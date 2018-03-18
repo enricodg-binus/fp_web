@@ -23,7 +23,7 @@ export class UserService {
         return this.http.get('/api/users/' + id);
     }
 
-    create(user: User): Observable<any> {
+    create(user: any): Observable<any> {
         return this.http.post('http://localhost:8000/api/register', user)
           .map( res => {
             return res;
@@ -34,7 +34,7 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put('http://localhost:8000/api/update_user/', user, this.httpOptions);
+        return this.http.put('http://localhost:8000/api/updateua/', user, this.httpOptions);
     }
 
     delete(id: number) {
