@@ -35,14 +35,12 @@ export class AuthServiceProviderService {
 
   validateToken() {
     if (localStorage.token) {
-      console.log('haha');
       this.httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
           'Authorization': `Bearer ${localStorage.token}`
         })
       };
-      console.log(this.httpOptions);
     }
 
     // const headers = {
@@ -52,7 +50,6 @@ export class AuthServiceProviderService {
 
     return this.http.get<any>('http://localhost:8000/api/me', this.httpOptions)
         .map(user => {
-            console.log(user);
             return user;
         });
   }

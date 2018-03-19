@@ -47,4 +47,8 @@ export class ProductService {
     return this.http.delete('http://localhost:8000/api/deletec', this.httpOptions);
   }
 
+  removeItem(id: any) {
+    return this.http.delete('http://localhost:8000/api/delete_item_cart/' + id, this.httpOptions);
+  }
+
 }

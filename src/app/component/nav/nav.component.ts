@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {NgForm} from '@angular/forms';
 import {User} from '../../model/user';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'app-nav',
@@ -20,15 +21,15 @@ export class NavComponent implements OnInit {
   results: any;
   searchTerm: string;
   user_data: any;
+  cart_data: any;
 
-  constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService) { }
+  constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService, private productService: ProductService) { }
 
   checkAuth() {
     // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     this.authService.validateToken().subscribe(
       res => {
-        console.log(res);
         this.loggedIn = true;
         this.user_data = res;
         // console.log(this.user_data);
@@ -39,9 +40,16 @@ export class NavComponent implements OnInit {
     );
   }
 
+    getCart() {
+        this.productService.getCart().subscribe(
+            res => this.cart_data = res
+        );
+    }
+
   ngOnInit() {
     this.getCategories();
     this.checkAuth();
+    this.getCart();
   }
 
   getCategories() {

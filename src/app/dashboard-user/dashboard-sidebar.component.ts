@@ -26,7 +26,6 @@ export class DashboardSidebarComponent implements OnInit {
 
     this.authService.validateToken().subscribe(
       res => {
-        console.log(res);
         this.user_data = res;
         // console.log(this.user_data);
       },

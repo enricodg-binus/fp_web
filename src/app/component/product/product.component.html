@@ -21,7 +21,7 @@
               <p *ngFor="let productdetail of product_data.productdetails">{{ productdetail.key }}: {{ productdetail.value }}<br></p>
             </article>
           </div>
-          <button type="submit" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
+          <button type="submit" *ngIf="loggedIn" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
         </a>
       </div>
     </div>

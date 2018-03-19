@@ -24,7 +24,6 @@ export class CategoryResultsComponent implements OnInit {
 
     this.getAllProducts(this.link);
     this.getProductDetail(this.product_data.id);
-    console.log(this.link);
   }
 
   getAllProducts(link: string) {
