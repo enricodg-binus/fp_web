@@ -1,3 +1,25 @@
+.band {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+
+  font-family: system-ui;
+  -webkit-font-smoothing: antialiased;
+
+  @media (min-width: 30em) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 60em) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .card {
   background: white;
   text-decoration: none;
@@ -6,6 +28,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  padding-bottom: 0;
 
   // sets up hover state
   position: relative;
@@ -73,8 +96,8 @@
 }
 
 .flip-container, .front, .back {
-  width: 320px;
-  height: 480px;
+  width: 275px;
+  height: 330px;
 }
 
 /* flip speed goes here */

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AlertProviderService} from '../../services/alert-provider.service';
 import {UserService} from '../../services/user.service';
 import {User} from '../../model/user';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-sign-auth',
@@ -17,7 +18,7 @@ export class SignAuthComponent implements OnInit {
   returnUrl: string;
 
   constructor(private userService: UserService, private authService: AuthServiceProviderService, private router: Router,
-              private alertService: AlertProviderService, private route: ActivatedRoute) { }
+              private alertService: AlertProviderService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
     if (this.router.url === '/register') {
@@ -42,7 +43,8 @@ export class SignAuthComponent implements OnInit {
         this.authService.login(this.model.email, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);
+                    this.location.back();
                 },
                 error => {
                     this.alertService.error(error, false);

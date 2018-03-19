@@ -9,7 +9,7 @@ import {ProductService} from '../../services/product.service';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() product_data: any;
   @Input() data_detail: any;
 
   constructor(private productService: ProductService) { }
@@ -17,16 +17,10 @@ export class ItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToCart() {
-    this.productService.addToCart().subscribe(
+  addToCart(id: any, qty: any, price: any) {
+    this.productService.addToCart(id, qty, price).subscribe(
       res => {
         console.log('trst'); });
-  }
-
-  addToCartDetail() {
-    // this.productService.addToCartDetail().subscribe(res => {
-    //   'test';
-    // });
   }
 
 }

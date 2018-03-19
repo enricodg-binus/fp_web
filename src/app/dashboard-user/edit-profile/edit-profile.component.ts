@@ -38,7 +38,7 @@ export class EditProfileComponent implements OnInit {
   updateProfile() {
     this.userService.update(this.model)
       .subscribe(data => {
-          window.alert(data.msg);
+          window.alert(data);
           window.location.reload(true);
         },
         error => {

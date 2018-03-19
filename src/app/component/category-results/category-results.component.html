@@ -4,11 +4,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="band text-center">
-        <app-item *ngFor="let product of product_data; let productdetail of product_detail" [data]="product" [data_detail]="productdetail"></app-item>
+        <app-item *ngFor="let product of product_data;" [product_data]="product"></app-item>
       </div>
     </div>
   </div>
 </div>
-
-<app-item></app-item>
-

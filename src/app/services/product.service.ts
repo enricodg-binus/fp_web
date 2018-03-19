@@ -24,11 +24,11 @@ export class ProductService {
   }
 
   getProductDetail(link: string): Observable<any> {
-    return this.http.get('http://localhost:8000/api/viewpd/' + link);
+    return this.http.get('http://localhost:8000/api/viewpd/');
   }
 
-  addToCart() {
-    return this.http.post('http://localhost:8000/api/insertcart', { }, this.httpOptions);
+  addToCart(id: any, qty: any, price: any) {
+    return this.http.post('http://localhost:8000/api/insertc', { product_id: id, qty: qty, price: price }, this.httpOptions);
   }
 
   addToCartDetail() {

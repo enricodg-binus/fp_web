@@ -10,7 +10,7 @@ import {Product} from '../../model/product';
 })
 export class CategoryResultsComponent implements OnInit {
 
-  product_data: Product[] = [];
+  product_data: any;
   product_detail: any;
 
   link: any;
@@ -23,6 +23,7 @@ export class CategoryResultsComponent implements OnInit {
     });
 
     this.getAllProducts(this.link);
+    this.getProductDetail(this.product_data.id);
     console.log(this.link);
   }
 

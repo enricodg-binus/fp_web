@@ -30,7 +30,7 @@ export class AddressComponent implements OnInit {
     deleteAddress(id: any) {
         this.dashboardService.deleteAddress(id)
             .subscribe( res => {
-                window.alert(res.msg);
+                window.alert(res);
                 window.location.reload(true);
             }, err => {
                 this.alertService.error(err, false);

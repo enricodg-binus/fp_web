@@ -1,13 +1,13 @@
 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-  <div class="flipper">
+  <div class="flipper band">
     <div class="front">
       <div class="item-4">
         <a class="card">
-          <div class="thumb" style="background-image: url({{ data.product_img }});"></div>
+          <div class="thumb" [style.background-image]="'url(' + product_data.product_img + ')'"></div>
           <article>
-            <h4>{{ data.product_name }}</h4>
-            <p>{{ data.product_description }} <br>Quantity: {{ data.product_qty }}<br>Item sold: {{ data.sold_qty }}</p>
-            <span>{{ data.product_price }}</span>
+            <h4>{{ product_data.product_name }}</h4>
+            <p>{{ product_data.product_description }} <br>Quantity: {{ product_data.product_qty }}<br>Item sold: {{ product_data.product_sold }}</p>
+            <span>{{ product_data.product_price }}</span>
           </article>
         </a>
       </div>
@@ -16,12 +16,12 @@
       <div class="item-4">
         <a class="card">
           <div data-toggle="modal" data-target="#prod_detail" >
-            <div class="thumb" style="background-image: url({{ data.product_img }});"></div>
+            <div class="thumb" [style.background-image]="'url(' + product_data.product_img + ')'"></div>
             <article>
-              <p>{{ data_detail.key }}: {{ data_detail.value }}<br></p>
+              <p *ngFor="let productdetail of product_data.productdetails">{{ productdetail.key }}: {{ productdetail.value }}<br></p>
             </article>
           </div>
-          <button type="submit" (click)="addToCart(); addToCartDetail();" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
+          <button type="submit" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
         </a>
       </div>
     </div>
@@ -33,9 +33,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">x</button>
-        <h4 class="modal-title">{{ data.product_name }}</h4>
+        <h4 class="modal-title">{{ product_data.product_name }}</h4>
       </div>
-      <div class="modal-body" style="background-image: url({{ data.product_img }});">
+      <div class="modal-body" [style.background-image]="'url(' + product_data.product_img + ')'">
 
       </div>
     </div>
