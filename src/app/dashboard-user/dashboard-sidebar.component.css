@@ -2466,7 +2466,7 @@ body > .navbar-collapse[data-color="purple"]:after {
     .navbar-toggle .icon-bar {
         display: block;
         position: relative;
-        background: #fff;
+        background: black;
         width: 24px;
         height: 2px;
         border-radius: 1px;

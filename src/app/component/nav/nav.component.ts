@@ -84,7 +84,6 @@ export class NavComponent implements OnInit {
       this.productService.getVeritransURL().subscribe(
           res => {
             this.link = res;
-            console.log(res.url);
             window.open(res.url);
           }
       );
