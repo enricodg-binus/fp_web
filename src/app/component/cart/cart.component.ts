@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {CartService} from '../../services/cart.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-cart',
@@ -10,10 +12,18 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 export class CartComponent implements OnInit {
 
   @Input() cart_data: any;
+    products: any[];
+    private subscription: Subscription;
 
-  constructor(private productService: ProductService, private authService: AuthServiceProviderService) { }
+  constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService) { }
 
   ngOnInit() {
+      this.subscription = this.cartService.CartState
+          .subscribe((state: any) => {
+              this.products = state.products;
+              console.log('haha');
+              console.log(this.products);
+          });
   }
 
   validateToken() {
@@ -27,14 +37,7 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(id: any) {
-    this.productService.removeItem(id).subscribe(
-        res => this.cart_data = res
-    );
-  }
-
-  checkout() {
-    this.productService.deleteCart().subscribe(res => 'success');
-    this.productService.checkout();
+    this.cartService.removeProduct(id);
   }
 
 }

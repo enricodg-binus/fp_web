@@ -51,4 +51,8 @@ export class ProductService {
     return this.http.delete('http://localhost:8000/api/delete_item_cart/' + id, this.httpOptions);
   }
 
+  getVeritransURL() {
+    return this.http.get('http://localhost:8000/api/veritrans_url', this.httpOptions);
+  }
+
 }

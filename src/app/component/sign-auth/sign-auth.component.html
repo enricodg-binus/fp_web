@@ -28,8 +28,9 @@
           <div class="row">
 
             <div class="col-lg-12">
-              <app-alert></app-alert>
               <form id="login-form" action="" method="post" role="form" [hidden]="hideLogin" (submit)="f1.form.valid && login()" #f1="ngForm" novalidate>
+                <app-alert></app-alert>
+
                 <div class="form-group" [ngClass]="{ 'has-error': f1.submitted && !email.valid }">
                   <input type="text" name="email_login" id="email" required="required" tabindex="1" class="form-control" placeholder="Email" [(ngModel)]="model.email" #email="ngModel">
                   <div *ngIf="f1.submitted && !email.valid" class="help-block">Email is required</div>

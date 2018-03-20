@@ -8,6 +8,8 @@ import {Subject} from 'rxjs/Subject';
 import {NgForm} from '@angular/forms';
 import {User} from '../../model/user';
 import {ProductService} from '../../services/product.service';
+import {Subscription} from 'rxjs/Subscription';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,8 +24,12 @@ export class NavComponent implements OnInit {
   searchTerm: string;
   user_data: any;
   cart_data: any;
+  link: any;
+    products: any[];
+    private subscription: Subscription;
 
-  constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService, private productService: ProductService) { }
+  constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService,
+              private productService: ProductService, private cartService: CartService, private router: Router) { }
 
   checkAuth() {
     // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -32,7 +38,7 @@ export class NavComponent implements OnInit {
       res => {
         this.loggedIn = true;
         this.user_data = res;
-        // console.log(this.user_data);
+        console.log(this.user_data);
       },
       error => {
         this.loggedIn = false;
@@ -40,11 +46,17 @@ export class NavComponent implements OnInit {
     );
   }
 
-    getCart() {
-        this.productService.getCart().subscribe(
-            res => this.cart_data = res
-        );
-    }
+  getCart() {
+      // this.cartService.getAllProducts().subscribe(
+      //     res => this.cart_data = res
+      // );
+      this.subscription = this.cartService.CartState
+          .subscribe((state: any) => {
+              this.cart_data = state.cart_data;
+              console.log('haha');
+              console.log(state);
+          });
+  }
 
   ngOnInit() {
     this.getCategories();
@@ -64,6 +76,19 @@ export class NavComponent implements OnInit {
               this.results = results;
               console.log(this.searchTerm);
           });
+  }
+
+  checkout() {
+      this.productService.deleteCart().subscribe(res => 'success');
+      this.productService.checkout();
+      this.productService.getVeritransURL().subscribe(
+          res => {
+            this.link = res;
+            console.log(res.url);
+            window.open(res.url);
+          }
+      );
+      console.log(this.link);
   }
 
 }

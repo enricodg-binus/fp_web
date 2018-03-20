@@ -1,10 +1,8 @@
-<tbody>
-  <tr>
-    <td>&nbsp; {{ cart_data.product.product_name }}</td>
-    <td>&nbsp; <input [value]="cart_data.qty" [min]="1" [max]="cart_data.product.product_qty" type="number"></td>
-    <td>&nbsp; {{ cart_data.price }}</td>
-    <td>
-      <button class="btn btn-danger" (click)="removeItem(cart_data.id)">Remove</button>
-    </td>
-  </tr>
-</tbody>
+<tr>
+  <td>&nbsp; {{ cart_data.product.product_name }}</td>
+  <td>&nbsp; <input [value]="cart_data.qty" [min]="1" [max]="cart_data.product.product_qty" type="number"></td>
+  <td>&nbsp; {{ cart_data.price }}</td>
+  <td>
+    <button class="btn btn-danger" (click)="removeItem(cart_data.id)">Remove</button>
+  </td>
+</tr>

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
 import {ProductService} from '../../services/product.service';
 import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-item',
@@ -14,16 +15,17 @@ export class ItemComponent implements OnInit {
   @Input() data_detail: any;
   loggedIn: any;
 
-  constructor(private productService: ProductService, private authService: AuthServiceProviderService) { }
+  constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService ) { }
 
   ngOnInit() {
     this.validateToken();
   }
 
   addToCart(id: any, qty: any, price: any) {
-    this.productService.addToCart(id, qty, price).subscribe(
-      res => {
-         });
+    this.cartService.addProduct(this.product_data);
+    // this.productService.addToCart(id, qty, price).subscribe(
+    //   res => {
+    //      });
   }
 
   validateToken() {

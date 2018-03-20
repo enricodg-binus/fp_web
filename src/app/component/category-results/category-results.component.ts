@@ -23,11 +23,13 @@ export class CategoryResultsComponent implements OnInit {
     });
 
     this.getAllProducts(this.link);
-    this.getProductDetail(this.product_data.id);
   }
 
   getAllProducts(link: string) {
-    this.productService.getAllProducts(link).subscribe(product_data => this.product_data = product_data);
+    this.productService.getAllProducts(link).subscribe(product_data => {
+      this.product_data = product_data;
+      this.getProductDetail(this.product_data.id);
+    });
   }
 
   getProductDetail(link: string) {
