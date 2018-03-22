@@ -52,7 +52,7 @@ export class ProductService {
   }
 
   getVeritransURL() {
-    return this.http.get('http://localhost:8000/api/veritrans_url', this.httpOptions);
+    return this.http.get<any>('http://localhost:8000/api/veritrans_url', this.httpOptions);
   }
 
 }

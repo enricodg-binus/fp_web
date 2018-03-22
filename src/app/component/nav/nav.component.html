@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default">
 <div class="container-fluid" id="navbar" style="padding-bottom: 0; margin-bottom: 0">
   <div class="row top-row">
-
+    <app-alert></app-alert>
     <div class=" col-md-12 col-ongkir col-sm-12" style="margin-top:1%;">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -94,21 +94,21 @@
             <div class="modal-body" id="modalCart">
                 <form>
                     <app-alert></app-alert>
-                    <table class="table table-hover" id="cart">
-                        <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Qty</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody class="showCart"></tbody>
-                        <tbody>
-                            <app-cart *ngFor="let data of cart_data" [cart_data]="data"></app-cart>
-                        </tbody>
-                    </table>
-                        <button class="btn btn-success" (click)="checkout()">Checkout</button>
+                    <!--<table class="table table-hover" id="cart">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>Product</th>-->
+                            <!--<th>Qty</th>-->
+                            <!--<th>Price</th>-->
+                            <!--<th>Action</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody class="showCart"></tbody>-->
+                        <!--<tbody>-->
+                            <!--<app-cart *ngFor="let data of cart_data" [cart_data]="data"></app-cart>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                    <app-cart [cart_data]="cart_data"></app-cart>
                 </form>
             </div>
         </div>

@@ -8,6 +8,7 @@ import {UserService} from '../services/user.service';
 import {DashboardProviderService} from '../services/dashboard-provider.service';
 import {ProductService} from '../services/product.service';
 import {CartService} from '../services/cart.service';
+import {OrderService} from '../services/order.service';
 
 @NgModule()
 export class ProviderModule {
@@ -23,7 +24,8 @@ export class ProviderModule {
         UserService,
         DashboardProviderService,
         ProductService,
-        CartService
+        CartService,
+        OrderService
       ]
     };
   }

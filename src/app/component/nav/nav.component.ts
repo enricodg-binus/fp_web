@@ -24,7 +24,6 @@ export class NavComponent implements OnInit {
   searchTerm: string;
   user_data: any;
   cart_data: any;
-  link: any;
     products: any[];
     private subscription: Subscription;
 
@@ -53,7 +52,6 @@ export class NavComponent implements OnInit {
       this.subscription = this.cartService.CartState
           .subscribe((state: any) => {
               this.cart_data = state.cart_data;
-              console.log('haha');
               console.log(state);
           });
   }
@@ -76,18 +74,6 @@ export class NavComponent implements OnInit {
               this.results = results;
               console.log(this.searchTerm);
           });
-  }
-
-  checkout() {
-      this.productService.deleteCart().subscribe(res => 'success');
-      this.productService.checkout();
-      this.productService.getVeritransURL().subscribe(
-          res => {
-            this.link = res;
-            window.open(res.url);
-          }
-      );
-      console.log(this.link);
   }
 
 }

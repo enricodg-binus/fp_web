@@ -54,7 +54,7 @@ export class SignAuthComponent implements OnInit {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    window.alert('registration successful');
                     this.router.navigate(['/login']);
                 },
                 error => {

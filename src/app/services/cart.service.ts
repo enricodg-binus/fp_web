@@ -23,7 +23,8 @@ export class CartService {
 
     addProduct(_product: any) {
         console.log(_product);
-        this.http.post('http://localhost:8000/api/insertc', { product_id: _product.id, qty: 1, price: _product.product_price }, this.httpOptions)
+        this.http.post('http://localhost:8000/api/insertc',
+            { product_id: _product.id, qty: 1, price: _product.product_price }, this.httpOptions)
             .subscribe(res => {
                 this.init();
             });

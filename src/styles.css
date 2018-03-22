@@ -134,3 +134,12 @@ a {
   width: 50%;
   border: 1px solid #86c441;
 }
+
+.notif {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  width: 300px;
+  z-index: 999999;
+}
