@@ -27,32 +27,16 @@ export class ProductService {
     return this.http.get('http://localhost:8000/api/viewpd/');
   }
 
-  addToCart(id: any, qty: any, price: any) {
-    return this.http.post('http://localhost:8000/api/insertc', { product_id: id, qty: qty, price: price }, this.httpOptions);
-  }
-
-  addToCartDetail() {
-    // return this.http.post('http://localhost:8000/api/insertcartitem', );
-  }
-
-  getCart() {
-    return this.http.get('http://localhost:8000/api/viewc', this.httpOptions);
-  }
-
   checkout() {
     return this.http.post('http://localhost:8000/api/insertorder', { }, this.httpOptions);
-  }
-
-  deleteCart() {
-    return this.http.delete('http://localhost:8000/api/deletec', this.httpOptions);
   }
 
   removeItem(id: any) {
     return this.http.delete('http://localhost:8000/api/delete_item_cart/' + id, this.httpOptions);
   }
 
-  getVeritransURL() {
-    return this.http.get<any>('http://localhost:8000/api/veritrans_url', this.httpOptions);
+  getVeritransURL(order_id: any) {
+    return this.http.get<any>('http://localhost:8000/api/veritrans_url/' + order_id, this.httpOptions);
   }
 
 }

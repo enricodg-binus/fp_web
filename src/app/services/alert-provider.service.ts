@@ -23,12 +23,12 @@ export class AlertProviderService {
         });
     }
 
-    success(message: string, keepAfterNavigationChange) {
+    success(message: any, keepAfterNavigationChange) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'success', text: message });
     }
 
-    error(message: string, keepAfterNavigationChange) {
+    error(message: any, keepAfterNavigationChange) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     }

@@ -50,4 +50,17 @@ export class CartService {
                 this.cartSubject.next(<any>{loaded: true, cart_data: this.cart_data});
             });
     }
+
+    deleteCart() {
+        return this.http.delete('http://localhost:8000/api/deletec', this.httpOptions);
+    }
+
+    addToCart(id: any, qty: any, price: any) {
+        return this.http.post('http://localhost:8000/api/insertc', { product_id: id, qty: qty, price: price }, this.httpOptions);
+    }
+
+    getAddressData() {
+        return this.http.get('http://localhost:8000/api/viewuadd', this.httpOptions);
+    }
+
 }

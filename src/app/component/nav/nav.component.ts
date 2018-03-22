@@ -10,6 +10,8 @@ import {User} from '../../model/user';
 import {ProductService} from '../../services/product.service';
 import {Subscription} from 'rxjs/Subscription';
 import {CartService} from '../../services/cart.service';
+import {AlertProviderService} from '../../services/alert-provider.service';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-nav',
@@ -23,21 +25,24 @@ export class NavComponent implements OnInit {
   results: any;
   searchTerm: string;
   user_data: any;
+  address_data: any;
   cart_data: any;
     products: any[];
     private subscription: Subscription;
+    total: number;
 
   constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService,
-              private productService: ProductService, private cartService: CartService, private router: Router) { }
+              private productService: ProductService, private cartService: CartService,
+              private router: Router, private alertService: AlertProviderService, private orderService: OrderService) { }
 
   checkAuth() {
-    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
     this.authService.validateToken().subscribe(
       res => {
         this.loggedIn = true;
         this.user_data = res;
-        console.log(this.user_data);
+        this.getCart();
+        this.getAddress();
+        // console.log(this.user_data);
       },
       error => {
         this.loggedIn = false;
@@ -46,9 +51,12 @@ export class NavComponent implements OnInit {
   }
 
   getCart() {
-      // this.cartService.getAllProducts().subscribe(
-      //     res => this.cart_data = res
-      // );
+      this.cartService.getAllcart_data().subscribe(
+          res => {
+              this.cart_data = res;
+              }, err => {
+              // this.alertService.error(err, false);
+          });
       this.subscription = this.cartService.CartState
           .subscribe((state: any) => {
               this.cart_data = state.cart_data;
@@ -56,14 +64,25 @@ export class NavComponent implements OnInit {
           });
   }
 
+  getAddress() {
+      this.cartService.getAddressData().subscribe(
+          res => {
+              this.address_data = res;
+          }, err => {
+              // this.alertService.error(err, false);
+        });
+  }
+
   ngOnInit() {
     this.getCategories();
     this.checkAuth();
-    this.getCart();
   }
 
   getCategories() {
-    this.navService.getCategories().subscribe(categories_data => this.categories_data = categories_data);
+    this.navService.getCategories().subscribe(
+        categories_data => {
+            this.categories_data = categories_data;
+        });
   }
 
   search(form: NgForm): void {
@@ -76,4 +95,22 @@ export class NavComponent implements OnInit {
           });
   }
 
+  addAddress() {
+      window.location.reload(true);
+      this.router.navigate(['dashboard/add_address']);
+  }
+
+  checkout() {
+      if (this.address_data != null && this.cart_data != null ) {
+          this.total = 0;
+          console.log(this.cart_data);
+          for (const i of this.cart_data) {
+              this.total += Number(i.price);
+          }
+          console.log(this.total);
+          this.orderService.createOrder(this.total).subscribe( res1 => 'success');
+          this.cartService.deleteCart().subscribe(res => 'success');
+      } else {
+      }
+  }
 }

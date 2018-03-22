@@ -4,6 +4,7 @@ import {DashboardProviderService} from '../services/dashboard-provider.service';
 import {UserService} from '../services/user.service';
 import {AuthServiceProviderService} from '../services/auth-service-provider.service';
 import {AlertProviderService} from '../services/alert-provider.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -14,7 +15,8 @@ export class DashboardSidebarComponent implements OnInit {
 
   user_data: any;
 
-  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private alertService: AlertProviderService) { }
+  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private alertService: AlertProviderService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getUser();
@@ -30,6 +32,8 @@ export class DashboardSidebarComponent implements OnInit {
         // console.log(this.user_data);
       },
       error => {
+        window.alert('Please re-login to continue');
+        this.router.navigate(['/login']);
       }
     );
   }

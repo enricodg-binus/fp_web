@@ -6,7 +6,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { NavComponent } from './component/nav/nav.component';
-import { CategoryDdComponent } from './component/category-dd/category-dd.component';
 import { BannerSliderComponent } from './component/banner-slider/banner-slider.component';
 import { HomeComponent } from './component/home/home.component';
 import { CartComponent } from './component/cart/cart.component';
@@ -29,6 +28,7 @@ import { AddressComponent } from './dashboard-user/address/address.component';
 import { ProductdetailComponent } from './component/product/productdetail/productdetail.component';
 import { AddAddressComponent } from './dashboard-user/address/add-address/add-address.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { SelectAddressComponent } from './component/select-address/select-address.component';
 
 
 @NgModule({
@@ -36,7 +36,6 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     AppComponent,
     FooterComponent,
     NavComponent,
-    CategoryDdComponent,
     BannerSliderComponent,
     HomeComponent,
     CartComponent,
@@ -54,7 +53,8 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
     AddressComponent,
     ProductdetailComponent,
     AddAddressComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SelectAddressComponent
   ],
   imports: [
     BrowserModule,

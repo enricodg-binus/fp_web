@@ -8,9 +8,10 @@
         <div class="content table-responsive table-full-width">
           <table class="table table-hover table-striped">
             <thead style="font-size: 12px; ">
-            <th>No</th>
+            <th>Order ID</th>
             <th>Date</th>
             <th>Total</th>
+            <th>Payment Due Date</th>
             <th>Status</th>
             <th>Action</th>
             </thead>
@@ -18,12 +19,15 @@
             <tr *ngFor="let reqdata of request_order_data">
               <td>{{ reqdata.id }}</td>
               <td>{{ reqdata.order_date }}</td>
-              <td>{{ reqdata.order_price }}</td>
+              <td>{{ reqdata.total_price }}</td>
+              <td>{{ reqdata.max_payment_date }}</td>
               <td>{{ reqdata.order_status }}</td>
               <td>
-                <button class="btn btn-success" routerLink="{{ reqdata.id }}">Details</button>
+                <button class="btn btn-success" routerLink="details/{{ reqdata.id }}">Details</button>
+                <button class="btn btn-warning" (click)="getPaymentURL(reqdata.id)">Bayar</button>
                 <button class="btn btn-danger">Cancel</button>
               </td>
+
             </tr>
             </tbody>
           </table>

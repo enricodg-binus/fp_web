@@ -46,7 +46,7 @@ const routes: Routes = [
         canActivate: [UserGuard],
         children: [
             {
-                path: 'request_detail',
+                path: 'request_order/details/:id',
                 component: RequestdetailComponent
             },
             {
@@ -64,12 +64,6 @@ const routes: Routes = [
             {
                 path: 'request_order',
                 component: RequestorderComponent,
-                children: [
-                  {
-                      path: ':request_detail',
-                      component: RequestdetailComponent
-                  }
-                ]
             },
             {
                 path: 'edit_profile',

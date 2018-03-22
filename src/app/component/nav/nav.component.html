@@ -2,7 +2,6 @@
 <nav class="navbar navbar-default">
 <div class="container-fluid" id="navbar" style="padding-bottom: 0; margin-bottom: 0">
   <div class="row top-row">
-    <app-alert></app-alert>
     <div class=" col-md-12 col-ongkir col-sm-12" style="margin-top:1%;">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -37,22 +36,28 @@
                     Kategori <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" data-hover="dropdown">
-                    <li *ngFor="let category of categories_data"><a routerLink="/category/{{category.body}}">{{category.body}}</a></li>
-                    <li class="dropdown">
-                      <a href="#">One more dropdown</a>
-                      <ul class="dropdown-menu" data-animations="fadeInLeft">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li class="dropdown">
-                          <a href="#">One more dropdown</a>
-                          <ul class="dropdown-menu">
-                            ...
-                          </ul>
-                        </li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                      </ul>
+                    <li class="dropdown" *ngFor="let category of categories_data">
+                        <a routerLink="/category/{{category.category_name}}">{{category.category_name}}</a>
+                        <ul class="dropdown-menu" data-animations="fadeInLeft">
+                            <li *ngFor="let children of category.children"><a routerLink="/category/{{children.category_name}}">{{children.category_name}}</a> </li>
+                        </ul>
                     </li>
+
+                    <!--<li class="dropdown">-->
+                      <!--<a href="#">One more dropdown</a>-->
+                      <!--<ul class="dropdown-menu" data-animations="fadeInLeft">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li class="dropdown">-->
+                          <!--<a href="#">One more dropdown</a>-->
+                          <!--<ul class="dropdown-menu">-->
+                            <!--...-->
+                          <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                      <!--</ul>-->
+                    <!--</li>-->
                   </ul>
                 </div>
             </span>
@@ -92,24 +97,16 @@
                 <h4 class="modal-title">Cart</h4>
             </div>
             <div class="modal-body" id="modalCart">
+                <!--<app-alert></app-alert>-->
                 <form>
-                    <app-alert></app-alert>
-                    <!--<table class="table table-hover" id="cart">-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th>Product</th>-->
-                            <!--<th>Qty</th>-->
-                            <!--<th>Price</th>-->
-                            <!--<th>Action</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody class="showCart"></tbody>-->
-                        <!--<tbody>-->
-                            <!--<app-cart *ngFor="let data of cart_data" [cart_data]="data"></app-cart>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
                     <app-cart [cart_data]="cart_data"></app-cart>
                 </form>
+                <hr><h4>Select an Address</h4><hr>
+                <form>
+                    <app-select-address [address_data]="address_data"></app-select-address>
+                    <div class="text-right"><button class="btn btn-success" (click)="addAddress()">Add Address</button></div>
+                </form>
+                <button class="btn btn-success" (click)="checkout()">Checkout</button>
             </div>
         </div>
     </div>
