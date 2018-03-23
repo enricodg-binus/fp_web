@@ -72,7 +72,7 @@
       </form>
     </div>
     <div class="col-md-3 text-center">
-        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart" *ngIf="loggedIn"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
+        <button class="btn btn-outline-success" data-toggle="modal" data-target="#myCart" (click)="validateCart()" *ngIf="loggedIn"><i class="fa fa-shopping-basket"></i> Rp <span class="totalcart"></span></button>
         <button class="btn btn-outline-success" routerLink="/login" *ngIf="!loggedIn"><i class="fa fa-sign-in"></i> Login</button>
         <button type="button" class="btn btn-success" routerLink="/register" *ngIf="!loggedIn"><i class="fa fa-pencil"></i> Daftar</button>
         <button type="button" class="btn btn-success" routerLink="/dashboard" *ngIf="loggedIn"><i class="fa fa-pencil"></i>&nbsp;Hi, {{ user_data.name }}</button>
@@ -97,13 +97,29 @@
                 <h4 class="modal-title">Cart</h4>
             </div>
             <div class="modal-body" id="modalCart">
-                <!--<app-alert></app-alert>-->
+                <app-alert></app-alert>
                 <form>
                     <app-cart [cart_data]="cart_data"></app-cart>
                 </form>
-                <hr><h4>Select an Address</h4><hr>
+                <hr>
                 <form>
-                    <app-select-address [address_data]="address_data"></app-select-address>
+                    <table class="table table-hover" id="cart">
+                        <thead>
+                        <tr>
+                            <th>Select an Address</th>
+                        </tr>
+                        </thead>
+                        <tbody class="showCart"></tbody>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control" (change)="changeAddress($event)">
+                                    <option *ngFor="let data of address_data" [value]="data.id"> {{ data.name }} - {{ data.phone }} - {{ data.address }}</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <div class="text-right"><button class="btn btn-success" (click)="addAddress()">Add Address</button></div>
                 </form>
                 <button class="btn btn-success" (click)="checkout()">Checkout</button>

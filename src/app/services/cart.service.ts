@@ -14,6 +14,7 @@ export class CartService {
     };
 
     constructor(private http: HttpClient) {
+        console.log('constructor', localStorage.token);
         this.init();
     }
 
@@ -39,8 +40,13 @@ export class CartService {
     }
 
     getAllcart_data(): Observable <any> {
-        return this.http.get('http://localhost:8000/api/viewc', this.httpOptions).map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw('Server error'));
+        // console.log('from service', this.httpOptions);
+        return this.http.get('http://localhost:8000/api/viewc', this.httpOptions).map(res => {
+            return res;
+        })
+            .catch((error: any) => {
+                return Observable.throw(error);
+            });
     }
 
     init() {

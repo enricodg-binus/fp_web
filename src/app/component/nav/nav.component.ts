@@ -38,6 +38,7 @@ export class NavComponent implements OnInit {
   checkAuth() {
     this.authService.validateToken().subscribe(
       res => {
+          console.log(localStorage.token);
         this.loggedIn = true;
         this.user_data = res;
         this.getCart();
@@ -51,16 +52,18 @@ export class NavComponent implements OnInit {
   }
 
   getCart() {
+      // console.log('from cart', localStorage.token);
       this.cartService.getAllcart_data().subscribe(
           res => {
               this.cart_data = res;
               }, err => {
-              // this.alertService.error(err, false);
+              console.log(err);
+              this.alertService.error(err, false);
           });
       this.subscription = this.cartService.CartState
           .subscribe((state: any) => {
               this.cart_data = state.cart_data;
-              console.log(state);
+              // console.log(state);
           });
   }
 
@@ -69,8 +72,12 @@ export class NavComponent implements OnInit {
           res => {
               this.address_data = res;
           }, err => {
-              // this.alertService.error(err, false);
+              this.alertService.error(err, false);
         });
+  }
+
+  validateCart() {
+
   }
 
   ngOnInit() {

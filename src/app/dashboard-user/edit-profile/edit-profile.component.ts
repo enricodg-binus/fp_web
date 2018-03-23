@@ -12,7 +12,7 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 })
 export class EditProfileComponent implements OnInit {
 
-  model: any;
+  model: any = {};
 
   constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService,
               private userService: UserService,

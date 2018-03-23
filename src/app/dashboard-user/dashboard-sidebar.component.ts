@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  user_data: any;
+  user_data: any = {};
 
   constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private alertService: AlertProviderService,
               private router: Router) { }

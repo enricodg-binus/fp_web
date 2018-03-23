@@ -28,7 +28,7 @@ import { AddressComponent } from './dashboard-user/address/address.component';
 import { ProductdetailComponent } from './component/product/productdetail/productdetail.component';
 import { AddAddressComponent } from './dashboard-user/address/add-address/add-address.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
-import { SelectAddressComponent } from './component/select-address/select-address.component';
+import {MapToIterable} from './libraries/map-to-iterable.pipe';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import { SelectAddressComponent } from './component/select-address/select-addres
     ProductdetailComponent,
     AddAddressComponent,
     PageNotFoundComponent,
-    SelectAddressComponent
+    MapToIterable
   ],
   imports: [
     BrowserModule,

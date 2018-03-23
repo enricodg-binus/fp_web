@@ -43,9 +43,11 @@ export class SignAuthComponent implements OnInit {
         this.authService.login(this.model.email, this.model.password)
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);
+                    window.location.href = '/';
                 },
                 error => {
+                    console.log(error);
                     this.alertService.error(error, false);
                 });
     }

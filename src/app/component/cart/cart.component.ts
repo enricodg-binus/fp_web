@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
       this.subscription = this.cartService.CartState
           .subscribe((state: any) => {
               this.products = state.products;
-              console.log(this.products);
+              // console.log(this.products);
           });
   }
 
