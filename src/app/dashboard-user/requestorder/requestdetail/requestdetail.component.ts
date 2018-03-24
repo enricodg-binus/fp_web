@@ -17,6 +17,7 @@ export class RequestdetailComponent implements OnInit {
   user_data: any =  {};
   order_items: any = [];
   test: any = [];
+  res: any = [];
 
   constructor(private router: ActivatedRoute, private orderService: OrderService, private authService: AuthServiceProviderService,
               private productService: ProductService) { }
@@ -34,7 +35,7 @@ export class RequestdetailComponent implements OnInit {
       this.orderService.getOrderDetails(id).subscribe(
           res => {
             this.request_order_details = res;
-            console.log(res);
+            // console.log(res);
             this.getShipmentData(this.request_order_details.shipment_address_id);
             this.getOrderItems(this.request_order_details.orderitems);
           },
@@ -62,17 +63,7 @@ export class RequestdetailComponent implements OnInit {
 
   getOrderItems(order_items: any) {
       for (let i of order_items) {
-          this.productService.getProduct(i.product_id).subscribe(
-              res => {
-                  this.order_items.push(res);
-              }
-          );
-          this.test.push(i);
-
-      }
-      for (let j of this.test) {
-          console.log(j);
-          console.log(j.qty);
+          this.order_items.push(i);
       }
   }
 

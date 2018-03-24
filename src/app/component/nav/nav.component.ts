@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categories } from './categories';
+import { Categories } from '../../model/categories';
 import { NavServiceProviderService } from '../../services/nav-service-provider.service';
 import {Observable} from 'rxjs/Observable';
 import {AuthServiceProviderService} from '../../services/auth-service-provider.service';

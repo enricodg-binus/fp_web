@@ -1,32 +1,19 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
-@ricopz
-Sign out
-0
-0 0 ricopz/fp_web Private
-Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-fp_web/src/app/dashboard-user/dashboard-sidebar.component.css
-b574f3e  4 days ago
-@ricopzz ricopzz 3/21/18
-@ricopz @ricopzz
+/*!
 
-2812 lines (2570 sloc)  81.1 KB
-    /*!
-     =========================================================
-     * Light Bootstrap Dashboard - v1.3.1.0
-     =========================================================
-     * Product Page: http://www.creative-tim.com/product/light-bootstrap-dashboard
-     * Copyright 2017 Creative Tim (http://www.creative-tim.com)
-     * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE.md)
-     =========================================================
-     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-     */
-    /*      light colors         */
+ =========================================================
+ * Light Bootstrap Dashboard - v1.3.1.0
+ =========================================================
+
+ * Product Page: http://www.creative-tim.com/product/light-bootstrap-dashboard
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE.md)
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+/*      light colors         */
 @keyframes spin {
     from {
         transform: rotate(0deg); }
@@ -1074,7 +1061,9 @@ body > .navbar-collapse[data-color="purple"]:after {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-}
+    /*   this code is for fixing safari bug with hidden overflow for border-radius   */
+    -webkit-mask-size: 60px 24px;
+    mask: 0 0 no-repeat; }
 
 .has-switch.deactivate {
     opacity: 0.5;
@@ -1224,11 +1213,10 @@ body > .navbar-collapse[data-color="purple"]:after {
     font-size: 14px; }
 .navbar .btn-simple {
     font-size: 16px; }
-/*.navbar.fixed {*/
-/*width: calc(100% - sidebar-width);*/
-/*right: 0;*/
-/*left: auto;*/
-/*border-radius: 0; }*/
+.navbar.fixed {
+    right: 0;
+    left: auto;
+    border-radius: 0; }
 
 .navbar-nav > li > .dropdown-menu {
     border-radius: 10px;
@@ -1715,125 +1703,93 @@ body > .navbar-collapse[data-color="purple"]:after {
     display: -webkit-flex;
     display: flex; }
 
-/*.ct-label.ct-horizontal.ct-start {*/
-/*-webkit-box-align: flex-end;*/
-/*-webkit-align-items: flex-end;*/
-/*-ms-flex-align: flex-end;*/
-/*align-items: flex-end;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: start; }*/
+.ct-label.ct-horizontal.ct-start {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: start; }
 
-/*.ct-label.ct-horizontal.ct-end {*/
-/*-webkit-box-align: flex-start;*/
-/*-webkit-align-items: flex-start;*/
-/*-ms-flex-align: flex-start;*/
-/*align-items: flex-start;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: start; }*/
+.ct-label.ct-horizontal.ct-end {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: start; }
 
-/*.ct-label.ct-vertical.ct-start {*/
-/*-webkit-box-align: flex-end;*/
-/*-webkit-align-items: flex-end;*/
-/*-ms-flex-align: flex-end;*/
-/*align-items: flex-end;*/
-/*-webkit-box-pack: flex-end;*/
-/*-webkit-justify-content: flex-end;*/
-/*-ms-flex-pack: flex-end;*/
-/*justify-content: flex-end;*/
-/*text-align: right;*/
-/*text-anchor: end; }*/
+.ct-label.ct-vertical.ct-start {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    text-anchor: end; }
 
-/*.ct-label.ct-vertical.ct-end {*/
-/*-webkit-box-align: flex-end;*/
-/*-webkit-align-items: flex-end;*/
-/*-ms-flex-align: flex-end;*/
-/*align-items: flex-end;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: start; }*/
+.ct-label.ct-vertical.ct-end {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: start; }
 
-/*.ct-chart-bar .ct-label.ct-horizontal.ct-start {*/
-/*-webkit-box-align: flex-end;*/
-/*-webkit-align-items: flex-end;*/
-/*-ms-flex-align: flex-end;*/
-/*align-items: flex-end;*/
-/*-webkit-box-pack: center;*/
-/*-webkit-justify-content: center;*/
-/*-ms-flex-pack: center;*/
-/*justify-content: center;*/
-/*text-align: center;*/
-/*text-anchor: start; }*/
+.ct-chart-bar .ct-label.ct-horizontal.ct-start {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    text-anchor: start; }
 
-/*.ct-chart-bar .ct-label.ct-horizontal.ct-end {*/
-/*-webkit-box-align: flex-start;*/
-/*-webkit-align-items: flex-start;*/
-/*-ms-flex-align: flex-start;*/
-/*align-items: flex-start;*/
-/*-webkit-box-pack: center;*/
-/*-webkit-justify-content: center;*/
-/*-ms-flex-pack: center;*/
-/*justify-content: center;*/
-/*text-align: center;*/
-/*text-anchor: start; }*/
+.ct-chart-bar .ct-label.ct-horizontal.ct-end {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    text-anchor: start; }
 
-/*.ct-chart-bar.ct-horizontal-bars .ct-label.ct-horizontal.ct-start {*/
-/*-webkit-box-align: flex-end;*/
-/*-webkit-align-items: flex-end;*/
-/*-ms-flex-align: flex-end;*/
-/*align-items: flex-end;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: start; }*/
+.ct-chart-bar.ct-horizontal-bars .ct-label.ct-horizontal.ct-start {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: start; }
 
-/*.ct-chart-bar.ct-horizontal-bars .ct-label.ct-horizontal.ct-end {*/
-/*-webkit-box-align: flex-start;*/
-/*-webkit-align-items: flex-start;*/
-/*-ms-flex-align: flex-start;*/
-/*align-items: flex-start;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: start; }*/
+.ct-chart-bar.ct-horizontal-bars .ct-label.ct-horizontal.ct-end {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: start; }
 
-/*.ct-chart-bar.ct-horizontal-bars .ct-label.ct-vertical.ct-start {*/
-/*-webkit-box-align: center;*/
-/*-webkit-align-items: center;*/
-/*-ms-flex-align: center;*/
-/*align-items: center;*/
-/*-webkit-box-pack: flex-end;*/
-/*-webkit-justify-content: flex-end;*/
-/*-ms-flex-pack: flex-end;*/
-/*justify-content: flex-end;*/
-/*text-align: right;*/
-/*text-anchor: end; }*/
+.ct-chart-bar.ct-horizontal-bars .ct-label.ct-vertical.ct-start {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+    text-align: right;
+    text-anchor: end; }
 
-/*.ct-chart-bar.ct-horizontal-bars .ct-label.ct-vertical.ct-end {*/
-/*-webkit-box-align: center;*/
-/*-webkit-align-items: center;*/
-/*-ms-flex-align: center;*/
-/*align-items: center;*/
-/*-webkit-box-pack: flex-start;*/
-/*-webkit-justify-content: flex-start;*/
-/*-ms-flex-pack: flex-start;*/
-/*justify-content: flex-start;*/
-/*text-align: left;*/
-/*text-anchor: end; }*/
+.ct-chart-bar.ct-horizontal-bars .ct-label.ct-vertical.ct-end {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    text-anchor: end; }
 
 .ct-grid {
     stroke: rgba(0, 0, 0, 0.2);
@@ -2479,7 +2435,7 @@ body > .navbar-collapse[data-color="purple"]:after {
     .navbar-toggle .icon-bar {
         display: block;
         position: relative;
-        background: black;
+        background: #fff;
         width: 24px;
         height: 2px;
         border-radius: 1px;

@@ -45,13 +45,13 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let item of order_items; let te of test">
+                      <tr *ngFor="let item of order_items">
                         <td>1.</td>
-                        <td>{{ item.product_name }}</td>
-                        <td>{{ item.product_descripton }}</td>
-                        <td>{{ te.price }}</td>
-                        <td>{{ te.qty }}</td>
-                        <td></td>
+                        <td>{{ item.products.product_name }}</td>
+                        <td>{{ item.products.product_description }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.qty }}</td>
+                        <td>{{ item.qty * item.price }}</td>
                         <td><span class='label label-success'>Ready</span></td>
                       </tr>
                       </tbody>
@@ -94,7 +94,6 @@
               <div class="row current-chat-area">
                 <div class="col-md-12">
                   <ul class="media-list">
-
                   </ul>
                 </div>
               </div>
@@ -102,7 +101,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

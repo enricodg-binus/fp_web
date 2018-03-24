@@ -8,14 +8,14 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-sidebar',
-  templateUrl: './dashboard-sidebar.component.html',
-  styleUrls: ['./dashboard-sidebar.component.css']
+  templateUrl: './dashboard-sidebar.component.html'
 })
 export class DashboardSidebarComponent implements OnInit {
 
   user_data: any = {};
 
-  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService, private alertService: AlertProviderService,
+  constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService,
+              private alertService: AlertProviderService,
               private router: Router) { }
 
   ngOnInit() {

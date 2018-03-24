@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -29,6 +29,7 @@ import { ProductdetailComponent } from './component/product/productdetail/produc
 import { AddAddressComponent } from './dashboard-user/address/add-address/add-address.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import {MapToIterable} from './libraries/map-to-iterable.pipe';
+import { PaymentSuccessComponent } from './component/payment-success/payment-success.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {MapToIterable} from './libraries/map-to-iterable.pipe';
     ProductdetailComponent,
     AddAddressComponent,
     PageNotFoundComponent,
-    MapToIterable
+    MapToIterable,
+    PaymentSuccessComponent
   ],
   imports: [
     BrowserModule,

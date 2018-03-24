@@ -17,6 +17,7 @@ import {AddressComponent} from './dashboard-user/address/address.component';
 import {ProductdetailComponent} from './component/product/productdetail/productdetail.component';
 import {AddAddressComponent} from './dashboard-user/address/add-address/add-address.component';
 import {PageNotFoundComponent} from './component/page-not-found/page-not-found.component';
+import {PaymentSuccessComponent} from './component/payment-success/payment-success.component';
 
 const routes: Routes = [
     {
@@ -39,6 +40,15 @@ const routes: Routes = [
     {
         path: 'register',
         component: SignAuthComponent
+    },
+    {
+      path: 'category',
+      children: [
+        {
+          path: ':category_name',
+          component: CategoryResultsComponent
+        }
+      ]
     },
     {
         path: 'dashboard',
@@ -76,17 +86,12 @@ const routes: Routes = [
         ]
     },
     {
-      path: 'category',
-      children: [
-        {
-          path: ':category_name',
-          component: CategoryResultsComponent
-        }
-      ]
-    },
-    {
       path: '**',
       component: PageNotFoundComponent
+    },
+    {
+        path: 'payment_success',
+        component: PaymentSuccessComponent
     }
 ];
 

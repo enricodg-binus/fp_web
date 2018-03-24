@@ -65,7 +65,7 @@ export class OrderService {
     }
 
     getOrderDetails(id: any) {
-        return this.http.get(this.baseUrl + 'view_order_details/' + id, this.httpOptions)
+        return this.http.get(this.baseUrl + 'view_order_items/' + id, this.httpOptions)
             .map( res => {
                 return res;
             })
