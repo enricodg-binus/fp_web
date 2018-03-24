@@ -1,15 +1,25 @@
-<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error'}">
+<div *ngIf="message.type === 'error'" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
     <ng-container *ngIf="message.text.error">
         {{ message.text.error.msg }}
     </ng-container>
     <ng-container *ngIf="message.text.status == 401">
         <ng-container *ngFor="let error of message.text.error | mapToIterable">
-            {{ error.val }}
+            {{ error.val }}<br>
         </ng-container>
         <!--<ng-container>-->
             <!--{{ message.text.error }}-->
         <!--</ng-container>-->
     </ng-container>
+    <ng-container *ngIf="message.text">
+        {{ message.text }}
+    </ng-container>
     <!--{{ message.text.error.name }}-->
     <!--{{ message.text.error.phone }}-->
 </div>
+
+<div *ngIf="message.type === 'notify'" [ngClass]="{ 'alert': message, 'notif': message.type === 'notify'}">
+    <!--<ng-container *ngIf="message.text.error">-->
+        <!--{{ message.text.error.msg }}-->
+    <!--</ng-container>-->
+</div>
+

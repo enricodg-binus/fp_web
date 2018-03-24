@@ -20,11 +20,23 @@
   <tbody>
   <tr *ngFor="let cart of cart_data">
     <td>&nbsp; {{ cart.product.product_name }}</td>
-    <td>&nbsp; <input [value]="cart.qty" [min]="1" [max]="cart.product.product_qty" type="number"></td>
-    <td>&nbsp; {{ cart.price }}</td>
+    <td>&nbsp; <input id="number" [min]="1" [max]="cart.product.product_qty" [(ngModel)]="cart.qty" type="number" (change)="updateCart(cart.product_id,cart.qty)"></td>
+    <td >&nbsp; <input [(ngModel)]="cart.qty*cart.price" disabled></td>
     <td>
       <button class="btn btn-danger" (click)="removeItem(cart.id)">Remove</button>
     </td>
   </tr>
   </tbody>
 </table>
+
+<script>
+  var number = document.getElementById('number');
+
+  number.onkeydown = function(e) {
+  if(!((e.keyCode > 95 && e.keyCode < 106)
+  || (e.keyCode > 47 && e.keyCode < 58)
+  || e.keyCode == 8)) {
+  return false;
+  }
+  }
+</script>

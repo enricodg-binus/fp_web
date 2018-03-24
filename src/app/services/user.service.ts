@@ -34,11 +34,24 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put('http://localhost:8000/api/updateua/', user, this.httpOptions);
+        return this.http.put('http://localhost:8000/api/updateua/', user, this.httpOptions).map( res => {
+            return res;
+        }).catch( err => {
+            return Observable.throw(err);
+        });
     }
 
     delete(id: number) {
         return this.http.delete('/api/users/' + id);
+    }
+
+    validateAddress() {
+        return this.http.get('http://localhost:8000/api/validateAddress', this.httpOptions)
+            .map( res => {
+                return res;
+            }).catch( err => {
+                return Observable.throw(err);
+            });
     }
 
 }

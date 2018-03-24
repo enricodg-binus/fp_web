@@ -14,7 +14,7 @@ export class CartService {
     };
 
     constructor(private http: HttpClient) {
-        console.log('constructor', localStorage.token);
+        // console.log('constructor', localStorage.token);
         this.init();
     }
 
@@ -67,6 +67,25 @@ export class CartService {
 
     getAddressData() {
         return this.http.get('http://localhost:8000/api/viewuadd', this.httpOptions);
+    }
+
+    validateCart() {
+        return this.http.get('http://localhost:8000/api/validateCart', this.httpOptions)
+            .map( res => {
+                return res;
+            }).catch( err => {
+                return Observable.throw(err);
+            });
+    }
+
+    updateCart(product_id: any, qty: any) {
+
+        return this.http.put('http://localhost:8000/api/update_cart_qty', { product_id: product_id, qty: qty}, this.httpOptions)
+            .map( res => {
+                return res;
+            }).catch( err => {
+                return Observable.throw(err);
+            });
     }
 
 }

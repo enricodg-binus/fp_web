@@ -3,6 +3,7 @@ import {Product} from '../../model/product';
 import {ProductService} from '../../services/product.service';
 import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
 import {CartService} from '../../services/cart.service';
+import {AlertProviderService} from '../../services/alert-provider.service';
 
 @Component({
   selector: 'app-item',
@@ -15,13 +16,14 @@ export class ItemComponent implements OnInit {
   @Input() data_detail: any;
   loggedIn: any;
 
-  constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService ) { }
+  constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService, private alertService: AlertProviderService ) { }
 
   ngOnInit() {
     this.validateToken();
   }
 
   addToCart(id: any, qty: any, price: any) {
+      this.alertService.notify('Test', false);
     this.cartService.addProduct(this.product_data);
     // this.productService.addToCart(id, qty, price).subscribe(
     //   res => {

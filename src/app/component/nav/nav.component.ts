@@ -12,6 +12,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {CartService} from '../../services/cart.service';
 import {AlertProviderService} from '../../services/alert-provider.service';
 import {OrderService} from '../../services/order.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -27,13 +28,16 @@ export class NavComponent implements OnInit {
   user_data: any;
   address_data: any;
   cart_data: any;
+  chosenAddress: any;
+  res: any;
     products: any[];
     private subscription: Subscription;
     total: number;
 
   constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService,
               private productService: ProductService, private cartService: CartService,
-              private router: Router, private alertService: AlertProviderService, private orderService: OrderService) { }
+              private router: Router, private alertService: AlertProviderService, private orderService: OrderService,
+              private userService: UserService) { }
 
   checkAuth() {
     this.authService.validateToken().subscribe(
@@ -43,7 +47,7 @@ export class NavComponent implements OnInit {
         this.user_data = res;
         this.getCart();
         this.getAddress();
-        // console.log(this.user_data);
+        this.initGetCart();
       },
       error => {
         this.loggedIn = false;
@@ -52,14 +56,6 @@ export class NavComponent implements OnInit {
   }
 
   getCart() {
-      // console.log('from cart', localStorage.token);
-      this.cartService.getAllcart_data().subscribe(
-          res => {
-              this.cart_data = res;
-              }, err => {
-              console.log(err);
-              this.alertService.error(err, false);
-          });
       this.subscription = this.cartService.CartState
           .subscribe((state: any) => {
               this.cart_data = state.cart_data;
@@ -67,21 +63,23 @@ export class NavComponent implements OnInit {
           });
   }
 
+  initGetCart() {
+      this.cartService.getAllcart_data().subscribe(
+          res => {
+              this.cart_data = res;
+          }
+      );
+  }
+
   getAddress() {
       this.cartService.getAddressData().subscribe(
           res => {
               this.address_data = res;
-          }, err => {
-              this.alertService.error(err, false);
-        });
-  }
-
-  validateCart() {
-
+          });
   }
 
   ngOnInit() {
-    this.getCategories();
+    // this.getCategories();
     this.checkAuth();
   }
 
@@ -108,16 +106,34 @@ export class NavComponent implements OnInit {
   }
 
   checkout() {
-      if (this.address_data != null && this.cart_data != null ) {
-          this.total = 0;
-          console.log(this.cart_data);
-          for (const i of this.cart_data) {
-              this.total += Number(i.price);
-          }
-          console.log(this.total);
-          this.orderService.createOrder(this.total).subscribe( res1 => 'success');
-          this.cartService.deleteCart().subscribe(res => 'success');
-      } else {
-      }
+
+      this.cartService.validateCart().subscribe(
+          res => {
+              this.userService.validateAddress().subscribe(
+                  res2 => {
+                      if (this.chosenAddress != null) {
+                          this.total = 0;
+                          for (const i of this.cart_data) {
+                              this.total += Number(i.price);
+                          }
+                          console.log(this.total);
+                          console.log(this.chosenAddress);
+                          this.orderService.createOrder(this.total, this.chosenAddress).subscribe(res1 => {
+                              this.res = res1.msg;
+                              this.cartService.deleteCart().subscribe(res3 => 'success');
+                              window.alert(this.res);
+                              this.router.navigate(['dashboard']);
+                          });
+                      } else {
+                          this.alertService.error('Please choose an address!', false);
+                      }
+                  }, err => {
+                      this.alertService.error(err, false);
+                  }
+              );
+              return res;
+          }, err => {
+              this.alertService.error(err, false);
+          });
   }
 }

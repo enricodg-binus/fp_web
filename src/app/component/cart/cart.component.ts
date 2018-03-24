@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   @Input() cart_data: any;
     products: any[];
     private subscription: Subscription;
+    update_qty: any;
 
   constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService,
               private orderService: OrderService) { }
@@ -29,18 +30,12 @@ export class CartComponent implements OnInit {
           });
   }
 
-  validateToken() {
-      this.authService.validateToken().subscribe(
-          res => {
-            return true;
-          }, err => {
-            return false;
-          }
-      );
-  }
-
   removeItem(id: any) {
       this.cartService.removeProduct(id);
+  }
+
+  updateCart(cart_id: any, qty: any) {
+      this.cartService.updateCart(cart_id, qty).subscribe( res => res);
   }
 
 }

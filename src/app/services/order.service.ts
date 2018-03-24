@@ -16,9 +16,10 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  createOrder(total: number) {
+  createOrder(total: number, address_id: any) {
       return this.http.post(this.baseUrl + 'inserto',
-          { order_status: 'Menunggu Pembayaran', total_price: total , payment_status: 'Menunggu Pembayaran'}, this.httpOptions)
+          { order_status: 'Menunggu Pembayaran', total_price: total , payment_status: 'Menunggu Pembayaran',
+              shipment_address_id: address_id }, this.httpOptions)
           .map( res => {
               return res;
           })

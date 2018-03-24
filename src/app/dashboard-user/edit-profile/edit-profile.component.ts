@@ -13,6 +13,7 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 export class EditProfileComponent implements OnInit {
 
   model: any = {};
+  res: any = {};
 
   constructor(private dashboardService: DashboardProviderService, private authService: AuthServiceProviderService,
               private userService: UserService,
@@ -38,7 +39,8 @@ export class EditProfileComponent implements OnInit {
   updateProfile() {
     this.userService.update(this.model)
       .subscribe(data => {
-          window.alert(data);
+          this.res = data;
+          window.alert(this.res.msg);
           window.location.reload(true);
         },
         error => {
