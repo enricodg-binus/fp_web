@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import {ApiProvider} from '../libraries/api';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class OrderService {
@@ -14,7 +16,12 @@ export class OrderService {
         })
     };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
+    private orderSubject = new Subject<any>();
+    order_data: any;
+    orderState = this.orderSubject.asObservable();
 
   createOrder(total: number, address_id: any) {
       return this.http.post(this.baseUrl + 'inserto',
@@ -27,6 +34,15 @@ export class OrderService {
               return Observable.throw(err);
           });
   }
+
+    initRequestOrder() {
+        this.http.get(this.baseUrl + 'view_request_order', this.httpOptions)
+            .subscribe(res => {
+                // console.log('from service', res);
+                this.order_data = res;
+                this.orderSubject.next(<any>{loaded: true, order_data: this.order_data});
+            });
+    }
 
     getRequestOrder(): Observable<any> {
         return this.http.get(this.baseUrl + 'view_request_order', this.httpOptions)
@@ -48,8 +64,37 @@ export class OrderService {
             });
     }
 
-    getOrderDetails(id: any): Observable<any> {
+    getOrderDetails(id: any) {
         return this.http.get(this.baseUrl + 'view_order_details/' + id, this.httpOptions)
+            .map( res => {
+                return res;
+            })
+            .catch( err => {
+                return Observable.throw(err);
+            });
+    }
+
+    cancelOrder(id: any) {
+        return this.http.delete(this.baseUrl + 'delete_order/' + id, this.httpOptions)
+            .subscribe(
+            res => {
+                this.initRequestOrder();
+            }
+        );
+    }
+
+    getShipmentAddress(id: any) {
+        return this.http.get(this.baseUrl + 'shipment_address/' + id, this.httpOptions)
+            .map( res => {
+                return res;
+            })
+            .catch( err => {
+                return Observable.throw(err);
+            });
+    }
+
+    getOrderItems() {
+        return this.http.get(this.baseUrl + 'order_item', this.httpOptions)
             .map( res => {
                 return res;
             })

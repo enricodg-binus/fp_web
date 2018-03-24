@@ -10,11 +10,9 @@
             <!--{{ message.text.error }}-->
         <!--</ng-container>-->
     </ng-container>
-    <ng-container *ngIf="message.text">
-        {{ message.text }}
-    </ng-container>
-    <!--{{ message.text.error.name }}-->
-    <!--{{ message.text.error.phone }}-->
+    <!--<ng-container *ngIf="message.text">-->
+        <!--{{ message.text }}-->
+    <!--</ng-container>-->
 </div>
 
 <div *ngIf="message.type === 'notify'" [ngClass]="{ 'alert': message, 'notif': message.type === 'notify'}">

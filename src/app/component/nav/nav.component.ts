@@ -123,6 +123,7 @@ export class NavComponent implements OnInit {
                               this.cartService.deleteCart().subscribe(res3 => 'success');
                               window.alert(this.res);
                               this.router.navigate(['dashboard']);
+                              window.location.reload(true);
                           });
                       } else {
                           this.alertService.error('Please choose an address!', false);
@@ -133,6 +134,7 @@ export class NavComponent implements OnInit {
               );
               return res;
           }, err => {
+              console.log(err);
               this.alertService.error(err, false);
           });
   }

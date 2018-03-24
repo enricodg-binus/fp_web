@@ -27,6 +27,10 @@ export class ProductService {
     return this.http.get('http://localhost:8000/api/viewpd/');
   }
 
+  getProduct(id: any) {
+    return this.http.get('http://localhost:8000/api/product/' + id, this.httpOptions);
+  }
+
   checkout() {
     return this.http.post('http://localhost:8000/api/insertorder', { }, this.httpOptions);
   }

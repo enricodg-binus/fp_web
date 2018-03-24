@@ -4,101 +4,99 @@
       <div class="col-md-12">
         <div class="card">
           <div class="header">
-            <h4 class="title">Order Detil</h4>
+            <h4 class="title" style="padding-bottom: 15px">Order Details</h4>
           </div>
-          <div class="col-md-4">
-            <h5><b>Order Dari : </b> </h5>
-            <address>
-              Nama : Enrico Giovanni <br>
-              Email : enrico.daniswaragiovanni@gmail.com<br>
-              Hp : 085353178111<br>
-            </address>
-          </div>
-          <div class="col-md-4">
-            <h5><b>Alamat Pengiriman : </b> </h5>
-            <address>
-              <b>Enrico</b><br>Jl. Terusan Hang Lekir V No 24<br>Hp : 085353178111          </address>
-          </div>
+          <div style="padding-top: 15px">
+            <div class="col-md-4">
+              <h5><b>Order Dari : </b> </h5>
+              <address>
+                Nama : {{ user_data.name }} <br>
+                Email : {{ user_data.email }}<br>
+                Hp : {{ user_data.phone }}<br>
+              </address>
+            </div>
+            <div class="col-md-4">
+              <h5><b>Alamat Pengiriman : </b> </h5>
+              <address>
+                <b>{{ shipment_data.name }}</b><br>{{ shipment_data.address }}<br>{{ shipment_data.phone }}          </address>
+            </div>
 
-          <div class="col-md-4">
-            <h5><b>Service Delivery : </b> </h5>
-            <address>
-              <h2><strong>JNE REG</strong></h2>
-            </address>
-          </div>
-          <div class="content table-responsive table-full-width">
-            <section class="invoice">
-              <!-- Table row -->
-              <div class="row">
-                <div class="col-xs-12 table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                    <tr>
-                      <th width="5%">No</th>
-                      <th width="50%">Nama Produk</th>
-                      <th width="10%">Keterangan</th>
-                      <th width="10%">Harga</th>
-                      <th>Qty</th>
-                      <th>Subtotal</th>
-                      <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Samsung SSD 850 EVO M.2 SATA 500GB - Grs 5th</td>
-                      <td></td>
-                      <td>2,455,000</td>
-                      <td>1</td>
-                      <td>Rp 2,455,000</td>
-                      <td><span class='label label-danger'>Check Stock</span></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <div class="row">
-                <!-- accepted payments column -->
-
-                <div class="col-xs-7">
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-3">
-                  <div class="table-responsive">
-                    <table class="table">
+            <div class="col-md-4">
+              <h5><b>Service Delivery : </b> </h5>
+              <address>
+                <h2><strong>JNE REG</strong></h2>
+              </address>
+            </div>
+            <div class="content table-responsive table-full-width">
+              <section class="invoice">
+                <!-- Table row -->
+                <div class="row">
+                  <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                      <thead>
                       <tr>
-                        <th style="width:50%">Subtotal:</th>
-                        <td>Rp 2,455,000</td>
+                        <th width="5%">No</th>
+                        <th width="50%">Nama Produk</th>
+                        <th width="10%">Keterangan</th>
+                        <th width="10%">Harga</th>
+                        <th>Qty</th>
+                        <th>Subtotal</th>
+                        <th>Status</th>
                       </tr>
-                      <tr>
-                        <th>Estimasi Ongkir</th>
-                        <td>Rp 9,000</td>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let item of order_items; let te of test">
+                        <td>1.</td>
+                        <td>{{ item.product_name }}</td>
+                        <td>{{ item.product_descripton }}</td>
+                        <td>{{ te.price }}</td>
+                        <td>{{ te.qty }}</td>
+                        <td></td>
+                        <td><span class='label label-success'>Ready</span></td>
                       </tr>
-                      <tr>
-                        <th>Estimasi Total:</th>
-                        <td>Rp 2,464,000</td>
-                      </tr>
+                      </tbody>
                     </table>
                   </div>
+                  <!-- /.col -->
                 </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-              <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-xs-12">
-                </div>
-              </div>
-            </section>
-            <br>
-            <div class="row current-chat-area">
-              <div class="col-md-12">
-                <ul class="media-list">
+                <!-- /.row -->
 
-                </ul>
+                <div class="row">
+                  <!-- accepted payments column -->
+
+                  <div class="col-xs-7">
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-xs-3">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tr>
+                          <th style="width:50%">Subtotal:</th>
+                          <td>Rp 2,455,000</td>
+                        </tr>
+                        <tr>
+                          <th>Total:</th>
+                          <td>{{ request_order_details.total_price }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- this row will not appear when printing -->
+                <div class="row no-print">
+                  <div class="col-xs-12">
+                  </div>
+                </div>
+              </section>
+              <br>
+              <div class="row current-chat-area">
+                <div class="col-md-12">
+                  <ul class="media-list">
+
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

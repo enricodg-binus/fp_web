@@ -25,7 +25,7 @@
               <td>
                 <button class="btn btn-success" routerLink="details/{{ reqdata.id }}">Details</button>
                 <button class="btn btn-warning" (click)="getPaymentURL(reqdata.id)">Bayar</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" (click)="cancelOrder(reqdata.id)">Cancel</button>
               </td>
 
             </tr>
