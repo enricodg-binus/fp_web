@@ -9,13 +9,23 @@ import {RequestdetailComponent} from './requestorder/requestdetail/requestdetail
 import {RequestorderComponent} from './requestorder/requestorder.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {AddAddressComponent} from './address/add-address/add-address.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
-const routes = [
+export const dashboardRoutes = [
     {
         path: 'dashboard',
         component: DashboardSidebarComponent,
         canActivate: [UserGuard],
         children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'dashboard'
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+            },
             {
                 path: 'request_order/details/:id',
                 component: RequestdetailComponent
@@ -47,10 +57,3 @@ const routes = [
         ]
     },
 ];
-
-@NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
-})
-
-export class DashboardRoutingModule { }

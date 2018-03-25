@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app.routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -29,42 +28,26 @@ import { ProductdetailComponent } from './component/product/productdetail/produc
 import { AddAddressComponent } from './dashboard-user/address/add-address/add-address.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import {MapToIterable} from './libraries/map-to-iterable.pipe';
-import { PaymentSuccessComponent } from './component/payment-success/payment-success.component';
+import { PaymentSuccessComponent } from './dashboard-user/payment-success/payment-success.component';
+import {MainModule} from './component/main.module';
+import {DashboardModule} from './dashboard-user/dashboard.module';
+import {AlertModule} from './component/alert/alert.module';
+import {appRoutes} from './app.routing.module';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent,
-    NavComponent,
-    BannerSliderComponent,
-    HomeComponent,
-    CartComponent,
-    SignAuthComponent,
-    DashboardSidebarComponent,
-    DashboardComponent,
-    StatusorderComponent,
-    RequestorderComponent,
-    EditProfileComponent,
-    PaymentComponent,
-    RequestdetailComponent,
-    AlertComponent,
-    ItemComponent,
-    CategoryResultsComponent,
-    AddressComponent,
-    ProductdetailComponent,
-    AddAddressComponent,
-    PageNotFoundComponent,
-    MapToIterable,
-    PaymentSuccessComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CommonModule,
     ProviderModule.forRoot(),
+    RouterModule.forChild(appRoutes),
     HttpClientModule,
-    FormsModule
+    MainModule,
+    DashboardModule
   ],
   providers: [UserGuard],
   bootstrap: [AppComponent]
