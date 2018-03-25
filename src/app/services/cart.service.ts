@@ -15,7 +15,9 @@ export class CartService {
 
     constructor(private http: HttpClient) {
         // console.log('constructor', localStorage.token);
-        this.init();
+        if (localStorage.getItem('token')) {
+            this.init();
+        }
     }
 
     private cartSubject = new Subject<any>();
@@ -28,6 +30,8 @@ export class CartService {
             { product_id: _product.id, qty: 1, price: _product.product_price }, this.httpOptions)
             .subscribe(res => {
                 this.init();
+            }, err => {
+                window.alert('Please login to buy our products');
             });
         // console.log(this.CartState);
     }

@@ -23,7 +23,7 @@
               <p *ngFor="let productdetail of product_data.productdetails">{{ productdetail.key }}: {{ productdetail.value }}<br></p>
             </article>
           </div>
-          <button type="submit" *ngIf="loggedIn" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
+          <button type="submit" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
         </a>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <button type="button" class="close" data-dismiss="modal">x</button>
         <h4 class="modal-title">{{ product_data.product_name }}</h4>
       </div>
-      <div class="modal-body" [style.background-image]="'url(' + product_data.product_img + ')'">
+      <div class="modal-body" [style.background-image]="'url(' + product_data.product_img + ')'" style="height:1000px">
 
       </div>
     </div>

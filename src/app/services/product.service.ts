@@ -43,4 +43,12 @@ export class ProductService {
     return this.http.get<any>('http://localhost:8000/api/veritrans_url/' + order_id, this.httpOptions);
   }
 
+  getPage(link: any) {
+    return this.http.get<any>(link, this.httpOptions);
+  }
+
+  validateQty(product_id: any, qty: number) {
+      return this.http.get('http://localhost:8000/api/validateProductQty/' + product_id + '/' + qty, this.httpOptions);
+  }
+
 }

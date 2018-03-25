@@ -36,4 +36,8 @@ export class CategoryResultsComponent implements OnInit {
     this.productService.getProductDetail(link).subscribe(product_detail => this.product_detail = product_detail);
   }
 
+  getPage(link: any) {
+    this.productService.getPage(link).subscribe( res => this.product_data = res);
+  }
+
 }

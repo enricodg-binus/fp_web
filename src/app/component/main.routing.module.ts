@@ -68,13 +68,11 @@ const routes: Routes = [
             },
             {
                 path: 'payment',
-                component: PaymentComponent,
-                children: [
-                    {
-                        path: 'payment_success/:id',
-                        component: PaymentSuccessComponent
-                    }
-                ]
+                component: PaymentComponent
+            },
+            {
+                path: 'payment_success/:id',
+                component: PaymentSuccessComponent
             }
         ]
     },

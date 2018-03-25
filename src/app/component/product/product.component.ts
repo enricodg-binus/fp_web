@@ -19,11 +19,10 @@ export class ItemComponent implements OnInit {
   constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService, private alertService: AlertProviderService ) { }
 
   ngOnInit() {
-    this.validateToken();
   }
 
   addToCart(id: any, qty: any, price: any) {
-      this.alertService.notify('Test', false);
+
     this.cartService.addProduct(this.product_data);
     // this.productService.addToCart(id, qty, price).subscribe(
     //   res => {
