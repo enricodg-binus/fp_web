@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {dashboardRoutes} from './dashboard.routing.module';
 import {PaymentSuccessComponent} from './payment-success/payment-success.component';
+import {ProductdetailComponent} from '../component/product/productdetail/productdetail.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import {PaymentSuccessComponent} from './payment-success/payment-success.compone
         RequestdetailComponent,
         StatusorderComponent,
         DashboardSidebarComponent,
-        PaymentSuccessComponent
+        PaymentSuccessComponent,
+        ProductdetailComponent
     ],
     imports: [
         CommonModule,
@@ -43,7 +45,8 @@ import {PaymentSuccessComponent} from './payment-success/payment-success.compone
         RequestorderComponent,
         RequestdetailComponent,
         StatusorderComponent,
-        DashboardSidebarComponent
+        DashboardSidebarComponent,
+        ProductdetailComponent
     ]
 })
 export class  DashboardModule { }

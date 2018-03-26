@@ -2,44 +2,31 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AlertProviderService} from './alert-provider.service';
+import {ApiProvider} from '../libraries/api';
 
 @Injectable()
 export class DashboardProviderService {
 
-  baseUrl = 'http://localhost:8000/api/';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': `Bearer ${localStorage.token}`
-    })
-  };
-
-  constructor(private http: HttpClient, private alertService: AlertProviderService) { }
+  constructor(private api: ApiProvider) { }
 
   getUser(): Observable<any> {
-    return this.http.get(this.baseUrl + 'me', this.httpOptions);
+    return this.api.get('me');
   }
 
   getPaymentInfo(): Observable<any> {
-    return this.http.get(this.baseUrl + 'viewpi', this.httpOptions);
+    return this.api.get('viewpi');
   }
 
   addAddress(name: string, phone: string, address: string) {
-    return this.http.post(this.baseUrl + 'insertuadd', { name: name, phone: phone, address: address }, this.httpOptions)
-        .map( res => {
-          return res;
-        })
-        .catch( err => {
-          return Observable.throw(err);
-        });
+    return this.api.post('insertuadd', { name: name, phone: phone, address: address });
   }
 
   getUserAddress(): Observable<any> {
-    return this.http.get(this.baseUrl + 'viewuadd', this.httpOptions);
+    return this.api.get('viewuadd');
   }
 
   deleteAddress(id: any) {
-    return this.http.delete(this.baseUrl + 'deleteuadd/' + id, this.httpOptions, );
+    return this.api.delete(`deleteuadd/${id}`);
   }
 
 }

@@ -2,18 +2,12 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {ApiProvider} from '../libraries/api';
 
 @Injectable()
 export class CartService {
 
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'Authorization': `Bearer ${localStorage.token}`
-        })
-    };
-
-    constructor(private http: HttpClient) {
+    constructor(private api: ApiProvider) {
         // console.log('constructor', localStorage.token);
         if (localStorage.getItem('token')) {
             this.init();
@@ -25,9 +19,9 @@ export class CartService {
     CartState = this.cartSubject.asObservable();
 
     addProduct(_product: any) {
-        console.log(_product);
-        this.http.post('http://localhost:8000/api/insertc',
-            { product_id: _product.id, qty: 1, price: _product.product_price }, this.httpOptions)
+        // console.log(_product);
+        this.api.post('insertc',
+            { product_id: _product.id, qty: 1, price: _product.product_price })
             .subscribe(res => {
                 this.init();
             }, err => {
@@ -37,7 +31,7 @@ export class CartService {
     }
 
     removeProduct(id: any) {
-        this.http.delete('http://localhost:8000/api/delete_item_cart/' + id, this.httpOptions)
+        this.api.delete(`delete_item_cart/${id}`)
             .subscribe( res => {
                 this.init();
             });
@@ -45,16 +39,11 @@ export class CartService {
 
     getAllcart_data(): Observable <any> {
         // console.log('from service', this.httpOptions);
-        return this.http.get('http://localhost:8000/api/viewc', this.httpOptions).map(res => {
-            return res;
-        })
-            .catch((error: any) => {
-                return Observable.throw(error);
-            });
+        return this.api.get('viewc');
     }
 
     init() {
-        this.http.get('http://localhost:8000/api/viewc', this.httpOptions)
+        this.api.get('viewc')
             .subscribe(res => {
                 this.cart_data = res;
                 this.cartSubject.next(<any>{loaded: true, cart_data: this.cart_data});
@@ -62,34 +51,24 @@ export class CartService {
     }
 
     deleteCart() {
-        return this.http.delete('http://localhost:8000/api/deletec', this.httpOptions);
+        return this.api.delete('deletec');
     }
 
     addToCart(id: any, qty: any, price: any) {
-        return this.http.post('http://localhost:8000/api/insertc', { product_id: id, qty: qty, price: price }, this.httpOptions);
+        return this.api.post('insertc', { product_id: id, qty: qty, price: price });
     }
 
     getAddressData() {
-        return this.http.get('http://localhost:8000/api/viewuadd', this.httpOptions);
+        return this.api.get('viewuadd');
     }
 
     validateCart() {
-        return this.http.get('http://localhost:8000/api/validateCart', this.httpOptions)
-            .map( res => {
-                return res;
-            }).catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get('validateCart');
     }
 
     updateCart(product_id: any, qty: any) {
 
-        return this.http.put('http://localhost:8000/api/update_cart_qty', { product_id: product_id, qty: qty}, this.httpOptions)
-            .map( res => {
-                return res;
-            }).catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.raw('update_cart_qty', 'PUT', { product_id: product_id, qty: qty});
     }
 
 }

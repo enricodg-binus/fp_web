@@ -34,7 +34,7 @@ export class ApiProvider {
     }
 
     private handleError(res: Response) {
-        const body = res['error'] || {};
+        const body = res || {};
 
         return Observable.throw(body);
     }
@@ -42,7 +42,7 @@ export class ApiProvider {
     private checkAuthorization() {
         if (isPlatformBrowser(this.platformId)) {
             if (localStorage.getItem('token')) {
-                const check = this.http.get(this.getUrl('auth'), {headers: this.headerInjection})
+                const check = this.http.get(this.getUrl('me'), {headers: this.headerInjection})
                     .map(this.extractData)
                     .catch(this.handleError);
 
@@ -74,16 +74,25 @@ export class ApiProvider {
         }
     }
 
-    public get(path: any, params?: any) {
+    public get(path: any) {
         this.bindHeaderInjection();
         this.checkAuthorization();
 
-        return this.http.get(this.getUrl(path), {headers: this.headerInjection, params: params})
+        return this.http.get(this.getUrl(path), {headers: this.headerInjection})
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public post(path: any, params: any, upload?: boolean, search?: any) {
+    public getLink(path: any) {
+        this.bindHeaderInjection();
+        this.checkAuthorization();
+
+        return this.http.get(path, {headers: this.headerInjection})
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public post(path: any, params: any, upload?: boolean) {
         this.bindHeaderInjection();
         this.checkAuthorization();
 
@@ -98,16 +107,16 @@ export class ApiProvider {
             body = JSON.parse(JSON.stringify(params));
         }
 
-        return this.http.post(this.getUrl(path), body, {headers: this.headerInjection, params: search})
+        return this.http.post(this.getUrl(path), body, {headers: this.headerInjection})
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    public delete(path: any, search?: any) {
+    public delete(path: any) {
         this.bindHeaderInjection();
         this.checkAuthorization();
 
-        return this.http.delete(this.getUrl(path), { headers: this.headerInjection, params: search})
+        return this.http.delete(this.getUrl(path), { headers: this.headerInjection })
             .map(this.extractData)
             .catch(this.handleError);
     }

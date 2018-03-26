@@ -2,56 +2,35 @@ import { Injectable } from '@angular/core';
 import {User} from '../model/user';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ApiProvider} from '../libraries/api';
 
 @Injectable()
 export class UserService {
 
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': `Bearer ${localStorage.token}`
-      })
-    };
-
-    constructor(private http: HttpClient) { }
+    constructor(private api: ApiProvider) { }
 
     getAll() {
-        return this.http.get<User[]>('/api/users');
+        return this.api.get('users');
     }
 
     getById(id: number) {
-        return this.http.get('/api/users/' + id);
+        return this.api.get(`users/${id}`);
     }
 
     create(user: any): Observable<any> {
-        return this.http.post('http://localhost:8000/api/register', user)
-          .map( res => {
-            return res;
-          })
-          .catch( err => {
-            return Observable.throw(err);
-          });
+        return this.api.post(`register/${user}`, user);
     }
 
     update(user: User) {
-        return this.http.put('http://localhost:8000/api/updateua/', user, this.httpOptions).map( res => {
-            return res;
-        }).catch( err => {
-            return Observable.throw(err);
-        });
+        return this.api.raw('updateua', 'PUT', user);
     }
 
     delete(id: number) {
-        return this.http.delete('/api/users/' + id);
+        return this.api.delete(`users/${id}`);
     }
 
     validateAddress() {
-        return this.http.get('http://localhost:8000/api/validateAddress', this.httpOptions)
-            .map( res => {
-                return res;
-            }).catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get('validateAddress');
     }
 
 }

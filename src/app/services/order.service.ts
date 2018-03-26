@@ -7,16 +7,7 @@ import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class OrderService {
 
-  baseUrl = 'http://localhost:8000/api/';
-
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'Authorization': `Bearer ${localStorage.token}`
-        })
-    };
-
-  constructor(private http: HttpClient) {
+  constructor(private api: ApiProvider) {
   }
 
     private orderSubject = new Subject<any>();
@@ -24,58 +15,33 @@ export class OrderService {
     orderState = this.orderSubject.asObservable();
 
   createOrder(total: number, address_id: any) {
-      return this.http.post(this.baseUrl + 'inserto',
-          { order_status: 'Menunggu Pembayaran', total_price: total , payment_status: 'Menunggu Pembayaran',
-              shipment_address_id: address_id }, this.httpOptions)
-          .map( res => {
-              return res;
-          })
-          .catch( err => {
-              return Observable.throw(err);
-          });
+      return this.api.post('inserto',
+          { order_status: 'Waiting for payment', total_price: total , payment_status: 'Waiting Confirmation',
+              shipment_address_id: address_id });
   }
 
     initRequestOrder() {
-        this.http.get(this.baseUrl + 'view_request_order', this.httpOptions)
+        this.api.get('view_request_order')
             .subscribe(res => {
-                // console.log('from service', res);
                 this.order_data = res;
                 this.orderSubject.next(<any>{loaded: true, order_data: this.order_data});
             });
     }
 
     getRequestOrder(): Observable<any> {
-        return this.http.get(this.baseUrl + 'view_request_order', this.httpOptions)
-            .map( res => {
-                return res;
-            })
-            .catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get('view_request_order');
     }
 
     getStatusOrder(): Observable<any> {
-        return this.http.get(this.baseUrl + 'view_order', this.httpOptions)
-            .map( res => {
-                return res;
-            })
-            .catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get('view_order');
     }
 
     getOrderDetails(id: any) {
-        return this.http.get(this.baseUrl + 'view_order_items/' + id, this.httpOptions)
-            .map( res => {
-                return res;
-            })
-            .catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get(`view_order_items/${id}` + id);
     }
 
     cancelOrder(id: any) {
-        return this.http.delete(this.baseUrl + 'delete_order/' + id, this.httpOptions)
+        return this.api.delete(`delete_order/${id}`)
             .subscribe(
             res => {
                 this.initRequestOrder();
@@ -84,22 +50,10 @@ export class OrderService {
     }
 
     getShipmentAddress(id: any) {
-        return this.http.get(this.baseUrl + 'shipment_address/' + id, this.httpOptions)
-            .map( res => {
-                return res;
-            })
-            .catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get(`shipment_address/${id}`);
     }
 
     getOrderItems() {
-        return this.http.get(this.baseUrl + 'order_item', this.httpOptions)
-            .map( res => {
-                return res;
-            })
-            .catch( err => {
-                return Observable.throw(err);
-            });
+        return this.api.get('order_item');
     }
 }

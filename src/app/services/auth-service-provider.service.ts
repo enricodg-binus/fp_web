@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {NgForm} from '@angular/forms';
+import {ApiProvider} from '../libraries/api';
 
 @Injectable()
 export class AuthServiceProviderService {
 
   token = localStorage.token;
-  httpOptions;
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiProvider) { }
 
   login(username: string, password: string) {
-      return this.http.post<any>('http://localhost:8000/api/login', { email: username, password: password })
+      const data = { email: username, password: password };
+      return this.api.post('login', data, false)
           .map(user => {
               // login successful if there's a jwt token in the response
               if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('token', user.token);
-                  // { status: 'haha', token: 'token' }
                   return user;
               }
           })
@@ -30,28 +30,13 @@ export class AuthServiceProviderService {
   logout() {
       // remove user from local storage to log user out
       localStorage.removeItem('token');
-      return this.http.get('http://localhost:8000/api/logout', this.httpOptions);
+      return this.api.get('logout');
   }
 
   validateToken() {
     if (localStorage.token) {
-      this.httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type':  'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
-        })
-      };
+        return this.api.get('me');
     }
-
-    // const headers = {
-    //   'Authorization': `Bearer ${this.currentUser.token}`
-    // }
-
-
-    return this.http.get<any>('http://localhost:8000/api/me', this.httpOptions)
-        .map(user => {
-            return user;
-        });
   }
 
 }

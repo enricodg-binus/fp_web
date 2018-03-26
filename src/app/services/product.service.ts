@@ -2,53 +2,47 @@ import { Injectable } from '@angular/core';
 import {Product} from '../model/product';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {ApiProvider} from '../libraries/api';
 
 @Injectable()
 export class ProductService {
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': `Bearer ${localStorage.token}`
-    })
-  };
-
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiProvider) { }
 
   getAllProducts(link: string): Observable<any> {
     // http://localhost:8000/api/viewproduct?category=baju
-    return this.http.get<any>('http://localhost:8000/api/viewp/' + link);
+    return this.api.get(`viewp/${link}`);
   // {params: { category: link } }
     // http://localhost:8000/api/viewproduct/baju
     // return this.http.get<any>('http://localhost:8000/api/viewproduct/' + link);
   }
 
   getProductDetail(link: string): Observable<any> {
-    return this.http.get('http://localhost:8000/api/viewpd/');
+    return this.api.get('viewpd');
   }
 
   getProduct(id: any) {
-    return this.http.get('http://localhost:8000/api/product/' + id, this.httpOptions);
+    return this.api.get(`product/${id}`);
   }
 
   checkout() {
-    return this.http.post('http://localhost:8000/api/insertorder', { }, this.httpOptions);
+    return this.api.post('insertorder', { });
   }
 
   removeItem(id: any) {
-    return this.http.delete('http://localhost:8000/api/delete_item_cart/' + id, this.httpOptions);
+    return this.api.delete('delete_item_cart/${id}');
   }
 
   getVeritransURL(order_id: any) {
-    return this.http.get<any>('http://localhost:8000/api/veritrans_url/' + order_id, this.httpOptions);
+    return this.api.get(`veritrans_url/${order_id}`);
   }
 
   getPage(link: any) {
-    return this.http.get<any>(link, this.httpOptions);
+    return this.api.get(link);
   }
 
   validateQty(product_id: any, qty: number) {
-      return this.http.get('http://localhost:8000/api/validateProductQty/' + product_id + '/' + qty, this.httpOptions);
+      return this.api.get(`validateProductQty/${product_id}/${qty}`);
   }
 
 }
