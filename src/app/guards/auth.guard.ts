@@ -10,7 +10,7 @@ export class  UserGuard implements  CanActivate, CanActivateChild {
         if (isPlatformBrowser(this.platformId)) {
             if (!localStorage.getItem('token')) {
                 localStorage.clear();
-                this.router.navigate(['/']);
+                this.router.navigate(['/login']);
             }
         }
 

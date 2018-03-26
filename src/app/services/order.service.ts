@@ -37,7 +37,7 @@ export class OrderService {
     }
 
     getOrderDetails(id: any) {
-        return this.api.get(`view_order_items/${id}` + id);
+        return this.api.get(`view_order_items/${id}`);
     }
 
     cancelOrder(id: any) {
@@ -55,5 +55,9 @@ export class OrderService {
 
     getOrderItems() {
         return this.api.get('order_item');
+    }
+
+    getCompleteOrder() {
+      return this.api.get(`get_complete_order`);
     }
 }

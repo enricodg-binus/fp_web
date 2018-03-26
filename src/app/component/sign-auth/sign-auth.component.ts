@@ -21,14 +21,15 @@ export class SignAuthComponent implements OnInit {
               private alertService: AlertProviderService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
+      if(localStorage.getItem('token')){
+          this.router.navigate(['/']);
+      }
     if (this.router.url === '/register') {
       this.hideLogin = true;
     } else if (this.router.url === '/login') {
       this.hideLogin = false;
     }
 
-      // reset login status
-      this.authService.logout();
 
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -44,7 +45,7 @@ export class SignAuthComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                    window.location.reload(true);
+                    // window.location.reload(true);
                 },
                 error => {
                     console.log(error);

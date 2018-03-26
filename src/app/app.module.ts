@@ -16,7 +16,7 @@ import { StatusorderComponent } from './dashboard-user/statusorder/statusorder.c
 import {CommonModule} from '@angular/common';
 import { RequestorderComponent } from './dashboard-user/requestorder/requestorder.component';
 import { EditProfileComponent } from './dashboard-user/edit-profile/edit-profile.component';
-import { PaymentComponent } from './dashboard-user/payment/payment.component';
+import { PaymentComponent } from './dashboard-user/complete-order/complete-order.component';
 import { RequestdetailComponent } from './dashboard-user/requestorder/requestdetail/requestdetail.component';
 import {UserGuard} from './guards/auth.guard';
 import {FormsModule} from '@angular/forms';
@@ -34,6 +34,7 @@ import {DashboardModule} from './dashboard-user/dashboard.module';
 import {AlertModule} from './component/alert/alert.module';
 import {appRoutes} from './app.routing.module';
 import {RouterModule} from '@angular/router';
+import { PaymentFailComponent } from './component/payment-fail/payment-fail.component';
 
 
 @NgModule({

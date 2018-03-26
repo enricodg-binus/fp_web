@@ -17,6 +17,7 @@ import {UserGuard} from '../guards/auth.guard';
 import {AppComponent} from '../app.component';
 import {MainComponent} from './main.component';
 import {DashboardModule} from '../dashboard-user/dashboard.module';
+import {PaymentFailComponent} from './payment-fail/payment-fail.component';
 
 @NgModule({
     declarations: [

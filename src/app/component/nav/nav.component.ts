@@ -33,8 +33,6 @@ export class NavComponent implements OnInit {
     products: any[];
     private subscription: Subscription;
     total: number;
-    private error_counter: number;
-    errors: any = [];
 
     constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService,
                 private productService: ProductService, private cartService: CartService,

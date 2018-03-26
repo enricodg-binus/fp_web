@@ -3,7 +3,7 @@ import {AddAddressComponent} from './address/add-address/add-address.component';
 import {AddressComponent} from './address/address.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
-import {PaymentComponent} from './payment/payment.component';
+import {PaymentComponent} from './complete-order/complete-order.component';
 import {RequestorderComponent} from './requestorder/requestorder.component';
 import {RequestdetailComponent} from './requestorder/requestdetail/requestdetail.component';
 import {StatusorderComponent} from './statusorder/statusorder.component';
@@ -15,6 +15,7 @@ import {RouterModule} from '@angular/router';
 import {dashboardRoutes} from './dashboard.routing.module';
 import {PaymentSuccessComponent} from './payment-success/payment-success.component';
 import {ProductdetailComponent} from '../component/product/productdetail/productdetail.component';
+import {PaymentFailComponent} from '../component/payment-fail/payment-fail.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {ProductdetailComponent} from '../component/product/productdetail/product
         StatusorderComponent,
         DashboardSidebarComponent,
         PaymentSuccessComponent,
-        ProductdetailComponent
+        ProductdetailComponent,
+        PaymentFailComponent
     ],
     imports: [
         CommonModule,
@@ -46,7 +48,9 @@ import {ProductdetailComponent} from '../component/product/productdetail/product
         RequestdetailComponent,
         StatusorderComponent,
         DashboardSidebarComponent,
-        ProductdetailComponent
+        ProductdetailComponent,
+        PaymentFailComponent,
+        PaymentSuccessComponent
     ]
 })
 export class  DashboardModule { }

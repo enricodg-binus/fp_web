@@ -18,11 +18,12 @@ export class UserService {
     }
 
     create(user: any): Observable<any> {
-        return this.api.post(`register/${user}`, user);
+        return this.api.post(`register`, user);
     }
 
     update(user: User) {
-        return this.api.raw('updateua', 'PUT', user);
+        console.log(user);
+        return this.api.put('updateua', {name: user.name, phone: user.phone, email: user.email});
     }
 
     delete(id: number) {

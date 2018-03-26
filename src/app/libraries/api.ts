@@ -66,18 +66,17 @@ export class ApiProvider {
     public raw(path: any, method: string, params?: any): Observable<any> {
         switch (method) {
             case 'GET':
-                return this.http.get(path, {params: params}).map(this.extractData).catch(this.handleError);
+                return this.http.get(this.getUrl(path), {headers: this.headerInjection, params: params}).map(this.extractData).catch(this.handleError);
             case 'POST':
-                return this.http.post(path, {params: params}).map(this.extractData).catch(this.handleError);
+                return this.http.post(this.getUrl(path), {params: params}, {headers: this.headerInjection}).map(this.extractData).catch(this.handleError);
             case 'PUT':
-                return this.http.put(path, {params: params}).map(this.extractData).catch(this.handleError);
+                return this.http.put(this.getUrl(path), {params: params}, {headers: this.headerInjection}).map(this.extractData).catch(this.handleError);
         }
     }
 
     public get(path: any) {
         this.bindHeaderInjection();
         this.checkAuthorization();
-
         return this.http.get(this.getUrl(path), {headers: this.headerInjection})
             .map(this.extractData)
             .catch(this.handleError);
@@ -108,6 +107,19 @@ export class ApiProvider {
         }
 
         return this.http.post(this.getUrl(path), body, {headers: this.headerInjection})
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    public put(path: any, params: any) {
+        this.bindHeaderInjection();
+        this.checkAuthorization();
+
+        let body: any;
+
+        body = JSON.parse(JSON.stringify(params));
+
+        return this.http.put(this.getUrl(path), body, {headers: this.headerInjection})
             .map(this.extractData)
             .catch(this.handleError);
     }

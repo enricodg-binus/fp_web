@@ -10,16 +10,31 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {PaymentSuccessComponent} from '../dashboard-user/payment-success/payment-success.component';
 import {MainComponent} from './main.component';
 import {AddressComponent} from '../dashboard-user/address/address.component';
-import {PaymentComponent} from '../dashboard-user/payment/payment.component';
+import {PaymentComponent} from '../dashboard-user/complete-order/complete-order.component';
 import {StatusorderComponent} from '../dashboard-user/statusorder/statusorder.component';
 import {RequestdetailComponent} from '../dashboard-user/requestorder/requestdetail/requestdetail.component';
 import {RequestorderComponent} from '../dashboard-user/requestorder/requestorder.component';
 import {EditProfileComponent} from '../dashboard-user/edit-profile/edit-profile.component';
 import {AddAddressComponent} from '../dashboard-user/address/add-address/add-address.component';
 import {DashboardComponent} from '../dashboard-user/dashboard/dashboard.component';
+import {PaymentFailComponent} from './payment-fail/payment-fail.component';
+import {ProductdetailComponent} from './product/productdetail/productdetail.component';
 
 const routes: Routes = [
 
+    {
+        path: 'complete-order',
+        children: [
+            {
+                path: 'payment_failed',
+                component: PaymentFailComponent
+            },
+            {
+                path: 'payment_success/:id',
+                component: PaymentSuccessComponent
+            }
+        ]
+    },
     {
         path: 'login',
         component: SignAuthComponent
@@ -67,12 +82,8 @@ const routes: Routes = [
                 component: EditProfileComponent
             },
             {
-                path: 'payment',
+                path: 'complete_order',
                 component: PaymentComponent
-            },
-            {
-                path: 'payment_success/:id',
-                component: PaymentSuccessComponent
             }
         ]
     },
@@ -99,6 +110,15 @@ const routes: Routes = [
                     {
                         path: ':category_name',
                         component: CategoryResultsComponent
+                    }
+                ]
+            },
+            {
+                path: 'product',
+                children: [
+                    {
+                        path: ':product_id',
+                        component: ProductdetailComponent
                     }
                 ]
             },

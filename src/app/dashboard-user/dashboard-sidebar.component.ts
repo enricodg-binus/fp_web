@@ -19,6 +19,7 @@ export class DashboardSidebarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    // console.log(localStorage.token);
     this.getUser();
   }
 

@@ -9,11 +9,11 @@ export class AuthServiceProviderService {
 
   token = localStorage.token;
 
-  constructor(private api: ApiProvider) { }
+  constructor(private api: ApiProvider, private http: HttpClient) { }
 
   login(username: string, password: string) {
       const data = { email: username, password: password };
-      return this.api.post('login', data, false)
+      return this.api.post('login', { email: username, password: password })
           .map(user => {
               // login successful if there's a jwt token in the response
               if (user && user.token) {
@@ -34,9 +34,9 @@ export class AuthServiceProviderService {
   }
 
   validateToken() {
-    if (localStorage.token) {
-        return this.api.get('me');
-    }
+      if (localStorage.token) {
+          return this.api.get('me');
+      }
   }
 
 }

@@ -21,7 +21,7 @@ export class CartService {
     addProduct(_product: any) {
         // console.log(_product);
         this.api.post('insertc',
-            { product_id: _product.id, qty: 1, price: _product.product_price })
+            { product_id: _product, qty: 1})
             .subscribe(res => {
                 this.init();
             }, err => {
@@ -68,7 +68,7 @@ export class CartService {
 
     updateCart(product_id: any, qty: any) {
 
-        return this.api.raw('update_cart_qty', 'PUT', { product_id: product_id, qty: qty});
+        return this.api.put('update_cart_qty',  { product_id: product_id, qty: qty});
     }
 
 }

@@ -7,9 +7,9 @@
         <a class="card">
           <div class="thumb" [style.background-image]="'url(' + product_data.product_img + ')'"></div>
           <article>
-            <h4>{{ product_data.product_name }}</h4>
-            <p>{{ product_data.product_description }} <br>Quantity: {{ product_data.product_qty }}<br>Item sold: {{ product_data.product_sold }}</p>
-            <span>{{ product_data.product_price }}</span>
+            <h4><strong>{{ product_data.product_name }}</strong></h4>
+            <p style="font-size: 12px;">{{ product_data.product_description }} <br>Quantity: {{ product_data.product_qty }}<br>Item sold: {{ product_data.product_sold }}</p>
+            <span style="font-size: 18px">{{ product_data.product_price | currency : 'Rp' : 3}}</span>
           </article>
         </a>
       </div>
@@ -17,13 +17,13 @@
     <div class="back">
       <div class="item-4">
         <a class="card">
-          <div data-toggle="modal" data-target="#prod_detail" >
+          <div data-toggle="modal" data-target="#prod_detail" routerLink="/product/{{ product_data.id }}">
             <div class="thumb" [style.background-image]="'url(' + product_data.product_img + ')'"></div>
             <article>
               <p *ngFor="let productdetail of product_data.productdetails">{{ productdetail.key }}: {{ productdetail.value }}<br></p>
             </article>
           </div>
-          <button type="submit" (click)="addToCart(product_data.id,1,product_data.product_price);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
+          <button type="submit" (click)="addToCart(product_data.id);" class="btn btn-danger" style="border-radius: 0px;">Add to cart</button>
         </a>
       </div>
     </div>

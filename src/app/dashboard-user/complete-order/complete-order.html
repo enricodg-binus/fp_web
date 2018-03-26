@@ -8,26 +8,21 @@
         <div class="content table-responsive table-full-width">
           <table class="table table-hover table-striped">
             <thead style="font-size: 12px; ">
-            <th>NO</th>
             <th>ID Order</th>
             <th>Total</th>
             <th>Date</th>
-            <th>Batas Transfer</th>
-            <th>Status</th>
+            <th>Order Status</th>
             <th>Konfirmasi</th>
             </thead>
-            <tbody *ngIf="payment_data">
-            <tr *ngFor="let payment of payment_data">
-              <td>{{ payment.id }}</td>
-              <td>{{ payment.id }}</td>
-              <td>{{ payment.total_price }}</td>
-              <td></td>
-              <td>{{ payment.order_date }}</td>
-              <td>{{ payment.max_payment }}</td>
-              <td>{{ payment.order_status }}</td>
+            <tbody *ngIf="order_data">
+            <tr *ngFor="let data of order_data">
+              <td>{{ data.id }}</td>
+              <td>{{ data.total_price }}</td>
+              <td>{{ data.order_date }}</td>
+              <td>{{ data.order_status }}</td>
               <td>
-                <button class="btn btn-success" routerLink="request_detail">Details</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-success" routerLink="/dashboard/request_detail">Details</button>
+                <button class="btn btn-danger">Complain / RMA</button>
               </td>
             </tr>
             </tbody>

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {UserGuard} from '../guards/auth.guard';
 import {AddressComponent} from './address/address.component';
-import {PaymentComponent} from './payment/payment.component';
+import {PaymentComponent} from './complete-order/complete-order.component';
 import {DashboardSidebarComponent} from './dashboard-sidebar.component';
 import {StatusorderComponent} from './statusorder/statusorder.component';
 import {RequestdetailComponent} from './requestorder/requestdetail/requestdetail.component';
@@ -51,7 +51,7 @@ export const dashboardRoutes = [
                 component: EditProfileComponent
             },
             {
-                path: 'payment',
+                path: 'complete-order',
                 component: PaymentComponent
             }
         ]

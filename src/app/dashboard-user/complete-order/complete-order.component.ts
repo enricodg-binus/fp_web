@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardProviderService} from '../../services/dashboard-provider.service';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-payment',
-  templateUrl: './payment.component.html',
+  templateUrl: './complete-order.html',
   styleUrls: ['../dashboard-sidebar.component.css']
 })
 export class PaymentComponent implements OnInit {
 
-  payment_data: any;
+  order_data: any;
 
-  constructor(private dashboardService: DashboardProviderService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.getPayment();
+    this.getOrder();
   }
 
-  getPayment() {
-    this.dashboardService.getPaymentInfo().subscribe(res => this.payment_data = res);
+  getOrder() {
+    this.orderService.getCompleteOrder();
   }
 
 }
