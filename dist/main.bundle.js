@@ -3319,7 +3319,7 @@ var UserService = /** @class */ (function () {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: true,
-    API_URL: 'https://api.enricodg.me'
+    API_URL: 'https://api.enricodg.me/api'
 };
 
 
@@ -3338,7 +3338,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-if (__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].production) {
+if (!__WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].production) {
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* enableProdMode */])();
 }
 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["i" /* platformBrowser */]().bootstrapModuleFactory(__WEBPACK_IMPORTED_MODULE_2__app_app_module_ngfactory__["a" /* AppModuleNgFactory */])
