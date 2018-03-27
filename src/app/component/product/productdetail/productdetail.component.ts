@@ -11,7 +11,7 @@ import {CartService} from '../../../services/cart.service';
 export class ProductdetailComponent implements OnInit {
 
     link: any;
-    product_data = {};
+    product_data: any = {};
 
     constructor(private router: ActivatedRoute, private productService: ProductService,
                 private cartService: CartService) {
