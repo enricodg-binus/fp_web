@@ -3,11 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {ApiProvider} from '../libraries/api';
+import {AlertProviderService} from './alert-provider.service';
 
 @Injectable()
 export class CartService {
 
-    constructor(private api: ApiProvider) {
+    constructor(private api: ApiProvider, private alertService: AlertProviderService) {
         // console.log('constructor', localStorage.token);
         if (localStorage.getItem('token')) {
             this.init();
@@ -20,18 +21,13 @@ export class CartService {
 
     addProduct(_product: any) {
         // console.log(_product);
-        this.api.post('insertc',
-            { product_id: _product, qty: 1})
-            .subscribe(res => {
-                this.init();
-            }, err => {
-                window.alert('Please login to buy our products');
-            });
+        return this.api.post('insertc',
+            { product_id: _product, qty: 1});
         // console.log(this.CartState);
     }
 
     removeProduct(id: any) {
-        this.api.delete(`delete_item_cart/${id}`)
+        return this.api.delete(`delete_item_cart/${id}`)
             .subscribe( res => {
                 this.init();
             });

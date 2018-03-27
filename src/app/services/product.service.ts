@@ -45,4 +45,8 @@ export class ProductService {
       return this.api.get(`validateProductQty/${product_id}/${qty}`);
   }
 
+  getTopProduct() {
+    return this.api.get('view_top_product');
+  }
+
 }

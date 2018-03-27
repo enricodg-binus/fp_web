@@ -118,6 +118,12 @@ a {
   margin-bottom: 10px;
 }
 
+.heading {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
 .welcome h1 {
   font-size: 35px;
   font-weight: bold;
@@ -141,7 +147,8 @@ a {
   right: 20px;
   background: greenyellow;
   width: 400px;
-  height: 20px;
+  height: 60px;
+
   z-index: 999999;
   color: black;
   border: 3px solid limegreen;

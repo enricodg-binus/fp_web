@@ -9,6 +9,7 @@ import {DashboardProviderService} from '../services/dashboard-provider.service';
 import {ProductService} from '../services/product.service';
 import {CartService} from '../services/cart.service';
 import {OrderService} from '../services/order.service';
+import {CurrencyPipe} from '@angular/common';
 
 @NgModule()
 export class ProviderModule {
@@ -25,7 +26,8 @@ export class ProviderModule {
         DashboardProviderService,
         ProductService,
         CartService,
-        OrderService
+        OrderService,
+        CurrencyPipe
       ]
     };
   }

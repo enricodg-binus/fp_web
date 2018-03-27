@@ -9,7 +9,8 @@ import { AlertProviderService } from '../../services/alert-provider.service';
 })
 
 export class AlertComponent implements OnInit {
-    message: any = {};
+    message: any = {text: '', type: ''};
+    test = 'notify';
 
     constructor(private alertService: AlertProviderService) { }
 
@@ -20,13 +21,15 @@ export class AlertComponent implements OnInit {
     getMessage() {
       this.alertService.getMessage().subscribe(message => {
 
-        // if (this.id == this.message.id) {
-        //     this.message = message;
-        // }
-
-        setTimeout(() => {
-            this.message = {};
-        }, 2000);
+          // if (this.id == this.message.id) {
+          //     this.message = message;
+          // }
+          this.message = message;
+          // if (this.message.type === this.test) {
+          //     setTimeout(() => {
+          //         this.alertService.reset();
+          //     }, 2000);
+          // }
       });
     }
 }

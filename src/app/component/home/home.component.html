@@ -14,12 +14,24 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="band text-center">
-        <!--<app-item></app-item>-->
+  <div class="back">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row content-wrap">
+          <div class="heading">
+            <h2>Top Products</h2>
+            <hr class="welcome-hr">
+          </div>
+        </div>
       </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="band text-center">
+          <app-item *ngFor="let product of product_data.data;" [product_data]="product"></app-item>
+        </div>
+      </div>
     </div>
   </div>
 </div>

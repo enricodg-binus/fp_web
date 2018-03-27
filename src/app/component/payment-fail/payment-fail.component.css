@@ -7,7 +7,7 @@ html {
 body {
 
 
-    background-color:#395D6D;
+    background-color: black/*#395D6D*/;
     margin:auto;
 }
 
@@ -23,7 +23,7 @@ body {
 .text {
 
 
-    width:30%;
+    /*width:30%;*/
     text-align: center;
     z-index: 0;
     position:absolute;

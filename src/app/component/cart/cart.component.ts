@@ -4,8 +4,6 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 import {CartService} from '../../services/cart.service';
 import {Subscription} from 'rxjs/Subscription';
 import {OrderService} from '../../services/order.service';
-import {AlertProviderService} from '../../services/alert-provider.service';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-cart',
@@ -18,6 +16,7 @@ export class CartComponent implements OnInit {
     products: any[];
     private subscription: Subscription;
     update_qty: any;
+    formattedAmount: any;
 
   constructor(private productService: ProductService, private authService: AuthServiceProviderService, private cartService: CartService,
               private orderService: OrderService) { }
@@ -37,5 +36,4 @@ export class CartComponent implements OnInit {
   updateCart(cart_id: any, qty: any) {
       this.cartService.updateCart(cart_id, qty).subscribe( res => res);
   }
-
 }

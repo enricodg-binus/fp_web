@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><img class="logo-enter" src="" style="zoom: 87%; margin-top:-20px;"></a>
+        <a class="navbar-brand sidebar" href="#"><img class="logo-enter logo" src="" style="zoom: 87%; margin-top:-20px;"></a>
 
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
@@ -35,7 +35,7 @@
                   <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-animations="fadeInDown">
                     Kategori <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" data-hover="dropdown">
+                  <ul class="dropdown-menu" data-hover="dropdown" data-animations="fadeInDown">
                     <!--<li class="dropdown" *ngFor="let category of categories_data">-->
                         <!--<a routerLink="/category/{{category.category_name}}">{{category.category_name}}</a>-->
                         <!--<ul class="dropdown-menu" data-animations="fadeInLeft">-->
@@ -43,7 +43,8 @@
                         <!--</ul>-->
                     <!--</li>-->
                     <li class="dropdown" *ngFor="let category of categories_data" id="{{ category.id }}">
-                        <a *ngIf="category.children" routerLink="/category/{{category.category_name}}" (mouseenter)="toggleDropdown(category.id)" (mouseleave)="toggleDropdown(category.id)">{{ category.category_name}}</a>
+                        <a *ngIf="category.children" routerLink="/category/{{category.category_name}}" (mouseenter)="toggleDropdown(category.id)" >{{ category.category_name}}</a>
+                        <!--(mouseleave)="toggleDropdown(category.id)"-->
                         <a *ngIf="!category.children" routerLink="/category/{{category.category_name}}">{{category.category_name}}</a>
                         <ul class="dropdown-menu">
                             <li *ngFor="let children of category.children">
@@ -52,21 +53,21 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                      <a href="#">One more dropdown</a>
-                      <ul class="dropdown-menu" data-animations="fadeInLeft">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li class="dropdown">
-                          <a href="#">One more dropdown</a>
-                          <ul class="dropdown-menu">
-                            ...
-                          </ul>
-                        </li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                      </ul>
-                    </li>
+                    <!--<li class="dropdown">-->
+                      <!--<a href="#">One more dropdown</a>-->
+                      <!--<ul class="dropdown-menu" data-animations="fadeInLeft">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                        <!--<li><a href="#">Another action</a></li>-->
+                        <!--<li class="dropdown">-->
+                          <!--<a href="#">One more dropdown</a>-->
+                          <!--<ul class="dropdown-menu">-->
+                            <!--...-->
+                          <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <!--<li><a href="#">Separated link</a></li>-->
+                      <!--</ul>-->
+                    <!--</li>-->
                   </ul>
                 </div>
             </span>
