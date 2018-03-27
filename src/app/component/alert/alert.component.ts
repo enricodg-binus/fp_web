@@ -19,7 +19,14 @@ export class AlertComponent implements OnInit {
 
     getMessage() {
       this.alertService.getMessage().subscribe(message => {
-        this.message = message;
+
+        // if (this.id == this.message.id) {
+        //     this.message = message;
+        // }
+
+        setTimeout(() => {
+            this.message = {};
+        }, 2000);
       });
     }
 }

@@ -34,7 +34,7 @@ export class RequestorderComponent implements OnInit {
       this.productService.getVeritransURL(order_id).subscribe(
           res => {
               this.link = res;
-              window.open(this.link.url);
+              window.location.href = this.link.url;
           }
       );
   }

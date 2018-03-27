@@ -9,7 +9,7 @@ import {OrderService} from '../../services/order.service';
 })
 export class StatusorderComponent implements OnInit {
 
-  status_order: any
+  status_order: any;
 
   constructor(private orderService: OrderService) { }
 
@@ -18,7 +18,12 @@ export class StatusorderComponent implements OnInit {
   }
 
   displayStatusOrder() {
-    this.orderService.getStatusOrder().subscribe(res => this.status_order = res);
+    this.orderService.getStatusOrder().subscribe(res => {
+      this.status_order = res;
+
+      console.log(this.status_order);
+    });
+
   }
 
 }

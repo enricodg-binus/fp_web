@@ -23,7 +23,7 @@ export class ItemComponent implements OnInit {
   }
 
   addToCart(id: any) {
-
+    this.alertService.notify('sfd',false);
     this.cartService.addProduct(id);
     console.log(id);
     // this.productService.addToCart(id, qty, price).subscribe(

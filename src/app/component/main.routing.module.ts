@@ -24,13 +24,14 @@ const routes: Routes = [
 
     {
         path: 'complete-order',
+        canActivate: [UserGuard],
         children: [
             {
                 path: 'payment_failed',
                 component: PaymentFailComponent
             },
             {
-                path: 'payment_success/:id',
+                path: 'payment_success',
                 component: PaymentSuccessComponent
             }
         ]

@@ -14,6 +14,8 @@ import {AlertProviderService} from '../../services/alert-provider.service';
 import {OrderService} from '../../services/order.service';
 import {UserService} from '../../services/user.service';
 
+declare let jQuery;
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -84,6 +86,7 @@ export class NavComponent implements OnInit {
         if (localStorage.getItem('token')) {
             this.checkAuth();
         }
+        this.getCategories();
     }
 
     getCategories() {
@@ -91,6 +94,10 @@ export class NavComponent implements OnInit {
             categories_data => {
                 this.categories_data = categories_data;
             });
+    }
+
+    toggleDropdown(id) {
+        jQuery('#' + id).toggleClass('open');
     }
 
     search(form: NgForm): void {
