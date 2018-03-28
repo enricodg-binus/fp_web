@@ -8,20 +8,22 @@ import {ProductService} from '../../services/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  product_data: any = {};
+  product_data: any;
+  obj: any = {};
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
+      this.getMostPopularProduct();
   }
 
   getMostPopularProduct() {
     this.productService.getTopProduct().subscribe(
         res => {
-          this.product_data = res;
-        }, err => {
-        }
-    );
-  }
 
+            this.obj = res;
+            console.log(this.obj.data);
+          this.product_data = this.obj.data;
+        });
+  }
 }

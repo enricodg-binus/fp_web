@@ -9,7 +9,7 @@ import { AlertProviderService } from '../../services/alert-provider.service';
 })
 
 export class AlertComponent implements OnInit {
-    message: any = {text: '', type: ''};
+    message: any = {};
     test = 'notify';
 
     constructor(private alertService: AlertProviderService) { }

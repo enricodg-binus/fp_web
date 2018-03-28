@@ -3,7 +3,6 @@ import {AuthServiceProviderService} from '../../services/auth-service-provider.s
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertProviderService} from '../../services/alert-provider.service';
 import {UserService} from '../../services/user.service';
-import {User} from '../../model/user';
 import {Location} from '@angular/common';
 
 @Component({
