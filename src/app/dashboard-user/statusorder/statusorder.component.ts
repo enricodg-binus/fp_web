@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardProviderService} from '../../services/dashboard-provider.service';
+import {DashboardProviderService} from '../../services/dashboard.service';
 import {OrderService} from '../../services/order.service';
 
 @Component({

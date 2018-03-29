@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AlertProviderService } from '../../services/alert-provider.service';
+import { AlertProviderService } from '../../services/alert.service';
 
 @Component({
     moduleId: module.id,
@@ -9,10 +9,13 @@ import { AlertProviderService } from '../../services/alert-provider.service';
 })
 
 export class AlertComponent implements OnInit {
-    message: any = {};
+    message: any = {type: '', text: ''};
     test = 'notify';
 
-    constructor(private alertService: AlertProviderService) { }
+    constructor(private alertService: AlertProviderService) {
+        this.message.type = {};
+        this.message.text = {};
+    }
 
     ngOnInit() {
         this.getMessage();

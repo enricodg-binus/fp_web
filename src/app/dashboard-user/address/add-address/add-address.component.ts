@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardProviderService} from '../../../services/dashboard-provider.service';
-import {AlertProviderService} from '../../../services/alert-provider.service';
+import {DashboardProviderService} from '../../../services/dashboard.service';
+import {AlertProviderService} from '../../../services/alert.service';
 import {Router} from '@angular/router';
 
 @Component({

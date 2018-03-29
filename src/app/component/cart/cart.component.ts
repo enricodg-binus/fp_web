@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
-import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {AuthServiceProviderService} from '../../services/auth.service';
 import {CartService} from '../../services/cart.service';
 import {Subscription} from 'rxjs/Subscription';
 import {OrderService} from '../../services/order.service';

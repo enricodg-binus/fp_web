@@ -1,11 +1,11 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ApiProvider } from './api';
-import {NavServiceProviderService} from '../services/nav-service-provider.service';
-import {AuthServiceProviderService} from '../services/auth-service-provider.service';
+import {NavService} from '../services/nav.service';
+import {AuthServiceProviderService} from '../services/auth.service';
 import {HttpClientModule} from '@angular/common/http';
-import {AlertProviderService} from '../services/alert-provider.service';
+import {AlertProviderService} from '../services/alert.service';
 import {UserService} from '../services/user.service';
-import {DashboardProviderService} from '../services/dashboard-provider.service';
+import {DashboardProviderService} from '../services/dashboard.service';
 import {ProductService} from '../services/product.service';
 import {CartService} from '../services/cart.service';
 import {OrderService} from '../services/order.service';
@@ -18,7 +18,7 @@ export class ProviderModule {
       ngModule: ProviderModule,
       providers: [
         ApiProvider,
-        NavServiceProviderService,
+        NavService,
         AuthServiceProviderService,
         HttpClientModule,
         AlertProviderService,

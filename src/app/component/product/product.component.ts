@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
 import {ProductService} from '../../services/product.service';
-import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {AuthServiceProviderService} from '../../services/auth.service';
 import {CartService} from '../../services/cart.service';
-import {AlertProviderService} from '../../services/alert-provider.service';
+import {AlertProviderService} from '../../services/alert.service';
 
 @Component({
   selector: 'app-item',
@@ -33,7 +33,7 @@ export class ItemComponent implements OnInit {
             return true;
         }, err => {
             window.alert('Please login to buy our products');
-            this.alertService.notify(err, false);
+            this.alertService.notify(err.error, false);
             setTimeout(() => {
                          this.alertService.reset();
                      }, 2000);

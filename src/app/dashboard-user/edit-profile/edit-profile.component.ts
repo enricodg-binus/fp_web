@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardProviderService} from '../../services/dashboard-provider.service';
+import {DashboardProviderService} from '../../services/dashboard.service';
 import {User} from '../../model/user';
 import {UserService} from '../../services/user.service';
-import {AlertProviderService} from '../../services/alert-provider.service';
-import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {AlertProviderService} from '../../services/alert.service';
+import {AuthServiceProviderService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-edit-profile',

@@ -6,7 +6,7 @@ import {Product} from '../../model/product';
 @Component({
   selector: 'app-category-results',
   templateUrl: './category-results.component.html',
-  styleUrls: ['../home/home.component.scss']
+  styleUrls: ['../../../assets/css/default-product.scss']
 })
 export class CategoryResultsComponent implements OnInit {
 

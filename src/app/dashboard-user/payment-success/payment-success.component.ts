@@ -8,14 +8,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PaymentSuccessComponent implements OnInit {
   queryParams = {};
-  test:any = {}
+  test: any = {}
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
       this.test = params;
-      console.log(this.test.params);
+      // console.log(params.get('order_id'));
     });
   }
 

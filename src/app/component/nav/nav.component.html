@@ -1,6 +1,6 @@
 <!-- Header Section -->
-<nav class="navbar navbar-default">
-<div class="container-fluid" id="navbar" style="padding-bottom: 0; margin-bottom: 0">
+<nav class="">
+<div class="container-fluid" id="navbar">
   <div class="row top-row">
     <div class=" col-md-12 col-ongkir col-sm-12" style="margin-top:1%;">
       <div class="navbar-header">
@@ -71,7 +71,7 @@
                   </ul>
                 </div>
             </span>
-            <input id="keyword-search" type="text" class="form-control input-md" placeholder="Cari.." ngModel name="searchTerm">
+            <input id="keyword-search" type="text" class="form-control input-md" placeholder="Cari.." [(ngModel)]="searchTerm" name="searchTerm">
             <span class="input-group-btn">
                 <button class="btn btn-success btn-md" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
@@ -137,3 +137,4 @@
         </div>
     </div>
 </div>
+<!--<div class="godown-60" id="godown"></div>-->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {AuthServiceProviderService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlertProviderService} from '../../services/alert-provider.service';
+import {AlertProviderService} from '../../services/alert.service';
 import {UserService} from '../../services/user.service';
 import {Location} from '@angular/common';
 

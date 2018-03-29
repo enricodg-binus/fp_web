@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../model/user';
-import {DashboardProviderService} from '../services/dashboard-provider.service';
+import {DashboardProviderService} from '../services/dashboard.service';
 import {UserService} from '../services/user.service';
-import {AuthServiceProviderService} from '../services/auth-service-provider.service';
-import {AlertProviderService} from '../services/alert-provider.service';
+import {AuthServiceProviderService} from '../services/auth.service';
+import {AlertProviderService} from '../services/alert.service';
 import {Router} from '@angular/router';
 
 @Component({

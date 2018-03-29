@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Categories } from '../../model/categories';
-import { NavServiceProviderService } from '../../services/nav-service-provider.service';
+import { NavService } from '../../services/nav.service';
 import {Observable} from 'rxjs/Observable';
-import {AuthServiceProviderService} from '../../services/auth-service-provider.service';
+import {AuthServiceProviderService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {NgForm} from '@angular/forms';
@@ -10,7 +10,7 @@ import {User} from '../../model/user';
 import {ProductService} from '../../services/product.service';
 import {Subscription} from 'rxjs/Subscription';
 import {CartService} from '../../services/cart.service';
-import {AlertProviderService} from '../../services/alert-provider.service';
+import {AlertProviderService} from '../../services/alert.service';
 import {OrderService} from '../../services/order.service';
 import {UserService} from '../../services/user.service';
 
@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
     private subscription: Subscription;
     total: number;
 
-    constructor(private navService: NavServiceProviderService, private authService: AuthServiceProviderService,
+    constructor(private navService: NavService, private authService: AuthServiceProviderService,
                 private productService: ProductService, private cartService: CartService,
                 private router: Router, private alertService: AlertProviderService, private orderService: OrderService,
                 private userService: UserService) {
@@ -105,6 +105,7 @@ export class NavComponent implements OnInit {
             return;
         }
         this.searchTerm = form.value.searchTerm;
+        this.router.navigate(['/search'], { queryParams: { keyword: this.searchTerm }});
         this.navService.searchEntries(this.searchTerm)
             .subscribe(results => {
                 this.results = results;

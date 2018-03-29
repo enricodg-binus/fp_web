@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {ApiProvider} from '../libraries/api';
-import {AlertProviderService} from './alert-provider.service';
+import {AlertProviderService} from './alert.service';
 
 @Injectable()
 export class CartService {

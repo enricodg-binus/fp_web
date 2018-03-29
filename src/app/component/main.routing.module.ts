@@ -19,6 +19,7 @@ import {AddAddressComponent} from '../dashboard-user/address/add-address/add-add
 import {DashboardComponent} from '../dashboard-user/dashboard/dashboard.component';
 import {PaymentFailComponent} from './payment-fail/payment-fail.component';
 import {ProductdetailComponent} from './product/productdetail/productdetail.component';
+import {SearchResultComponent} from './search-result/search-result.component';
 
 const routes: Routes = [
 
@@ -126,6 +127,10 @@ const routes: Routes = [
             {
                 path: 'payment_success',
                 component: PaymentSuccessComponent
+            },
+            {
+                path: 'search',
+                component: SearchResultComponent
             }
         ]
     },

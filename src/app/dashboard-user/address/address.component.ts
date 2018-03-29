@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardProviderService} from '../../services/dashboard-provider.service';
+import {DashboardProviderService} from '../../services/dashboard.service';
 import {Observable} from 'rxjs/Observable';
-import {AlertProviderService} from '../../services/alert-provider.service';
+import {AlertProviderService} from '../../services/alert.service';
 import {Router} from '@angular/router';
 
 @Component({
