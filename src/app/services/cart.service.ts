@@ -1,17 +1,20 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Inject, Injectable, OnInit, PLATFORM_ID} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {ApiProvider} from '../libraries/api';
 import {AlertProviderService} from './alert.service';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class CartService {
 
-    constructor(private api: ApiProvider, private alertService: AlertProviderService) {
+    constructor(private api: ApiProvider, private alertService: AlertProviderService, @Inject(PLATFORM_ID) private platformId: Object) {
         // console.log('constructor', localStorage.token);
-        if (localStorage.getItem('token')) {
-            this.init();
+        if(isPlatformBrowser(this.platformId)) {
+            if (localStorage.getItem('token')) {
+                this.init();
+            }
         }
     }
 

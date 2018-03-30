@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {AuthServiceProviderService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertProviderService} from '../../services/alert.service';
 import {UserService} from '../../services/user.service';
-import {Location} from '@angular/common';
+import {isPlatformBrowser, Location} from '@angular/common';
 
 @Component({
   selector: 'app-sign-auth',
@@ -17,11 +17,14 @@ export class SignAuthComponent implements OnInit {
   returnUrl: string;
 
   constructor(private userService: UserService, private authService: AuthServiceProviderService, private router: Router,
-              private alertService: AlertProviderService, private route: ActivatedRoute, private location: Location) { }
+              private alertService: AlertProviderService, private route: ActivatedRoute, private location: Location,
+              @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
-      if (localStorage.getItem('token')){
-          this.router.navigate(['/']);
+      if (isPlatformBrowser(this.platformId)) {
+          if (localStorage.getItem('token')) {
+              this.router.navigate(['/']);
+          }
       }
     if (this.router.url === '/register') {
       this.hideLogin = true;

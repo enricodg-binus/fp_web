@@ -10,6 +10,7 @@ import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class ApiProvider {
+    API_URL = 'https://api.enricodg.me/api';
     private headerInjection: any;
     constructor(@Inject(PLATFORM_ID) private platformId: Object,
                 private http: HttpClient,
@@ -26,7 +27,7 @@ export class ApiProvider {
     }
 
     private getUrl(path: any) {
-        return `${environment.API_URL}/${path}`;
+        return `${this.API_URL}/${path}`;
     }
 
     private extractData(res: Response) {

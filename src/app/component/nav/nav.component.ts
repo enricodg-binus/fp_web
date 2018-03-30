@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import { Categories } from '../../model/categories';
 import { NavService } from '../../services/nav.service';
 import {Observable} from 'rxjs/Observable';
@@ -13,6 +13,7 @@ import {CartService} from '../../services/cart.service';
 import {AlertProviderService} from '../../services/alert.service';
 import {OrderService} from '../../services/order.service';
 import {UserService} from '../../services/user.service';
+import {isPlatformBrowser} from '@angular/common';
 
 declare let jQuery;
 
@@ -39,7 +40,7 @@ export class NavComponent implements OnInit {
     constructor(private navService: NavService, private authService: AuthServiceProviderService,
                 private productService: ProductService, private cartService: CartService,
                 private router: Router, private alertService: AlertProviderService, private orderService: OrderService,
-                private userService: UserService) {
+                private userService: UserService, @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     checkAuth() {
@@ -83,10 +84,12 @@ export class NavComponent implements OnInit {
 
     ngOnInit() {
         // this.getCategories();
-        if (localStorage.getItem('token')) {
-            this.checkAuth();
+        if (isPlatformBrowser(this.platformId)) {
+            if (localStorage.getItem('token')) {
+                this.checkAuth();
+            }
+            this.getCategories();
         }
-        this.getCategories();
     }
 
     getCategories() {
