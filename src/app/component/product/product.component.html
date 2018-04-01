@@ -9,7 +9,7 @@
           <article>
             <h4><strong>{{ product_data.product_name }}</strong></h4>
             <p style="font-size: 12px;">{{ product_data.product_description }} <br>Quantity: {{ product_data.product_qty }}<br>Terjual: {{ product_data.product_sold }}</p>
-            <span style="font-size: 18px">{{ product_data.product_price | currency : 'Rp' : 3}}</span>
+            <span style="font-size: 18px">{{ product_data.product_price | currency : 'Rp ' : 3}}</span>
           </article>
         </a>
       </div>

@@ -13,20 +13,16 @@ export class DashboardProviderService {
     return this.api.get('me');
   }
 
-  getPaymentInfo(): Observable<any> {
-    return this.api.get('viewpi');
-  }
-
   addAddress(name: string, phone: string, address: string) {
-    return this.api.post('insertuadd', { name: name, phone: phone, address: address });
+    return this.api.post('address', { name: name, phone: phone, address: address });
   }
 
   getUserAddress(): Observable<any> {
-    return this.api.get('viewuadd');
+    return this.api.get('address');
   }
 
   deleteAddress(id: any) {
-    return this.api.delete(`deleteuadd/${id}`);
+    return this.api.delete(`address/${id}`);
   }
 
 }

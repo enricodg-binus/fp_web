@@ -21,7 +21,7 @@ export class StatusorderComponent implements OnInit {
     this.orderService.getStatusOrder().subscribe(res => {
       this.status_order = res;
 
-      console.log(this.status_order);
+      // console.log(this.status_order);
     });
 
   }

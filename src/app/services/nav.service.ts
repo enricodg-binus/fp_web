@@ -11,7 +11,7 @@ export class NavService {
   constructor(private http: HttpClient, private  api: ApiProvider) { }
 
   getCategories(): Observable<any> {
-    return this.api.get('viewcat');
+    return this.api.get('category');
   }
 
   searchEntries(term) {

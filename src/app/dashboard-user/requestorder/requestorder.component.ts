@@ -24,7 +24,7 @@ export class RequestorderComponent implements OnInit {
     this.orderService.getRequestOrder().subscribe(res => this.request_order_data = res);
       this.subscription = this.orderService.orderState
           .subscribe((state: any) => {
-              console.log(state.order_data);
+              // console.log(state.order_data);
               this.request_order_data = state.order_data;
               // console.log(this.products);
           });
@@ -35,6 +35,9 @@ export class RequestorderComponent implements OnInit {
           res => {
               this.link = res;
               window.location.href = this.link.url;
+          },
+          err => {
+              window.alert(err.error);
           }
       );
   }

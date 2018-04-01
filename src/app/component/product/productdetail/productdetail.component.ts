@@ -38,7 +38,7 @@ export class ProductdetailComponent implements OnInit {
     addToCart(id: any) {
         this.cartService.addProduct(id).subscribe(res => {
             this.cartService.init();
-            console.log(res);
+            // console.log(res);
             this.alertService.notify(res, false);
             setTimeout(() => {
                 this.alertService.reset();

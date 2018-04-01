@@ -83,13 +83,8 @@ export class NavComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.getCategories();
-        if (isPlatformBrowser(this.platformId)) {
-            if (localStorage.getItem('token')) {
-                this.checkAuth();
-            }
-            this.getCategories();
-        }
+        this.getCategories();
+        this.checkAuth();
     }
 
     getCategories() {
@@ -112,8 +107,13 @@ export class NavComponent implements OnInit {
         this.navService.searchEntries(this.searchTerm)
             .subscribe(results => {
                 this.results = results;
-                console.log(this.searchTerm);
+                // console.log(this.searchTerm);
             });
+    }
+
+    navigateTo(name: any) {
+        this.router.navigate([`/category/${name}`]);
+        window.location.reload();
     }
 
     addAddress() {
@@ -149,7 +149,7 @@ export class NavComponent implements OnInit {
                 );
                 return res;
             }, err => {
-                console.log(err);
+                // console.log(err);
                 this.alertService.error(err, false);
             });
     }

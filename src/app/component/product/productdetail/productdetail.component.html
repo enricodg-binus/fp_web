@@ -10,15 +10,15 @@
   <!--</div>-->
 <!--</div>-->
 
-<div class="container">
+<div class="container-fluid" style="overflow: hidden; padding: 0; margin: 0">
     <div class="band">
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="clr-green" style="font-size: 24px; padding-left: 10%"><strong>{{ product_data.product_name }}</strong></h2><hr>
+            <div class="col-md-12 text-center">
+                <h2 class="clr-green" style="font-size: 24px;"><strong>{{ product_data.product_name }}</strong></h2><hr>
             </div>
         </div>
         <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 text-center">
                   <img src="{{ product_data.product_img }}" class="img-product">
               </div>
               <div class="col-md-4">
@@ -30,11 +30,12 @@
                   <div class="box">
                       <p class="clr-green">Product Description</p><hr>
                       <p *ngFor="let productdetail of product_data.productdetails">{{ productdetail.key }}: {{ productdetail.value }}<br></p>
+                      <p>{{ product_data.product_description }}</p>
                   </div>
               </div>
               <div class="col-md-4 text-center">
                   <div class="box">
-                      <p class="price-tag">{{ product_data.product_price | currency : 'Rp' : 0 }}</p><br>
+                      <p class="price-tag">{{ product_data.product_price | currency : 'Rp ' : 0 }}</p><br>
                       <p>Update terakhir: {{ product_data.updated_at }}</p>
                   </div>
                     <button class="btn btn-danger" (click)="addToCart(product_data.id)" style="width: 100%; font-size: 18px"><i class="fa fa-shopping-cart"></i> Add to Cart</button>

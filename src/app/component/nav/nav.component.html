@@ -43,12 +43,12 @@
                         <!--</ul>-->
                     <!--</li>-->
                     <li class="dropdown" *ngFor="let category of categories_data" id="{{ category.id }}">
-                        <a *ngIf="category.children" routerLink="/category/{{category.category_name}}" (mouseenter)="toggleDropdown(category.id)" >{{ category.category_name}}</a>
+                        <a *ngIf="category.children" (click)="navigateTo(category.category_name)" (mouseenter)="toggleDropdown(category.id)" >{{ category.category_name}}</a>
                         <!--(mouseleave)="toggleDropdown(category.id)"-->
-                        <a *ngIf="!category.children" routerLink="/category/{{category.category_name}}">{{category.category_name}}</a>
+                        <a *ngIf="!category.children">{{category.category_name}}</a>
                         <ul class="dropdown-menu">
                             <li *ngFor="let children of category.children">
-                                <a href="#">{{ children.category_name }}</a>
+                                <a (click)="navigateTo(children.category_name)">{{ children.category_name }}</a>
                             </li>
                         </ul>
                     </li>
@@ -71,9 +71,11 @@
                   </ul>
                 </div>
             </span>
-            <input id="keyword-search" type="text" class="form-control input-md" placeholder="Cari.." [(ngModel)]="searchTerm" name="searchTerm">
+
+              <ng-ais-search-box placeholder="Cari.."></ng-ais-search-box>
+            <!--<input id="keyword-search" type="text" class="form-control input-md" placeholder="Cari.." [(ngModel)]="searchTerm" name="searchTerm">-->
             <span class="input-group-btn">
-                <button class="btn btn-success btn-md" type="submit">
+                <button class="btn btn-success btn-md" type="submit" routerLink="/search">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
             </span>

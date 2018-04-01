@@ -11,14 +11,14 @@ export class ProductService {
 
   getAllProducts(link: string): Observable<any> {
     // http://localhost:8000/api/viewproduct?category=baju
-    return this.api.get(`viewp/${link}`);
+    return this.api.get(`category/${link}`);
   // {params: { category: link } }
     // http://localhost:8000/api/viewproduct/baju
     // return this.http.get<any>('http://localhost:8000/api/viewproduct/' + link);
   }
 
   getProductDetail(link: string): Observable<any> {
-    return this.api.get('viewpd');
+    return this.api.get('productdetail');
   }
 
   getProduct(id: any) {
@@ -26,11 +26,11 @@ export class ProductService {
   }
 
   checkout() {
-    return this.api.post('insertorder', { });
+    return this.api.post('order', { });
   }
 
   removeItem(id: any) {
-    return this.api.delete('delete_item_cart/${id}');
+    return this.api.delete('cart/${id}');
   }
 
   getVeritransURL(order_id: any) {
@@ -38,15 +38,15 @@ export class ProductService {
   }
 
   getPage(link: any) {
-    return this.api.get(link);
+    return this.api.getLink(link);
   }
 
   validateQty(product_id: any, qty: number) {
-      return this.api.get(`validateProductQty/${product_id}/${qty}`);
+      return this.api.get(`validateQty/${product_id}/${qty}`);
   }
 
   getTopProduct() {
-    return this.api.get('view_top_product');
+    return this.api.get('topproduct');
   }
 
 }

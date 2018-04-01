@@ -27,7 +27,7 @@ export class SearchResultComponent implements OnInit {
   getSearchResult(term: any) {
     this.navService.searchEntries(term).subscribe(
         res => {
-            console.log(res);
+            // console.log(res);
           this.product_data = res;
         }, err => {
           this.error_msg = err;

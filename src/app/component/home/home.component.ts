@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         res => {
 
             this.obj = res;
-            console.log(this.obj.data);
+            // console.log(this.obj.data);
           this.product_data = this.obj.data;
         });
   }

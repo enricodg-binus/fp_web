@@ -19,6 +19,7 @@ import {MainComponent} from './main.component';
 import {DashboardModule} from '../dashboard-user/dashboard.module';
 import {PaymentFailComponent} from './payment-fail/payment-fail.component';
 import {SearchResultComponent} from './search-result/search-result.component';
+import {NgAisModule} from 'angular-instantsearch';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import {SearchResultComponent} from './search-result/search-result.component';
         MainRoutingModule,
         FormsModule,
         AlertModule,
+        NgAisModule.forRoot(),
         DashboardModule
     ],
     providers: [UserGuard],

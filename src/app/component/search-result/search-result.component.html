@@ -5,43 +5,57 @@
           <h2>Search Results</h2>
           <hr class="welcome-hr">
         </div>
-      <div class="band text-center">
-        <app-item *ngFor="let product of product_data.data;" [product_data]="product"></app-item>
+      <ng-ais-stats></ng-ais-stats>
+      <ng-ais-refinement-list attribute="product_price_range" operator="or"></ng-ais-refinement-list>
+      <ng-ais-clear-refinements [autoHideContainer]="true" buttonLabel="Clear filter"></ng-ais-clear-refinements>
+      <div class="text-center">
+
+          <ng-ais-hits>
+          <ng-template let-hits="hits">
+            <app-item  *ngFor="let hit of hits" [product_data]="hit"></app-item>
+          </ng-template>
+          </ng-ais-hits>
       </div>
     </div>
+    Item per page: <ng-ais-hits-per-page [items]="[{ value: 12, label: 12 }, {value: 20, label:20 }, {value: 40,label: 40}]"></ng-ais-hits-per-page>
+
+
   </div>
+
+
   <div class="row back text-center">
     <div class="col-md-12 ">
       <!--Pagination -->
       <nav aria-label="pagination example">
-        <ul class="pagination pagination-circle pg-blue mb-0">
+        <ng-ais-pagination></ng-ais-pagination>
+        <!--<ul class="pagination pagination-circle pg-blue mb-0">-->
 
-          <!--First-->
-          <li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === 1 }"><a class="page-link" (click)="getPage(product_data.first_page_url)">First</a></li>
+          <!--&lt;!&ndash;First&ndash;&gt;-->
+          <!--<li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === 1 }"><a class="page-link" (click)="getPage(product_data.first_page_url)">First</a></li>-->
 
-          <!--Arrow left-->
-          <li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === 1 }">
-            <a class="page-link" aria-label="Previous" (click)="getPage(product_data.prev_page_url)">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
+          <!--&lt;!&ndash;Arrow left&ndash;&gt;-->
+          <!--<li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === 1 }">-->
+            <!--<a class="page-link" aria-label="Previous" (click)="getPage(product_data.prev_page_url)">-->
+              <!--<span aria-hidden="true">&laquo;</span>-->
+              <!--<span class="sr-only">Previous</span>-->
+            <!--</a>-->
+          <!--</li>-->
 
-          <!--Numbers-->
-          <li class="page-item active" ><a class="page-link">{{ product_data.current_page }}</a></li>
+          <!--&lt;!&ndash;Numbers&ndash;&gt;-->
+          <!--<li class="page-item active" ><a class="page-link">{{ product_data.current_page }}</a></li>-->
 
-          <!--Arrow right-->
-          <li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === product_data.last_page }">
-            <a class="page-link" aria-label="Next" (click)="getPage(product_data.next_page_url)">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
+          <!--&lt;!&ndash;Arrow right&ndash;&gt;-->
+          <!--<li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === product_data.last_page }">-->
+            <!--<a class="page-link" aria-label="Next" (click)="getPage(product_data.next_page_url)">-->
+              <!--<span aria-hidden="true">&raquo;</span>-->
+              <!--<span class="sr-only">Next</span>-->
+            <!--</a>-->
+          <!--</li>-->
 
-          <!--Last-->
-          <li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === product_data.last_page }"><a class="page-link" (click)="getPage(product_data.last_page_url)">Last</a></li>
+          <!--&lt;!&ndash;Last&ndash;&gt;-->
+          <!--<li class="page-item" [ngClass]="{ 'disabled': product_data.current_page === product_data.last_page }"><a class="page-link" (click)="getPage(product_data.last_page_url)">Last</a></li>-->
 
-        </ul>
+        <!--</ul>-->
       </nav>
     </div>
   </div>

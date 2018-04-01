@@ -1,25 +1,26 @@
-<div *ngIf="message.type === 'error'" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
-    <ng-container *ngIf="message.text.status == 400">
-        <ng-container *ngFor="let error of message.text.error | mapToIterable">
-            {{ error.val }}<br>
+<div *ngIf="message">
+    <div *ngIf="message.type === 'error'" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+        <ng-container *ngIf="message.text.status == 400">
+            <ng-container *ngFor="let error of message.text.error | mapToIterable">
+                {{ error.val }}<br>
+            </ng-container>
         </ng-container>
-    </ng-container>
-    <ng-container *ngIf="message.text.status == 401">
-        <ng-container *ngFor="let error of message.text.error | mapToIterable">
-            {{ error.val }}<br>
+        <ng-container *ngIf="message.text.status == 401">
+            <ng-container *ngFor="let error of message.text.error | mapToIterable">
+                {{ error.val }}<br>
+            </ng-container>
+            <!--<ng-container>-->
+                <!--{{ message.text.error }}-->
+            <!--</ng-container>-->
         </ng-container>
-        <!--<ng-container>-->
-            <!--{{ message.text.error }}-->
+        <!--<ng-container *ngIf="message.text">-->
+            <!--{{ message.text }}-->
         <!--</ng-container>-->
-    </ng-container>
-    <!--<ng-container *ngIf="message.text">-->
-        <!--{{ message.text }}-->
-    <!--</ng-container>-->
-</div>
+    </div>
 
-<div *ngIf="message.type === 'notify'" [ngClass]="{ 'alert': message, 'notif': message.type === 'notify'}">
-    <ng-container *ngIf="message.text.msg">
-        <p>{{ message.text.msg }}</p>
-    </ng-container>
+    <div *ngIf="message.type === 'notify'" [ngClass]="{ 'alert': message, 'notif': message.type === 'notify'}">
+        <ng-container *ngIf="message.text.msg">
+            <p>{{ message.text.msg }}</p>
+        </ng-container>
+    </div>
 </div>
-

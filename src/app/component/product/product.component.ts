@@ -25,7 +25,7 @@ export class ItemComponent implements OnInit {
   addToCart(id: any) {
     this.cartService.addProduct(id).subscribe(res => {
             this.cartService.init();
-            console.log(res);
+            // console.log(res);
             this.alertService.notify(res, false);
             setTimeout(() => {
                          this.alertService.reset();
@@ -33,11 +33,10 @@ export class ItemComponent implements OnInit {
             return true;
         }, err => {
             window.alert('Please login to buy our products');
-            this.alertService.notify(err.error, false);
             setTimeout(() => {
                          this.alertService.reset();
                      }, 2000);
-            console.log(err);
+            // console.log(err);
         });
   }
 

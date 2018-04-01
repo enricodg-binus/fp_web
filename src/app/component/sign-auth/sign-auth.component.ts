@@ -21,11 +21,7 @@ export class SignAuthComponent implements OnInit {
               @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
-      if (isPlatformBrowser(this.platformId)) {
-          if (localStorage.getItem('token')) {
-              this.router.navigate(['/']);
-          }
-      }
+    this.checkAuth();
     if (this.router.url === '/register') {
       this.hideLogin = true;
     } else if (this.router.url === '/login') {
@@ -36,6 +32,16 @@ export class SignAuthComponent implements OnInit {
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
+
+    checkAuth() {
+        this.authService.validateToken().subscribe(
+            res => {
+                this.router.navigate(['/']);
+            },
+            error => {
+            }
+        );
+    }
 
   toggle() {
     this.hideLogin = !this.hideLogin;
@@ -50,7 +56,7 @@ export class SignAuthComponent implements OnInit {
                     window.location.reload(true);
                 },
                 error => {
-                    console.log(error);
+                    // console.log(error);
                     this.alertService.error(error, false);
                 });
     }

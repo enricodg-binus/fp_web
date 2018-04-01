@@ -10,8 +10,7 @@ import {MainModule} from './component/main.module';
 import {DashboardModule} from './dashboard-user/dashboard.module';
 import {appRoutes} from './app.routing.module';
 import {RouterModule} from '@angular/router';
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { NgAisModule } from 'angular-instantsearch';
 
 
 @NgModule({
@@ -25,7 +24,7 @@ import { isPlatformBrowser } from '@angular/common';
     RouterModule.forChild(appRoutes),
     HttpClientModule,
     MainModule,
-    DashboardModule
+    DashboardModule,
   ],
   providers: [UserGuard],
   bootstrap: [AppComponent]

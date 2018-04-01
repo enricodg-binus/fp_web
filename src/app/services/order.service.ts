@@ -15,13 +15,13 @@ export class OrderService {
     orderState = this.orderSubject.asObservable();
 
   createOrder(total: number, address_id: any) {
-      return this.api.post('inserto',
+      return this.api.post('order',
           { order_status: 'Waiting for payment', total_price: total , payment_status: 'Waiting Confirmation',
               shipment_address_id: address_id });
   }
 
     initRequestOrder() {
-        this.api.get('view_request_order')
+        this.api.get('request_order')
             .subscribe(res => {
                 this.order_data = res;
                 this.orderSubject.next(<any>{loaded: true, order_data: this.order_data});
@@ -29,19 +29,19 @@ export class OrderService {
     }
 
     getRequestOrder(): Observable<any> {
-        return this.api.get('view_request_order');
+        return this.api.get('request_order');
     }
 
     getStatusOrder(): Observable<any> {
-        return this.api.get('view_order');
+        return this.api.get('order');
     }
 
     getOrderDetails(id: any) {
-        return this.api.get(`view_order_items/${id}`);
+        return this.api.get(`order_items/${id}`);
     }
 
     cancelOrder(id: any) {
-        return this.api.delete(`delete_order/${id}`)
+        return this.api.delete(`order/${id}`)
             .subscribe(
             res => {
                 this.initRequestOrder();
@@ -54,10 +54,10 @@ export class OrderService {
     }
 
     getOrderItems() {
-        return this.api.get('order_item');
+        return this.api.get('orderitem');
     }
 
     getCompleteOrder() {
-      return this.api.get(`get_complete_order`);
+      return this.api.get(`complete_order`);
     }
 }

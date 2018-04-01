@@ -8,26 +8,22 @@ import {ApiProvider} from '../libraries/api';
 export class UserService {
 
     constructor(private api: ApiProvider) { }
-
-    getAll() {
-        return this.api.get('users');
-    }
-
-    getById(id: number) {
-        return this.api.get(`users/${id}`);
-    }
+    //
+    // getAll() {
+    //     return this.api.get('users');
+    // }
+    //
+    // getById(id: number) {
+    //     return this.api.get(`users/${id}`);
+    // }
 
     create(user: any): Observable<any> {
         return this.api.post(`register`, user);
     }
 
     update(user: User) {
-        console.log(user);
-        return this.api.put('updateua', {name: user.name, phone: user.phone, email: user.email});
-    }
-
-    delete(id: number) {
-        return this.api.delete(`users/${id}`);
+        // console.log(user);
+        return this.api.put('user', {name: user.name, phone: user.phone, email: user.email});
     }
 
     validateAddress() {

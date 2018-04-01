@@ -1,13 +1,41 @@
 
-<div class="container" *ngIf="product_data">
+<div class="container-fluid" *ngIf="product_data">
   <div class="row">
+    <div class="col-md-3">
+
+    </div>
+  </div>
+  <div class="row back">
+    <div class="col-md-3">
+      <label>Sort By</label>
+      <select class="form-control">
+        <option>Price</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label>Filter By</label>
+      <select class="form-control">
+        <option>Test</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label>Filter By</label>
+      <input class="form-control">
+    </div>
+
+    <div class="col-md-12">
+      <div class="heading back" style="margin-bottom: 0">
+        <h2>Products of {{ link }}</h2>
+        <hr class="welcome-hr">
+      </div>
+    </div>
     <div class="col-md-12">
       <div class="band-3 text-center">
         <app-item *ngFor="let product of product_data.data;" [product_data]="product"></app-item>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row back" style="overflow: hidden">
     <div class="col-md-12 text-center">
       <!--Pagination -->
       <nav aria-label="pagination example">

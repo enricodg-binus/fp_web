@@ -33,7 +33,6 @@ export class DashboardSidebarComponent implements OnInit {
         // console.log(this.user_data);
       },
       error => {
-        window.alert('Please re-login to continue');
         this.router.navigate(['/login']);
       }
     );

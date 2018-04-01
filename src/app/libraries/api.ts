@@ -1,16 +1,16 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import {isPlatformBrowser} from '@angular/common';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { Router } from '@angular/router';
-import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class ApiProvider {
     API_URL = 'https://api.enricodg.me/api';
+    // API_URL = 'http://localhost:8000/api';
     private headerInjection: any;
     constructor(@Inject(PLATFORM_ID) private platformId: Object,
                 private http: HttpClient,
