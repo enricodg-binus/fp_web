@@ -11,6 +11,8 @@ import {DashboardModule} from './dashboard-user/dashboard.module';
 import {appRoutes} from './app.routing.module';
 import {RouterModule} from '@angular/router';
 import { NgAisModule } from 'angular-instantsearch';
+import { AboutUsComponent } from './component/about-us/about-us.component';
+import { TrackingOrderComponent } from './component/tracking-order/tracking-order.component';
 
 
 @NgModule({

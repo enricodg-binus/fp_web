@@ -18,7 +18,11 @@ export class PaymentComponent implements OnInit {
   }
 
   getOrder() {
-    this.orderService.getCompleteOrder();
+    this.orderService.getCompleteOrder().subscribe(
+        res => {
+          this.order_data = res;
+        }
+    );
   }
 
 }

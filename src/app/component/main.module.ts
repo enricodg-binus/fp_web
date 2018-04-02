@@ -20,6 +20,8 @@ import {DashboardModule} from '../dashboard-user/dashboard.module';
 import {PaymentFailComponent} from './payment-fail/payment-fail.component';
 import {SearchResultComponent} from './search-result/search-result.component';
 import {NgAisModule} from 'angular-instantsearch';
+import {AboutUsComponent} from './about-us/about-us.component';
+import {TrackingOrderComponent} from './tracking-order/tracking-order.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,9 @@ import {NgAisModule} from 'angular-instantsearch';
         FooterComponent,
         CartComponent,
         PageNotFoundComponent,
-        SearchResultComponent
+        SearchResultComponent,
+        TrackingOrderComponent,
+        AboutUsComponent
     ],
     imports: [
         CommonModule,

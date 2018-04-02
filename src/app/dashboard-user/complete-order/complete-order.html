@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="header">
-          <h4 class="title" style="padding-bottom:15px">Status Pembayaran</h4>
+          <h4 class="title" style="padding-bottom:15px">Complete Order</h4>
         </div>
         <div class="content table-responsive table-full-width">
           <table class="table table-hover table-striped">
@@ -21,8 +21,8 @@
               <td>{{ data.order_date }}</td>
               <td>{{ data.order_status }}</td>
               <td>
-                <button class="btn btn-success" routerLink="/dashboard/request_detail">Details</button>
-                <button class="btn btn-danger">Complain / RMA</button>
+                <button class="btn btn-success" routerLink="/dashboard/request_order/details/{{data.id}}">Details</button>
+                <!--<button class="btn btn-danger">Complain / RMA</button>-->
               </td>
             </tr>
             </tbody>

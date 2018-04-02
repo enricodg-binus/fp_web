@@ -41,8 +41,8 @@ export class ProductService {
     return this.api.getLink(link);
   }
 
-  validateQty(product_id: any, qty: number) {
-      return this.api.get(`validateQty/${product_id}/${qty}`);
+  validateQty(order_id: any) {
+      return this.api.get(`validateQty/${order_id}`);
   }
 
   getTopProduct() {

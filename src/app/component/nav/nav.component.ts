@@ -46,7 +46,6 @@ export class NavComponent implements OnInit {
     checkAuth() {
         this.authService.validateToken().subscribe(
             res => {
-                // console.log(localStorage.token);
                 this.loggedIn = true;
                 this.user_data = res;
                 this.getCart();
@@ -63,7 +62,6 @@ export class NavComponent implements OnInit {
         this.subscription = this.cartService.CartState
             .subscribe((state: any) => {
                 this.cart_data = state.cart_data;
-                // console.log(state);
             });
     }
 
@@ -103,12 +101,7 @@ export class NavComponent implements OnInit {
             return;
         }
         this.searchTerm = form.value.searchTerm;
-        this.router.navigate(['/search'], { queryParams: { keyword: this.searchTerm }});
-        this.navService.searchEntries(this.searchTerm)
-            .subscribe(results => {
-                this.results = results;
-                // console.log(this.searchTerm);
-            });
+        this.router.navigate(['/search']);
     }
 
     navigateTo(name: any) {

@@ -9,7 +9,7 @@
       <ng-ais-refinement-list attribute="product_price_range" operator="or"></ng-ais-refinement-list>
       <ng-ais-clear-refinements [autoHideContainer]="true" buttonLabel="Clear filter"></ng-ais-clear-refinements>
       <div class="text-center">
-
+          Item per page: <ng-ais-hits-per-page [items]="[{ value: 12, label: 12 }, {value: 20, label:20 }, {value: 40,label: 40}]"></ng-ais-hits-per-page>
           <ng-ais-hits>
           <ng-template let-hits="hits">
             <app-item  *ngFor="let hit of hits" [product_data]="hit"></app-item>
@@ -17,7 +17,7 @@
           </ng-ais-hits>
       </div>
     </div>
-    Item per page: <ng-ais-hits-per-page [items]="[{ value: 12, label: 12 }, {value: 20, label:20 }, {value: 40,label: 40}]"></ng-ais-hits-per-page>
+
 
 
   </div>

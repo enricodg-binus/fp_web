@@ -15,11 +15,11 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="list-unstyled list-inline ongkir ">
           <!--<li><i class="fa fa-whatsapp"></i> WA : <a href="https://api.whatsapp.com/send?phone=6281290969086"><b>CS-1(0812-9096-9086)</b></a></li>-->
-          <li><a href=""><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
-          <li><a href=""><i class="fa fa-users" aria-hidden="true"></i>&nbsp;About Us</a></li>
-          <li><a href=""><i class="fa fa-question" aria-hidden="true"></i>&nbsp;How To</a></li>
+          <li><a routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+          <li><a routerLink="/about-us"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;About Us</a></li>
+          <!--<li><a href=""><i class="fa fa-question" aria-hidden="true"></i>&nbsp;How To</a></li>-->
           <!--<li><a href=""><i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;Simulasi</a></li>-->
-          <li><a href=""><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Tracking Order</a></li>
+          <!--<li><a href=""><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Tracking Order</a></li>-->
         </ul>
       </div>
     </div>
@@ -32,10 +32,10 @@
           <div class="input-group col-md-8">
             <span class="input-group-btn">
                 <div class="dropdown">
-                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-animations="fadeInDown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-toggle="dropdown" data-animations="fadeInDown">
                     Kategori <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" data-hover="dropdown" data-animations="fadeInDown">
+                  <ul class="dropdown-menu" data-toggle="dropdown">
                     <!--<li class="dropdown" *ngFor="let category of categories_data">-->
                         <!--<a routerLink="/category/{{category.category_name}}">{{category.category_name}}</a>-->
                         <!--<ul class="dropdown-menu" data-animations="fadeInLeft">-->
@@ -43,14 +43,16 @@
                         <!--</ul>-->
                     <!--</li>-->
                     <li class="dropdown" *ngFor="let category of categories_data" id="{{ category.id }}">
-                        <a *ngIf="category.children" (click)="navigateTo(category.category_name)" (mouseenter)="toggleDropdown(category.id)" >{{ category.category_name}}</a>
+                        <a *ngIf="category.children" (click)="navigateTo(category.category_name)">{{ category.category_name}}</a>
+                        <a style="font-size: 12px; margin-left: 5%" *ngFor="let children of category.children" (click)="navigateTo(children.category_name)">{{ children.category_name }}</a>
                         <!--(mouseleave)="toggleDropdown(category.id)"-->
+
                         <a *ngIf="!category.children">{{category.category_name}}</a>
-                        <ul class="dropdown-menu">
-                            <li *ngFor="let children of category.children">
-                                <a (click)="navigateTo(children.category_name)">{{ children.category_name }}</a>
-                            </li>
-                        </ul>
+                        <!--<ul class="dropdown-menu" data-animations="fadeInLeft">-->
+                            <!--<li *ngFor="let children of category.children">-->
+                                <!--<a (click)="navigateTo(children.category_name)">{{ children.category_name }}</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
                     </li>
 
                     <!--<li class="dropdown">-->
@@ -72,7 +74,7 @@
                 </div>
             </span>
 
-              <ng-ais-search-box placeholder="Cari.."></ng-ais-search-box>
+              <ng-ais-search-box placeholder="Keyword..." (submit)="search(fm)"></ng-ais-search-box>
             <!--<input id="keyword-search" type="text" class="form-control input-md" placeholder="Cari.." [(ngModel)]="searchTerm" name="searchTerm">-->
             <span class="input-group-btn">
                 <button class="btn btn-success btn-md" type="submit" routerLink="/search">

@@ -67,4 +67,8 @@ export class RequestdetailComponent implements OnInit {
       }
   }
 
+  validateProductQty(order_id: any) {
+
+  }
+
 }

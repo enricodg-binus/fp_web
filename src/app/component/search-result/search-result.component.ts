@@ -18,10 +18,10 @@ export class SearchResultComponent implements OnInit {
               private productService: ProductService) { }
 
   ngOnInit() {
-      this.route.queryParamMap.subscribe(params => {
-          this.keyword = params.get('keyword');
-          this.getSearchResult(this.keyword);
-      });
+      // this.route.queryParamMap.subscribe(params => {
+      //     this.keyword = params.get('keyword');
+      //     this.getSearchResult(this.keyword);
+      // });
   }
 
   getSearchResult(term: any) {

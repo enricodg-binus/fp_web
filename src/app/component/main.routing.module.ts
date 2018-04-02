@@ -20,6 +20,8 @@ import {DashboardComponent} from '../dashboard-user/dashboard/dashboard.componen
 import {PaymentFailComponent} from './payment-fail/payment-fail.component';
 import {ProductdetailComponent} from './product/productdetail/productdetail.component';
 import {SearchResultComponent} from './search-result/search-result.component';
+import {AboutUsComponent} from './about-us/about-us.component';
+import {TrackingOrderComponent} from './tracking-order/tracking-order.component';
 
 const routes: Routes = [
 
@@ -107,6 +109,10 @@ const routes: Routes = [
                 component: CartComponent
             },
             {
+                path: 'about-us',
+                component: AboutUsComponent
+            },
+            {
                 path: 'category',
                 children: [
                     {
@@ -131,6 +137,10 @@ const routes: Routes = [
             {
                 path: 'search',
                 component: SearchResultComponent
+            },
+            {
+                path: 'tracking-order',
+                component: TrackingOrderComponent
             }
         ]
     },

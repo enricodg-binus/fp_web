@@ -31,13 +31,19 @@ export class RequestorderComponent implements OnInit {
   }
 
   getPaymentURL(order_id: any) {
-      this.productService.getVeritransURL(order_id).subscribe(
-          res => {
-              this.link = res;
-              window.location.href = this.link.url;
-          },
-          err => {
-              window.alert(err.error);
+      this.productService.validateQty(order_id).subscribe(
+            resp => {
+                this.productService.getVeritransURL(order_id).subscribe(
+                    res => {
+                        this.link = res;
+                        window.location.href = this.link.url;
+                    },
+                    err => {
+                        window.alert(err.error);
+                    }
+                );
+            }, err => {
+                window.alert(err);
           }
       );
   }

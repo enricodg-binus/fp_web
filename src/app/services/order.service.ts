@@ -16,7 +16,7 @@ export class OrderService {
 
   createOrder(total: number, address_id: any) {
       return this.api.post('order',
-          { order_status: 'Waiting for payment', total_price: total , payment_status: 'Waiting Confirmation',
+          { order_status: 'Waiting For Payment', total_price: total , payment_status: 'Waiting Confirmation',
               shipment_address_id: address_id });
   }
 

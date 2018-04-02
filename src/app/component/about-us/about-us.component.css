@@ -1,0 +1,87 @@
+.container-3d {
+    height: 10em;
+    margin: auto;
+    position: center;
+    width: auto;
+    overflow:hidden;
+
+}
+
+.front {
+    position: absolute;
+    transform: rotateY(0deg);
+    z-index: 1;
+    transition: all 1.5s ease 0s;
+    transform-style: preserve-3d;
+    width:100%;
+    text-align:center;
+
+}
+
+.container-3d:hover .front {
+    position: absolute;
+    transform: rotateY(-180deg);
+}
+
+
+.box {
+    border:0.3em solid;
+    color:white;
+    height:auto;
+    width:8em;
+
+}
+
+.box:hover {
+    color:yellow;
+}
+
+.circle{
+
+}
+
+.circle:hover {
+    color:yellow;
+}
+
+.menu{
+    position:fixed
+}
+
+
+@font-face {
+    font-family: font1;
+    src: url('../../../assets/images/beyond_the_mountains.otf');
+}
+
+p{
+    font-family:font1;
+    text-align:center;
+    font-size:6em;
+
+}
+
+@font-face {
+    font-family: font2;
+    src: url('../../../assets/images/Delicious-Roman.otf');
+}
+
+*{
+    font-family: font2;
+}
+
+.mytextcenter{
+    text-align:center;
+}
+
+.background{
+    max-width:100%;
+    height:400px;
+    background-image:url(../../../assets/images/comp1.jpg);
+    background-position:center 0%;
+    background-repeat:no-repeat;
+    background-background-size:cover;
+    padding:0;
+
+}
+

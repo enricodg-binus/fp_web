@@ -71,3 +71,6 @@
     -webkit-transform-origin: 50% 100%;
     transform-origin: 50% 100%;
 }
+
+.navbar-toggle .icon-bar {
+    background-color: #FFFFFF; }
